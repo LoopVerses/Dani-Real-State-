@@ -19,7 +19,7 @@ export default function JsonLd() {
     slogan: SLOGAN,
     email: CONTACT.email,
     telephone: CONTACT.phoneTel,
-    image: absoluteUrl("/images/Dani_banner.png"),
+    image: absoluteUrl("/images/1.png"),
     logo: absoluteUrl("/images/logo.png"),
     identifier: [
       {

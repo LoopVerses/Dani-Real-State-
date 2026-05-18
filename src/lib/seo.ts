@@ -205,7 +205,7 @@ export function buildPageMetadata({
   description,
   path = "",
   extraKeywords = [],
-  ogImage = "/images/Dani_banner.png",
+  ogImage = "/images/1.png",
 }: PageMetaInput): Metadata {
   const canonical = canonicalUrl(path);
   const keywords = [...new Set([...SEO_KEYWORDS, ...extraKeywords])];
@@ -263,7 +263,7 @@ export function buildRootMetadata(): Metadata {
       description: `${SLOGAN} — Official site: ${PRIMARY_DOMAIN}`,
       images: [
         {
-          url: "/images/Dani_banner.png",
+          url: "/images/1.png",
           width: 1200,
           height: 630,
           alt: "Dani Real Estate and Developers LLP — Haripur",
@@ -274,7 +274,7 @@ export function buildRootMetadata(): Metadata {
       card: "summary_large_image",
       title: DEFAULT_OG_TITLE,
       description: DEFAULT_SITE_DESCRIPTION,
-      images: ["/images/Dani_banner.png"],
+      images: ["/images/1.png"],
     },
     robots: {
       index: true,

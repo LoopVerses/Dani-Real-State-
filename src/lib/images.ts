@@ -8,9 +8,9 @@ export const LOGO_SRC = publicImage("logo.png");
 export const CEO_IMAGE = publicImage("CEO Muhammad Saeed.jpeg");
 
 export const HERO_BANNERS = [
-  { src: publicImage("Dani_banner.png"), alt: "Dani Real Estate — flagship development" },
-  { src: publicImage("Dani_banner_2.png"), alt: "Dani Real Estate — premium residences" },
-  { src: publicImage("Dani_banner_3.png"), alt: "Dani Real Estate — modern living" },
+  { src: publicImage("1.png"), alt: "Dani Real Estate — flagship development Haripur" },
+  { src: publicImage("2.png"), alt: "Dani Real Estate — premium residences and plots" },
+  { src: publicImage("3.png"), alt: "Dani Real Estate — modern living KPK" },
 ] as const;
 
 export const HERO_AUTO_SLIDE_MS = 8000;
@@ -45,7 +45,7 @@ export const ABOUT_IMAGES = {
 } as const;
 
 export const IMAGE_FIT = {
-  landscapeHero: "object-cover object-[center_38%]",
+  landscapeHero: "object-cover object-center",
   landscapeCard: "object-cover object-center",
   portrait: "object-cover object-[50%_14%]",
 } as const;

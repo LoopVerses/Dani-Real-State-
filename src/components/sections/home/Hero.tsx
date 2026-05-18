@@ -9,11 +9,10 @@ import { HERO_BANNERS, HERO_AUTO_SLIDE_MS } from "@/lib/images";
 
 const BlueprintSketch = dynamic(
   () => import("@/components/sections/home/BlueprintSketch"),
-  { ssr: false, loading: () => <div className="w-full h-full bg-zinc-900" aria-hidden /> }
+  { ssr: false, loading: () => <div className="w-full h-full bg-transparent" aria-hidden /> }
 );
 
-/** Bottom info panel — fixed share of viewport, no extra min-heights that break 100svh */
-const HERO_PANEL_H = "h-[clamp(9.5rem,26svh,17.5rem)]";
+const PANEL_H = "h-[clamp(10rem,28svh,18rem)]";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -30,7 +29,7 @@ export default function Hero() {
       setIndex(normalized);
       setVisible(true);
       fadeTimer.current = null;
-    }, 300);
+    }, 350);
   }, []);
 
   const goTo = useCallback(
@@ -59,104 +58,123 @@ export default function Hero() {
 
   return (
     <section
-      className="relative w-full h-[100svh] max-h-[100svh] grid grid-rows-[minmax(0,1fr)_auto] bg-black overflow-hidden isolate"
+      className="relative w-full h-[100svh] min-h-[100svh] max-h-[100svh] bg-black overflow-hidden isolate"
       aria-label="Hero"
     >
-      {/* Banner — fills remaining viewport; min-h-0 prevents flex/grid overflow scroll */}
-      <div className="relative min-h-0 w-full overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src={HERO_BANNERS[index].src}
-            alt={HERO_BANNERS[index].alt}
-            fill
-            priority
-            sizes="100vw"
+      {/* Full-viewport background — image fills entire screen */}
+      <div className="absolute inset-0 z-0">
+        {HERO_BANNERS.map((banner, i) => (
+          <div
+            key={banner.src}
             className={cn(
-              "object-cover object-[center_28%] sm:object-[center_32%] transition-opacity duration-500 ease-out",
-              visible ? "opacity-100" : "opacity-0"
+              "absolute inset-0 overflow-hidden transition-opacity duration-700 ease-in-out",
+              i === index && visible ? "opacity-100 z-10" : "opacity-0 z-0"
             )}
-          />
-        </div>
+            aria-hidden={i !== index}
+          >
+            <Image
+              src={banner.src}
+              alt={i === index ? banner.alt : ""}
+              fill
+              priority={i === 0}
+              sizes="100vw"
+              className="h-full w-full object-cover object-[50%_22%] sm:object-[50%_26%] md:object-[50%_30%]"
+            />
+          </div>
+        ))}
 
-        <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/25 via-transparent to-transparent h-28" />
-        <div className="absolute inset-x-0 bottom-0 pointer-events-none bg-gradient-to-t from-black/55 via-black/15 to-transparent h-24" />
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 z-20 h-[45%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none" />
+      </div>
 
-        <p className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 md:left-10 z-10 max-w-md text-white/90 text-[13px] md:text-[15px] leading-relaxed font-light drop-shadow-md">
+      {/* Quote — sits above glass panel */}
+      <div
+        className={cn(
+          "absolute left-4 sm:left-6 md:left-10 z-30 max-w-md pointer-events-none",
+          "bottom-[calc(clamp(10rem,28svh,18rem)+1rem)]"
+        )}
+      >
+        <p className="text-white/95 text-sm md:text-base leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
           A vision that transcends property and space, where unmatched craftsmanship
           inspires elegance and innovation to enrich lives.
         </p>
       </div>
 
-      {/* Bottom panel — explicit height only (no min-h + vh stack) */}
+      {/* Premium frosted glass bottom bar */}
       <div
         className={cn(
-          "relative grid w-full min-h-0 grid-cols-[minmax(0,34%)_minmax(0,1fr)] overflow-hidden border-t border-zinc-800",
-          HERO_PANEL_H
+          "absolute bottom-0 inset-x-0 z-40 grid w-full overflow-hidden",
+          "border-t border-white/15",
+          "bg-white/[0.07] backdrop-blur-[28px] backdrop-saturate-150",
+          "shadow-[0_-8px_32px_rgba(0,0,0,0.35)]",
+          "grid-cols-[minmax(0,32%)_minmax(0,1fr)]",
+          PANEL_H
         )}
       >
-        <div className="min-w-0 bg-black h-full overflow-hidden">
+        <div
+          className="hero-glass-shine pointer-events-none absolute inset-0 z-0"
+          aria-hidden
+        />
+
+        <div className="relative z-10 min-w-0 h-full border-r border-white/10 bg-black/15 overflow-hidden">
           <BlueprintSketch />
         </div>
 
-        <div className="min-w-0 bg-[#F5F4F0] h-full flex flex-col justify-between px-4 sm:px-6 md:px-10 py-4 md:py-6 overflow-hidden">
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 items-end min-w-0">
+        <div className="relative z-10 min-w-0 h-full flex flex-col justify-between px-4 sm:px-6 md:px-10 py-4 md:py-5 overflow-hidden">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 items-end min-w-0 text-white">
             <div className="min-w-0">
-              <div className="flex items-center gap-1 text-zinc-500 mb-0.5">
-                <Key className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" strokeWidth={1.5} />
-                <span className="text-[10px] sm:text-xs md:text-sm truncate">Completion:</span>
+              <div className="flex items-center gap-1 text-white/55 mb-0.5">
+                <Key className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
+                <span className="text-[10px] sm:text-xs truncate">Completion</span>
               </div>
-              <p className="text-lg sm:text-2xl md:text-[2.5rem] font-bold text-black tracking-tighter leading-none truncate">
+              <p className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-none truncate">
                 Q4 2026
               </p>
             </div>
             <div className="min-w-0">
-              <div className="flex items-center gap-1 text-zinc-500 mb-0.5">
-                <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" strokeWidth={1.5} />
-                <span className="text-[10px] sm:text-xs md:text-sm truncate">Plot Size:</span>
+              <div className="flex items-center gap-1 text-white/55 mb-0.5">
+                <MapPin className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
+                <span className="text-[10px] sm:text-xs truncate">Plot Size</span>
               </div>
-              <p className="text-lg sm:text-2xl md:text-[2.5rem] font-bold text-black tracking-tighter leading-none truncate">
+              <p className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-none truncate">
                 0.12 HA
               </p>
             </div>
             <div className="min-w-0">
-              <div className="flex items-center gap-1 text-zinc-500 mb-0.5">
-                <Home className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" strokeWidth={1.5} />
-                <span className="text-[10px] sm:text-xs md:text-sm truncate">House Area:</span>
+              <div className="flex items-center gap-1 text-white/55 mb-0.5">
+                <Home className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
+                <span className="text-[10px] sm:text-xs truncate">House Area</span>
               </div>
-              <p className="text-lg sm:text-2xl md:text-[2.5rem] font-bold text-black tracking-tighter leading-none">
-                450 M<sup className="text-sm sm:text-base md:text-lg">2</sup>
+              <p className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-none">
+                450 M<sup className="text-sm md:text-base font-medium">2</sup>
               </p>
             </div>
           </div>
 
           <div className="flex items-center justify-between gap-2 sm:gap-4 mt-auto pt-2 min-w-0">
-            <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <div className="flex items-center gap-3 min-w-0 flex-1">
+              <div className="flex items-center gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={goPrev}
-                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border border-zinc-300 bg-white flex items-center justify-center text-black hover:bg-zinc-100 transition-colors"
+                  className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-white/25 bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors"
                   aria-label="Previous slide"
                 >
-                  <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2} />
+                  <ArrowLeft className="w-4 h-4" strokeWidth={2} />
                 </button>
                 <button
                   type="button"
                   onClick={goNext}
-                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border border-zinc-300 bg-white flex items-center justify-center text-black hover:bg-zinc-100 transition-colors"
+                  className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-white/25 bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors"
                   aria-label="Next slide"
                 >
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" strokeWidth={2} />
+                  <ArrowRight className="w-4 h-4" strokeWidth={2} />
                 </button>
               </div>
               <div className="min-w-0 hidden sm:block">
-                <p className="text-zinc-500 text-[10px] sm:text-xs md:text-sm leading-tight truncate">
-                  House Type C
-                </p>
-                <p className="text-black font-semibold text-xs sm:text-sm md:text-base leading-tight truncate">
-                  — Comfort Line
-                </p>
-                <p className="text-zinc-400 text-[10px] md:text-xs mt-0.5 tabular-nums">
+                <p className="text-white/50 text-xs truncate">House Type C</p>
+                <p className="text-white font-medium text-sm truncate">Comfort Line</p>
+                <p className="text-white/40 text-[10px] tabular-nums mt-0.5">
                   {index + 1} / {count}
                 </p>
               </div>
@@ -169,10 +187,10 @@ export default function Hero() {
                   type="button"
                   onClick={() => goTo(i)}
                   className={cn(
-                    "relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 overflow-hidden shadow-md transition-opacity",
+                    "relative w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 overflow-hidden shadow-lg transition-all duration-300",
                     i === index
-                      ? "border-primary ring-2 ring-primary/40 z-20 opacity-100"
-                      : "border-white opacity-70 hover:opacity-100 z-10"
+                      ? "border-white/90 ring-2 ring-white/25 z-20 scale-105"
+                      : "border-white/30 opacity-70 hover:opacity-100 z-10"
                   )}
                   aria-label={`Go to slide ${i + 1}`}
                   aria-current={i === index ? "true" : undefined}

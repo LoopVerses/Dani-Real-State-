@@ -62,7 +62,7 @@ export default function Navbar() {
         <span className="nav-glass-shine" aria-hidden />
 
         <div
-          className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 h-[96px] flex items-center justify-between"
+          className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 h-[72px] sm:h-[76px] flex items-center justify-between"
           suppressHydrationWarning
         >
           {/* Logo — left */}
@@ -72,7 +72,7 @@ export default function Navbar() {
               alt="Dani Real Estate and Developers"
               width={320}
               height={96}
-              className="h-16 sm:h-[72px] md:h-20 w-auto max-w-[min(320px,42vw)] object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
+              className="h-11 sm:h-12 md:h-14 w-auto max-w-[min(260px,40vw)] object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
               priority
               unoptimized
             />
@@ -111,7 +111,7 @@ export default function Navbar() {
             <Link
               href={ROUTES.contact}
               className={cn(
-                "hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm transition-all duration-500",
+                "hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-all duration-500",
                 isScrolled
                   ? "nav-cta-solid text-dark font-semibold"
                   : "nav-cta-glass text-white font-medium nav-text-shadow"
@@ -155,7 +155,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.35, ease: navEase }}
-              className="absolute top-0 right-0 h-full w-full max-w-sm bg-dark/95 backdrop-blur-xl border-l border-white/10 flex flex-col pt-24 px-8 pb-8"
+              className="absolute top-0 right-0 h-full w-full max-w-sm bg-dark/95 backdrop-blur-xl border-l border-white/10 flex flex-col pt-20 px-8 pb-8"
             >
               <Image
                 src={LOGO_SRC}

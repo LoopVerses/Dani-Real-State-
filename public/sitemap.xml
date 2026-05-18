@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.danirealstateanddeveloper.com/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/1.png</image:loc>
+      <image:title>Dani Real Estate Haripur</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/2.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/3.png</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/logo.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.danirealstateanddeveloper.com/dani-real-estate-projects-haripur-kpk</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/1.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.danirealstateanddeveloper.com/about-dani-real-estate-and-developers-llp</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/CEO%20Muhammad%20Saeed.jpeg</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/logo.png</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.danirealstateanddeveloper.com/contact-dani-real-estate-haripur</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.danirealstateanddeveloper.com/images/logo.png</image:loc>
+    </image:image>
+  </url>
+</urlset>

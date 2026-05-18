@@ -12,7 +12,7 @@ export default function TeamSection() {
     <section
       id="leadership"
       ref={ref}
-      className="py-12 md:py-24 px-4 bg-dark-2 scroll-mt-28"
+      className="py-12 md:py-24 px-4 bg-dark-2 scroll-mt-24"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "none" : "translateY(40px)",
