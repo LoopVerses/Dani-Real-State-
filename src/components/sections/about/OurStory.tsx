@@ -21,14 +21,13 @@ export default function OurStory() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="relative aspect-[16/10] rounded-lg overflow-hidden ring-2 ring-primary ring-offset-4 ring-offset-dark">
+          <div className="relative aspect-[4/5] max-w-md mx-auto md:mx-0 rounded-lg overflow-hidden ring-2 ring-primary ring-offset-4 ring-offset-dark">
             <Image
               src={ABOUT_IMAGES.story}
-              alt="Dani Real Estate developments in Haripur"
+              alt="Muhammad Saeed, Chief Executive Officer"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className={IMAGE_FIT.landscapeCard}
-              unoptimized
+              className={IMAGE_FIT.portrait}
             />
           </div>
           <div>

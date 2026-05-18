@@ -40,7 +40,7 @@ export const STOCK_IMAGES = {
 
 export const ABOUT_IMAGES = {
   pageHero: STOCK_IMAGES.aboutHero,
-  story: STOCK_IMAGES.projectCard2,
+  story: CEO_IMAGE,
   subsidiaryBanner: STOCK_IMAGES.projectCard4,
   homeSnippet: DANI_REAL_ESTATE_LOGO,
 } as const;
