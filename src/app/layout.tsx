@@ -27,11 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`} suppressHydrationWarning>
-      <body className="min-h-screen bg-dark text-white font-body antialiased overflow-x-hidden" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${cormorant.variable} ${dmSans.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen bg-dark text-white font-body antialiased" suppressHydrationWarning>
         <JsonLd />
         <NavbarLoader />
-        <main className="flex-1 overflow-x-hidden w-full" suppressHydrationWarning>
+        <main className="w-full min-w-0" suppressHydrationWarning>
           {children}
         </main>
         <Footer />

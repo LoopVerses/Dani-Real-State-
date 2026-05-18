@@ -31,19 +31,24 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-}
-
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
+  scroll-padding-top: 6rem;
+  overflow-x: clip;
+  width: 100%;
 }
 
 body {
+  min-height: 100%;
+  width: 100%;
+  overflow-x: clip;
   background: var(--dark);
   color: var(--foreground);
   font-family: var(--font-body);
+}
+
+/* Single page scroll — avoid nested scroll containers */
+#__next,
+body > main {
+  overflow: visible;
 }
 
 .font-display {

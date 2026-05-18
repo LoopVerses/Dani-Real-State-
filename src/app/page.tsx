@@ -30,7 +30,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function HomePage() {
   return (
-    <div className="overflow-x-hidden" suppressHydrationWarning>
+    <div className="min-w-0" suppressHydrationWarning>
       <Hero />
       <AboutSnippet />
       <WhyChooseUs />
