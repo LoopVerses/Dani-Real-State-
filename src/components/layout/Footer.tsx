@@ -118,6 +118,17 @@ export default function Footer() {
                 {PRIMARY_DOMAIN}
               </a>
             </p>
+            <p className="text-[11px] text-text-muted/70 mt-2">
+              Powered by{" "}
+              <a
+                href="https://loopverses.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary/90 hover:text-primary transition-colors"
+              >
+                LoopVerses
+              </a>
+            </p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href={ROUTES.projects} className="hover:text-primary transition-colors">

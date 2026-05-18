@@ -5,6 +5,7 @@ export function publicImage(filename: string): string {
 
 /** Homepage only — client-provided banners & CEO */
 export const LOGO_SRC = publicImage("logo.png");
+export const DANI_REAL_ESTATE_LOGO = publicImage("Dani Real Estate Logo.jpeg");
 export const CEO_IMAGE = publicImage("CEO Muhammad Saeed.jpeg");
 
 export const HERO_BANNERS = [
@@ -41,7 +42,7 @@ export const ABOUT_IMAGES = {
   pageHero: STOCK_IMAGES.aboutHero,
   story: STOCK_IMAGES.projectCard2,
   subsidiaryBanner: STOCK_IMAGES.projectCard4,
-  homeSnippet: CEO_IMAGE,
+  homeSnippet: DANI_REAL_ESTATE_LOGO,
 } as const;
 
 export const IMAGE_FIT = {

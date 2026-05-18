@@ -6,7 +6,7 @@ import { CheckCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { ROUTES } from "@/lib/routes";
 import { cn } from "@/lib/utils";
-import { ABOUT_IMAGES, IMAGE_FIT } from "@/lib/images";
+import { ABOUT_IMAGES } from "@/lib/images";
 import { SLOGAN } from "@/data/about";
 
 const bullets = [
@@ -34,13 +34,14 @@ export default function AboutSnippet() {
             inView ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
           )}
         >
-          <div className="relative aspect-[4/5] max-w-md mx-auto ring-2 ring-primary ring-offset-4 ring-offset-dark rounded-lg overflow-hidden bg-dark-2">
+          <div className="relative aspect-square max-w-sm mx-auto ring-2 ring-primary ring-offset-4 ring-offset-dark rounded-xl overflow-hidden bg-dark-2 flex items-center justify-center p-8 md:p-10">
             <Image
               src={ABOUT_IMAGES.homeSnippet}
-              alt="Muhammad Saeed, Chief Executive Officer"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className={IMAGE_FIT.portrait}
+              alt="Dani Real Estate and Developers LLP logo"
+              width={400}
+              height={400}
+              sizes="(max-width: 768px) 80vw, 400px"
+              className="w-full h-auto max-h-[min(280px,70vw)] object-contain"
             />
           </div>
         </div>
