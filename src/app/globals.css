@@ -122,6 +122,10 @@ body {
   contain-intrinsic-size: auto 480px;
 }
 
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

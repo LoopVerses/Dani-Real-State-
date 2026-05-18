@@ -5,9 +5,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, CalendarDays } from "lucide-react";
+import { Menu, X, CalendarDays, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SLOGAN } from "@/data/about";
+import { whatsappLink } from "@/lib/site";
 import { LOGO_SRC } from "@/lib/images";
 
 const navEase = [0.16, 1, 0.3, 1] as const;
@@ -189,13 +190,24 @@ export default function Navbar() {
                   );
                 })}
               </ul>
-              <Link
-                href="/contact"
-                className="mt-auto flex items-center justify-center gap-2 nav-cta-solid rounded-full py-4 text-sm font-semibold"
-              >
-                Book a Viewing
-                <CalendarDays className="w-4 h-4" />
-              </Link>
+              <div className="mt-auto flex flex-col gap-3">
+                <Link
+                  href="/contact"
+                  className="flex items-center justify-center gap-2 nav-cta-solid rounded-full py-4 text-sm font-semibold"
+                >
+                  Book a Viewing
+                  <CalendarDays className="w-4 h-4" />
+                </Link>
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </a>
+              </div>
             </motion.nav>
           </motion.div>
         )}

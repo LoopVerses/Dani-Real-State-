@@ -7,10 +7,12 @@ import SubsidiarySection from "@/components/sections/about/SubsidiarySection";
 import Partners from "@/components/sections/about/Partners";
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
 import { ABOUT_IMAGES } from "@/lib/images";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us",
   description: `${COMPANY_NAME} — ${SLOGAN}. Incorporated under SECP in 2021, delivering premium developments across Haripur since 2008.`,
+  alternates: { canonical: `${SITE_URL.replace(/\/$/, "")}/about` },
   openGraph: {
     title: "About Us | Dani Real Estate",
     description: `${SLOGAN} — Learn our story, leadership, and delivered projects.`,

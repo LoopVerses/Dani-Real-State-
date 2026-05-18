@@ -1,68 +1,59 @@
 import Link from "next/link";
-import {
-  Share2,
-  Camera,
-  MessageCircle,
-  Link2,
-  Phone,
-  Mail,
-  MapPin,
-} from "lucide-react";
-
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
-];
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { CONTACT, NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 
 const services = [
-  "Residential",
-  "Commercial",
-  "Plots",
-  "Investment Advisory",
-  "Property Management",
+  { href: "/projects", label: "Our Projects" },
+  { href: "/about", label: "Our Story" },
+  { href: "/about#leadership", label: "Leadership" },
+  { href: "/contact", label: "Book a Viewing" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-dark border-t-2 border-primary" suppressHydrationWarning>
+    <footer className="bg-dark border-t-2 border-primary pb-24 sm:pb-8" suppressHydrationWarning>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16" suppressHydrationWarning>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          <div>
-            <p className="font-display text-primary text-2xl font-bold">DANI</p>
+          <div className="sm:col-span-2 lg:col-span-1">
+            <Link href="/" className="inline-block">
+              <p className="font-display text-primary text-2xl font-bold">{SITE.shortName}</p>
+            </Link>
             <p className="text-[10px] tracking-widest text-text-muted uppercase mt-1 mb-4">
               Real Estate and Developers LLP
             </p>
-            <p className="text-primary font-display italic text-sm mb-4">
-              Guiding You Home
+            <p className="text-primary font-display italic text-sm mb-4">{SITE.slogan}</p>
+            <p className="text-text-muted text-sm mb-6 max-w-sm">
+              SECP-registered developers delivering housing, commercial, and flagship
+              projects across Haripur since 2008.
             </p>
-            <p className="text-text-muted text-sm mb-6">
-              SECP-registered developers delivering housing, commercial, and
-              flagship projects across Haripur since 2008.
-            </p>
-            <div className="flex gap-4">
-              {[Share2, Camera, MessageCircle, Link2].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="text-text-muted hover:text-primary transition-colors duration-300"
-                  aria-label="Social link"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+            <div className="flex flex-wrap gap-3">
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366]/15 border border-[#25D366]/40 px-4 py-2 text-sm text-white hover:bg-[#25D366]/25 transition-colors"
+              >
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                WhatsApp
+              </a>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="inline-flex items-center gap-2 rounded-full border border-primary/30 px-4 py-2 text-sm text-white hover:border-primary transition-colors"
+              >
+                <Mail className="w-4 h-4 text-primary" />
+                Email
+              </a>
             </div>
           </div>
 
           <div>
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-text-muted hover:text-primary transition-colors duration-300 text-sm"
+                    className="text-text-muted hover:text-primary transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -72,11 +63,16 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-4">Services</h4>
+            <h4 className="text-white font-semibold mb-4">Explore</h4>
             <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-text-muted text-sm">{service}</span>
+              {services.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-text-muted hover:text-primary transition-colors text-sm"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -87,32 +83,40 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-text-muted">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary shrink-0" />
-                <a href="tel:+923001234567" className="hover:text-primary transition-colors">
-                  +92 300 1234567
+                <a href={`tel:${CONTACT.phoneTel}`} className="hover:text-primary transition-colors">
+                  {CONTACT.phoneDisplay}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
+              <li className="flex items-center gap-2 break-all">
                 <Mail className="w-4 h-4 text-primary shrink-0" />
-                <a
-                  href="mailto:info@danirealestate.pk"
-                  className="hover:text-primary transition-colors"
-                >
-                  info@danirealestate.pk
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-primary transition-colors">
+                  {CONTACT.email}
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span>Plot 45, Clifton Block 5, Karachi, Sindh</span>
+                <span>{CONTACT.address}</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div
-          className="border-t border-primary/20 mt-12 pt-8 text-center text-text-muted text-sm"
+          className="border-t border-primary/20 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-text-muted text-sm text-center sm:text-left"
           suppressHydrationWarning
         >
-          © 2025 Dani Real Estate and Developers LLP. All Rights Reserved.
+          <p>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/projects" className="hover:text-primary transition-colors">
+              Projects
+            </Link>
+            <Link href="/about" className="hover:text-primary transition-colors">
+              About
+            </Link>
+            <Link href="/contact" className="hover:text-primary transition-colors">
+              Contact
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

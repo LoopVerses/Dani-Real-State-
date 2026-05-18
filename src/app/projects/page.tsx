@@ -4,10 +4,17 @@ import ProjectsSection from "@/components/sections/about/ProjectsSection";
 import Partners from "@/components/sections/about/Partners";
 import { SLOGAN } from "@/data/about";
 import { STOCK_IMAGES } from "@/lib/images";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Our Projects",
-  description: `Delivered and ongoing developments by Dani Real Estate — ${SLOGAN}`,
+  description: `Delivered and ongoing developments by Dani Real Estate in Haripur — ${SLOGAN}`,
+  alternates: { canonical: `${SITE_URL.replace(/\/$/, "")}/projects` },
+  openGraph: {
+    title: "Our Projects | Dani Real Estate",
+    description: `Flagship housing and commercial developments in Haripur — ${SLOGAN}`,
+    images: [STOCK_IMAGES.projectsHero],
+  },
 };
 
 export default function ProjectsPage() {

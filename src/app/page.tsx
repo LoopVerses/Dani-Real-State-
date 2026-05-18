@@ -9,6 +9,7 @@ import ServicesSection from "@/components/sections/home/ServicesSection";
 import LeadershipPreview from "@/components/sections/home/LeadershipPreview";
 import CTABanner from "@/components/sections/home/CTABanner";
 import { SLOGAN, COMPANY_NAME } from "@/data/about";
+import { SITE_URL } from "@/lib/site";
 
 const Testimonials = dynamic(
   () => import("@/components/sections/home/Testimonials"),
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
   title: `${COMPANY_NAME} | ${SLOGAN}`,
   description:
     "SECP-registered real estate developers in Haripur. Residential, commercial, and flagship projects since 2008.",
+  alternates: { canonical: SITE_URL.replace(/\/$/, "") || SITE_URL },
   openGraph: {
     title: COMPANY_NAME,
     description: SLOGAN,

@@ -16,12 +16,12 @@ const faqs = [
     a: "Yes, we partner with leading banks and developers to offer flexible installment plans on select properties.",
   },
   {
-    q: "Are your properties RERA/PBA certified?",
-    a: "All our listings are verified and comply with RERA and PBA regulations. Legal documentation is provided for every transaction.",
+    q: "Is Dani Real Estate legally registered?",
+    a: "Yes. Dani Real Estate and Developers LLP is incorporated under SECP. All projects include proper documentation and transparent handover processes.",
   },
   {
-    q: "Which cities do you currently operate in?",
-    a: "We operate in Karachi, Lahore, and Islamabad with plans to expand to more cities across Pakistan.",
+    q: "Which areas do you currently operate in?",
+    a: "Our flagship developments are in Haripur, Khyber Pakhtunkhwa, with advisory and investment support across Abbottabad, Islamabad, and surrounding regions.",
   },
   {
     q: "How long does the complete buying process take?",

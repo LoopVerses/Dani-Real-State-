@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { coreServices } from "@/data/services";
@@ -38,6 +39,17 @@ export default function ServicesSection() {
             </article>
           ))}
         </div>
+        <p className="mt-10 text-center text-sm text-text-muted">
+          Explore our{" "}
+          <Link href="/projects" className="text-primary hover:underline">
+            delivered projects
+          </Link>{" "}
+          or{" "}
+          <Link href="/contact" className="text-primary hover:underline">
+            request a consultation
+          </Link>
+          .
+        </p>
       </div>
     </section>
   );

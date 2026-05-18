@@ -49,7 +49,7 @@ export default function LeadershipPreview() {
         </div>
         <div className="text-center">
           <Link
-            href="/about"
+            href="/about#leadership"
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
           >
             Meet the full team
