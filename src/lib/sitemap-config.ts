@@ -67,16 +67,24 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
   },
 ];
 
+/**
+ * XML 1.0 requires & to be escaped; Next sitemap does not escape image URLs.
+ * Percent-encode ampersands so parsers accept the file (Google decodes %26 → &).
+ */
+function sitemapSafeUrl(url: string): string {
+  return url.replace(/&/g, "%26");
+}
+
 /** Build Next.js sitemap entries with images and stable lastModified */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const builtAt = new Date();
 
   return INDEXABLE_PAGES.map((page) => ({
-    url: absoluteUrl(page.path),
+    url: sitemapSafeUrl(absoluteUrl(page.path)),
     lastModified: builtAt,
     changeFrequency: page.changeFrequency,
     priority: page.priority,
-    images: [...new Set(page.images.map(absoluteImageUrl))],
+    images: [...new Set(page.images.map((src) => sitemapSafeUrl(absoluteImageUrl(src))))],
   }));
 }
 
