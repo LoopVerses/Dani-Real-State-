@@ -214,6 +214,11 @@ export function buildPageMetadata({
     title,
     description,
     keywords,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
     alternates: { canonical },
     openGraph: {
       type: "website",
@@ -276,7 +281,13 @@ export function buildRootMetadata(): Metadata {
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large" },
     },
-    alternates: { canonical: base },
+    alternates: {
+      canonical: base,
+      languages: { "en-PK": base, en: base },
+    },
+    verification: {
+      google: "google47a7ea6d5ebad2ba",
+    },
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },

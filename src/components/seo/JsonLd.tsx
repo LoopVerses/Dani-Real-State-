@@ -1,7 +1,9 @@
 import { SITE_URL, CONTACT } from "@/lib/site";
 import { ROUTES } from "@/lib/routes";
-import { BRAND_ALIASES, PRIMARY_DOMAIN, PRIMARY_DOMAIN_WWW } from "@/lib/seo";
+import { BRAND_ALIASES, PRIMARY_DOMAIN, PRIMARY_DOMAIN_WWW, SEO_KEYWORDS } from "@/lib/seo";
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
+import { absoluteUrl } from "@/lib/absolute-url";
+import { INDEXABLE_PAGES, sitemapNavigationItems } from "@/lib/sitemap-config";
 
 export default function JsonLd() {
   const base = SITE_URL.replace(/\/$/, "");
@@ -17,8 +19,8 @@ export default function JsonLd() {
     slogan: SLOGAN,
     email: CONTACT.email,
     telephone: CONTACT.phoneTel,
-    image: `${base}/images/Dani_banner.png`,
-    logo: `${base}/images/logo.png`,
+    image: absoluteUrl("/images/Dani_banner.png"),
+    logo: absoluteUrl("/images/logo.png"),
     identifier: [
       {
         "@type": "PropertyValue",
@@ -42,12 +44,7 @@ export default function JsonLd() {
       { "@type": "AdministrativeArea", name: "Khyber Pakhtunkhwa" },
       { "@type": "Country", name: "Pakistan" },
     ],
-    knowsAbout: [
-      "Residential real estate",
-      "Commercial property development",
-      "Housing societies Haripur",
-      "Plot sales KPK",
-    ],
+    knowsAbout: SEO_KEYWORDS.slice(0, 40),
     sameAs: [CONTACT.whatsappUrl],
   };
 
@@ -66,11 +63,31 @@ export default function JsonLd() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${base}${ROUTES.projects}`,
+        urlTemplate: absoluteUrl(ROUTES.projects),
       },
       "query-input": "required name=search_term_string",
     },
   };
+
+  const siteNavigation = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${base}/#sitemap-pages`,
+    name: "Dani Real Estate site pages",
+    numberOfItems: INDEXABLE_PAGES.length,
+    itemListElement: sitemapNavigationItems(),
+  };
+
+  const webPages = INDEXABLE_PAGES.map((page) => ({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${absoluteUrl(page.path)}#webpage`,
+    url: absoluteUrl(page.path),
+    name: page.name,
+    isPartOf: { "@id": `${base}/#website` },
+    about: { "@id": `${base}/#organization` },
+    inLanguage: "en-PK",
+  }));
 
   return (
     <>
@@ -82,6 +99,17 @@ export default function JsonLd() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigation) }}
+      />
+      {webPages.map((page) => (
+        <script
+          key={page.url}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(page) }}
+        />
+      ))}
     </>
   );
 }

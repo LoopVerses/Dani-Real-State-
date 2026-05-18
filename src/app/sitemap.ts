@@ -1,22 +1,13 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
-import { ROUTES } from "@/lib/routes";
+import { buildSitemapEntries } from "@/lib/sitemap-config";
 
+/**
+ * Dynamic sitemap.xml — canonical pages only, with image URLs for Google Image indexing.
+ * Submit in Search Console: https://www.danirealstateanddeveloper.com/sitemap.xml
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = SITE_URL.replace(/\/$/, "");
-  const lastModified = new Date();
-
-  const entries: { path: string; priority: number; changeFrequency: "weekly" | "monthly" }[] = [
-    { path: ROUTES.home, priority: 1, changeFrequency: "weekly" },
-    { path: ROUTES.projects, priority: 0.95, changeFrequency: "weekly" },
-    { path: ROUTES.about, priority: 0.9, changeFrequency: "monthly" },
-    { path: ROUTES.contact, priority: 0.9, changeFrequency: "monthly" },
-  ];
-
-  return entries.map(({ path, priority, changeFrequency }) => ({
-    url: path === "/" ? base : `${base}${path}`,
-    lastModified,
-    changeFrequency,
-    priority,
-  }));
+  return buildSitemapEntries();
 }
+
+/** Regenerate at most once per hour on hosting that supports ISR (optional) */
+export const revalidate = 3600;
