@@ -1,4 +1,5 @@
-import { SITE, SITE_URL, CONTACT } from "@/lib/site";
+import { SITE_URL, CONTACT } from "@/lib/site";
+import { ROUTES } from "@/lib/routes";
 import { BRAND_ALIASES, PRIMARY_DOMAIN, PRIMARY_DOMAIN_WWW } from "@/lib/seo";
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
 
@@ -65,7 +66,7 @@ export default function JsonLd() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${base}/projects`,
+        urlTemplate: `${base}${ROUTES.projects}`,
       },
       "query-input": "required name=search_term_string",
     },

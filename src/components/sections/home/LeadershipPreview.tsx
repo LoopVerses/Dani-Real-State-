@@ -7,6 +7,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import PortraitImage from "@/components/ui/PortraitImage";
 import { boardOfDirectors } from "@/data/about";
 import { cn } from "@/lib/utils";
+import { ROUTES } from "@/lib/routes";
 
 export default function LeadershipPreview() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-60px" });
@@ -49,7 +50,7 @@ export default function LeadershipPreview() {
         </div>
         <div className="text-center">
           <Link
-            href="/about#leadership"
+            href={ROUTES.leadership}
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
           >
             Meet the full team

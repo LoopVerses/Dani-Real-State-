@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
+import { ROUTES } from "@/lib/routes";
 
-export default function PropertiesPage() {
-  redirect("/projects");
+export default function LegacyPropertiesRedirect() {
+  permanentRedirect(ROUTES.projects);
 }

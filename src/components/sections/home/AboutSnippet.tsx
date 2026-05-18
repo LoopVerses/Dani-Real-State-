@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { CheckCircle } from "lucide-react";
 import Button from "@/components/ui/Button";
+import { ROUTES } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 import { ABOUT_IMAGES, IMAGE_FIT } from "@/lib/images";
 import { SLOGAN } from "@/data/about";
@@ -70,7 +71,7 @@ export default function AboutSnippet() {
               </li>
             ))}
           </ul>
-          <Button href="/about">Learn More About Us</Button>
+          <Button href={ROUTES.about}>Learn More About Us</Button>
         </div>
       </div>
     </section>

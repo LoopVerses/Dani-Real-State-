@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { coreServices } from "@/data/services";
 import { cn } from "@/lib/utils";
+import { ROUTES } from "@/lib/routes";
 
 export default function ServicesSection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-60px" });
@@ -41,11 +42,11 @@ export default function ServicesSection() {
         </div>
         <p className="mt-10 text-center text-sm text-text-muted">
           Explore our{" "}
-          <Link href="/projects" className="text-primary hover:underline">
+          <Link href={ROUTES.projects} className="text-primary hover:underline">
             delivered projects
           </Link>{" "}
           or{" "}
-          <Link href="/contact" className="text-primary hover:underline">
+          <Link href={ROUTES.contact} className="text-primary hover:underline">
             request a consultation
           </Link>
           .

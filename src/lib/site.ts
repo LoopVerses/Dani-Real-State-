@@ -1,4 +1,5 @@
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
+import { ROUTES } from "@/lib/routes";
 
 /** Set NEXT_PUBLIC_SITE_URL in production (e.g. https://www.danirealstateanddeveloper.com) */
 export const SITE_URL =
@@ -26,10 +27,10 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "Our Story" },
-  { href: "/contact", label: "Contact" },
+  { href: ROUTES.home, label: "Home" },
+  { href: ROUTES.projects, label: "Projects" },
+  { href: ROUTES.about, label: "Our Story" },
+  { href: ROUTES.contact, label: "Contact" },
 ] as const;
 
 export function whatsappLink(text?: string) {

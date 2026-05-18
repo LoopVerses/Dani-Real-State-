@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import { MessageCircle, Mail } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { CONTACT, whatsappLink } from "@/lib/site";
+import { ROUTES } from "@/lib/routes";
 
 export default function CTABanner() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -39,7 +40,7 @@ export default function CTABanner() {
           through residential, commercial, and plot options.
         </p>
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
-          <Button href="/contact" size="lg" className="w-full sm:w-auto min-w-[200px]">
+          <Button href={ROUTES.contact} size="lg" className="w-full sm:w-auto min-w-[200px]">
             Contact Us
           </Button>
           <Button

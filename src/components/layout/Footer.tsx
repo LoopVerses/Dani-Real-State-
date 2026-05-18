@@ -2,12 +2,13 @@ import Link from "next/link";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { CONTACT, NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
 import { PRIMARY_DOMAIN } from "@/lib/seo";
+import { ROUTES } from "@/lib/routes";
 
 const services = [
-  { href: "/projects", label: "Our Projects" },
-  { href: "/about", label: "Our Story" },
-  { href: "/about#leadership", label: "Leadership" },
-  { href: "/contact", label: "Book a Viewing" },
+  { href: ROUTES.projects, label: "Our Projects" },
+  { href: ROUTES.about, label: "Our Story" },
+  { href: ROUTES.leadership, label: "Leadership" },
+  { href: ROUTES.contact, label: "Book a Viewing" },
 ];
 
 export default function Footer() {
@@ -119,13 +120,13 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/projects" className="hover:text-primary transition-colors">
+            <Link href={ROUTES.projects} className="hover:text-primary transition-colors">
               Projects
             </Link>
-            <Link href="/about" className="hover:text-primary transition-colors">
+            <Link href={ROUTES.about} className="hover:text-primary transition-colors">
               About
             </Link>
-            <Link href="/contact" className="hover:text-primary transition-colors">
+            <Link href={ROUTES.contact} className="hover:text-primary transition-colors">
               Contact
             </Link>
           </div>

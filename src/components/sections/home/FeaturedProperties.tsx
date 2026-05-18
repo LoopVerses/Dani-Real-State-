@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import PropertyCard from "@/components/ui/PropertyCard";
 import Button from "@/components/ui/Button";
+import { ROUTES } from "@/lib/routes";
 import { properties } from "@/data/properties";
 import { cn } from "@/lib/utils";
 
@@ -56,7 +57,7 @@ export default function FeaturedProperties() {
           ))}
         </div>
         <div className="text-center">
-          <Button href="/properties">View All Properties</Button>
+          <Button href={ROUTES.projects}>View All Projects</Button>
         </div>
       </div>
     </section>

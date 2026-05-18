@@ -8,6 +8,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { deliveredProjects, ongoingProjects } from "@/data/about";
 import { STOCK_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
+import { ROUTES } from "@/lib/routes";
 
 const cardImages = [
   STOCK_IMAGES.projectCard1,
@@ -66,7 +67,7 @@ export default function ProjectsShowcase() {
         </div>
         <div className="text-center">
           <Link
-            href="/projects"
+            href={ROUTES.projects}
             className="inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
           >
             View all projects

@@ -8,17 +8,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, CalendarDays, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SLOGAN } from "@/data/about";
-import { whatsappLink } from "@/lib/site";
+import { NAV_LINKS, whatsappLink } from "@/lib/site";
 import { LOGO_SRC } from "@/lib/images";
+import { ROUTES } from "@/lib/routes";
 
 const navEase = [0.16, 1, 0.3, 1] as const;
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "Our Story" },
-  { href: "/contact", label: "Contact" },
-];
+const navLinks = [...NAV_LINKS];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -113,7 +109,7 @@ export default function Navbar() {
           {/* Right — CTA + mobile menu */}
           <div className="relative z-20 flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
-              href="/contact"
+              href={ROUTES.contact}
               className={cn(
                 "hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm transition-all duration-500",
                 isScrolled
@@ -192,7 +188,7 @@ export default function Navbar() {
               </ul>
               <div className="mt-auto flex flex-col gap-3">
                 <Link
-                  href="/contact"
+                  href={ROUTES.contact}
                   className="flex items-center justify-center gap-2 nav-cta-solid rounded-full py-4 text-sm font-semibold"
                 >
                   Book a Viewing
