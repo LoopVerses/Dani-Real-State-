@@ -9,24 +9,24 @@ import ServicesSection from "@/components/sections/home/ServicesSection";
 import LeadershipPreview from "@/components/sections/home/LeadershipPreview";
 import CTABanner from "@/components/sections/home/CTABanner";
 import { SLOGAN, COMPANY_NAME } from "@/data/about";
-import { SITE_URL } from "@/lib/site";
+import { buildPageMetadata, DEFAULT_SITE_DESCRIPTION, PRIMARY_DOMAIN } from "@/lib/seo";
 
 const Testimonials = dynamic(
   () => import("@/components/sections/home/Testimonials"),
   { ssr: true }
 );
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: `${COMPANY_NAME} | ${SLOGAN}`,
-  description:
-    "SECP-registered real estate developers in Haripur. Residential, commercial, and flagship projects since 2008.",
-  alternates: { canonical: SITE_URL.replace(/\/$/, "") || SITE_URL },
-  openGraph: {
-    title: COMPANY_NAME,
-    description: SLOGAN,
-    images: ["/images/Dani_banner.png"],
-  },
-};
+  description: DEFAULT_SITE_DESCRIPTION,
+  path: "",
+  extraKeywords: [
+    "dani real estate home",
+    "dani real estate official website",
+    `dani real estate ${PRIMARY_DOMAIN}`,
+    "danirealstateanddeveloper homepage",
+  ],
+});
 
 export default function HomePage() {
   return (

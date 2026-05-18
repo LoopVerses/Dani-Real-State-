@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { CONTACT, NAV_LINKS, SITE, whatsappLink } from "@/lib/site";
+import { PRIMARY_DOMAIN } from "@/lib/seo";
 
 const services = [
   { href: "/projects", label: "Our Projects" },
@@ -105,7 +106,18 @@ export default function Footer() {
           className="border-t border-primary/20 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-text-muted text-sm text-center sm:text-left"
           suppressHydrationWarning
         >
-          <p>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved.</p>
+          <div>
+            <p>© {new Date().getFullYear()} {SITE.name}. All Rights Reserved.</p>
+            <p className="text-[11px] text-text-muted/80 mt-1 max-w-md">
+              Dani Real Estate · Dani Real State &amp; Developers ·{" "}
+              <a
+                href={`https://${PRIMARY_DOMAIN}`}
+                className="hover:text-primary transition-colors"
+              >
+                {PRIMARY_DOMAIN}
+              </a>
+            </p>
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="/projects" className="hover:text-primary transition-colors">
               Projects

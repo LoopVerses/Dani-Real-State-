@@ -1,7 +1,8 @@
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
 
+/** Set NEXT_PUBLIC_SITE_URL in production (e.g. https://www.danirealstateanddeveloper.com) */
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.danirealstateanddeveloper.com";
 
 export const CONTACT = {
   email: "danxsaeed@gmail.com",

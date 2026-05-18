@@ -1,18 +1,17 @@
-import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Properties",
+export const metadata = buildPageMetadata({
+  title: "Dani Real Estate Properties",
   description:
-    "Browse premium residential, commercial, and plot listings across Karachi, Lahore, and Islamabad.",
-  openGraph: {
-    title: "Properties | Dani Real Estate",
-    description:
-      "Browse premium residential, commercial, and plot listings across Pakistan.",
-    images: [
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200",
-    ],
-  },
-};
+    "Dani Real Estate and Developers LLP property listings — redirecting to official Dani Real Estate projects in Haripur, KPK.",
+  path: "/properties",
+  extraKeywords: [
+    "dani real estate properties",
+    "dani real estate plots",
+    "dani real state properties",
+    "danirealstateanddeveloper properties",
+  ],
+});
 
 export default function PropertiesLayout({
   children,

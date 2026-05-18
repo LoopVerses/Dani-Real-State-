@@ -4,8 +4,7 @@ import Footer from "@/components/layout/Footer";
 import NavbarLoader from "@/components/layout/NavbarLoader";
 import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
 import JsonLd from "@/components/seo/JsonLd";
-import { SITE, SITE_URL } from "@/lib/site";
-import { COMPANY_NAME, SLOGAN } from "@/data/about";
+import { buildRootMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -20,48 +19,7 @@ const dmSans = DM_Sans({
   variable: "--font-body",
 });
 
-const description =
-  "Dani Real Estate and Developers LLP — SECP-registered developers in Haripur since 2008. Residential, commercial, and flagship projects across KPK. Guiding You Home.";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${COMPANY_NAME} | ${SLOGAN}`,
-    template: `%s | ${SITE.shortName}`,
-  },
-  description,
-  keywords: [
-    "Dani Real Estate",
-    "real estate Haripur",
-    "housing society Haripur",
-    "SECP registered developers Pakistan",
-    "Karlugh Real Estate",
-    "Haripur Hills",
-    "Aman Enclave",
-    "property developers KPK",
-  ],
-  authors: [{ name: SITE.shortName, url: SITE_URL }],
-  creator: SITE.shortName,
-  publisher: COMPANY_NAME,
-  formatDetection: { email: true, telephone: true },
-  openGraph: {
-    type: "website",
-    locale: "en_PK",
-    url: SITE_URL,
-    siteName: SITE.shortName,
-    title: COMPANY_NAME,
-    description: SLOGAN,
-    images: [{ url: "/images/Dani_banner.png", width: 1200, height: 630, alt: SITE.shortName }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: COMPANY_NAME,
-    description: SLOGAN,
-    images: ["/images/Dani_banner.png"],
-  },
-  robots: { index: true, follow: true },
-  alternates: { canonical: SITE_URL },
-};
+export const metadata: Metadata = buildRootMetadata();
 
 export default function RootLayout({
   children,
