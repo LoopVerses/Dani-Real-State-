@@ -20,13 +20,13 @@ export default function OurStory() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="relative aspect-[4/5] max-w-md mx-auto md:mx-0 rounded-lg overflow-hidden ring-2 ring-primary ring-offset-4 ring-offset-dark">
+        <div className="grid md:grid-cols-[minmax(0,22rem)_1fr] gap-6 md:gap-8 items-start mb-20">
+          <div className="relative aspect-[3/4] w-full max-w-[280px] mx-auto md:max-w-none md:mx-0 rounded-lg overflow-hidden border border-primary/30 shadow-lg shadow-black/30">
             <Image
               src={ABOUT_IMAGES.story}
               alt="Muhammad Saeed, Chief Executive Officer"
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
+              sizes="(max-width: 768px) min(100vw, 24rem), 45vw"
               className={IMAGE_FIT.portrait}
             />
           </div>
