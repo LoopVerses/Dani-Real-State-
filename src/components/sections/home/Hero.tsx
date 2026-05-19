@@ -12,7 +12,10 @@ const BlueprintSketch = dynamic(
   { ssr: false, loading: () => <div className="w-full h-full bg-transparent" aria-hidden /> }
 );
 
-const PANEL_H = "h-[clamp(10rem,28svh,18rem)]";
+/** Shorter on mobile so more of the banner stays visible above the glass panel */
+const PANEL_H = "h-[clamp(7.25rem,20svh,11.5rem)] md:h-[clamp(10rem,28svh,18rem)]";
+const PANEL_BOTTOM_OFFSET =
+  "bottom-[calc(clamp(7.25rem,20svh,11.5rem)+0.75rem)] md:bottom-[calc(clamp(10rem,28svh,18rem)+1rem)]";
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
@@ -78,20 +81,25 @@ export default function Hero() {
               fill
               priority={i === 0}
               sizes="100vw"
-              className="h-full w-full object-cover object-[50%_22%] sm:object-[50%_26%] md:object-[50%_30%]"
+              className={cn(
+                "h-full w-full bg-black",
+                /* Mobile: full banner visible (no crop). Desktop: cinematic cover. */
+                "object-contain object-center",
+                "md:object-cover md:object-[50%_28%] lg:object-[50%_30%]"
+              )}
             />
           </div>
         ))}
 
-        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/30 via-transparent to-black/50 pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 z-20 h-[45%] bg-gradient-to-t from-black/70 via-black/25 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/25 via-transparent to-black/40 pointer-events-none md:from-black/30 md:to-black/50" />
+        <div className="absolute inset-x-0 bottom-0 z-20 h-[38%] md:h-[45%] bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
       </div>
 
       {/* Quote — sits above glass panel */}
       <div
         className={cn(
           "absolute left-4 sm:left-6 md:left-10 z-30 max-w-md pointer-events-none",
-          "bottom-[calc(clamp(10rem,28svh,18rem)+1rem)]"
+          PANEL_BOTTOM_OFFSET
         )}
       >
         <p className="text-white/95 text-sm md:text-base leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
@@ -107,7 +115,7 @@ export default function Hero() {
           "border-t border-white/15",
           "bg-white/[0.07] backdrop-blur-[28px] backdrop-saturate-150",
           "shadow-[0_-8px_32px_rgba(0,0,0,0.35)]",
-          "grid-cols-[minmax(0,32%)_minmax(0,1fr)]",
+          "grid-cols-[minmax(0,26%)_minmax(0,1fr)] sm:grid-cols-[minmax(0,32%)_minmax(0,1fr)]",
           PANEL_H
         )}
       >
