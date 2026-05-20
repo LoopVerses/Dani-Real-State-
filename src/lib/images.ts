@@ -7,6 +7,7 @@ export function publicImage(filename: string): string {
 export const LOGO_SRC = publicImage("logo.png");
 export const DANI_REAL_ESTATE_LOGO = publicImage("Dani Real Estate Logo.jpeg");
 export const CEO_IMAGE = publicImage("CEO Muhammad Saeed.jpeg");
+export const CLO_IMAGE = publicImage("Muhammad Zarak Aman Khan CLO.png");
 
 export const HERO_BANNERS = [
   { src: publicImage("1.png"), alt: "Dani Real Estate — flagship development Haripur" },

@@ -1,5 +1,5 @@
 import { Milestone, ProjectGroup, ProjectItem, TeamMember } from "@/types";
-import { publicImage } from "@/lib/images";
+import { CLO_IMAGE, publicImage } from "@/lib/images";
 
 export const COMPANY_NAME = "Dani Real Estate and Developers LLP";
 export const SLOGAN = "Guiding You Home";
@@ -92,6 +92,14 @@ export const karlughTeam: TeamMember[] = [
     initials: "DS",
     image: publicImage("CFO Danial Saeed.jpeg"),
     bio: "Danial Saeed, a qualified Chartered Accountant, specializes in real estate financials and costing, with three years of experience ensuring financial integrity. His attention to detail and analytical skills enable him to develop financial models that support strategic decisions. Danial effectively manages budgets and identifies cost-saving opportunities, ensuring the company's financial stability.",
+  },
+  {
+    id: "karlugh-clo",
+    name: "Muhammad Zarak Aman Khan",
+    role: "Chief Legal Officer & Board Member",
+    initials: "MZ",
+    image: CLO_IMAGE,
+    bio: "Muhammad Zarak Aman Khan serves as Chief Legal Officer and a valued Board Member of Karlugh Real Estate and Property Developers. He is a young and highly skilled legal professional with strong expertise in corporate and regulatory law. His strategic legal insight and sound judgment play a key role in guiding the company's governance, compliance, and long-term development framework, ensuring all projects are executed with legal integrity and professionalism.",
   },
 ];
 

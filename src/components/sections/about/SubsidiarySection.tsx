@@ -59,7 +59,7 @@ export default function SubsidiarySection() {
         </div>
 
         <SectionHeader label="Karlugh Team" title="Leadership" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {karlughTeam.map((member) => (
             <article
               key={member.id}
@@ -76,7 +76,7 @@ export default function SubsidiarySection() {
                 <p className="text-primary text-xs font-medium mt-1 mb-3">
                   {member.role}
                 </p>
-                <p className="text-text-muted text-xs leading-relaxed line-clamp-6">
+                <p className="text-text-muted text-xs leading-relaxed">
                   {member.bio}
                 </p>
               </div>

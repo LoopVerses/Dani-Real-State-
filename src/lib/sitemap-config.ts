@@ -1,6 +1,13 @@
 import type { MetadataRoute } from "next";
 import { ROUTES } from "@/lib/routes";
-import { HERO_BANNERS, LOGO_SRC, ABOUT_IMAGES, STOCK_IMAGES, publicImage } from "@/lib/images";
+import {
+  CLO_IMAGE,
+  HERO_BANNERS,
+  LOGO_SRC,
+  ABOUT_IMAGES,
+  STOCK_IMAGES,
+  publicImage,
+} from "@/lib/images";
 import { absoluteImageUrl, absoluteUrl } from "@/lib/absolute-url";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
@@ -56,6 +63,7 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
       publicImage("COO Imran Rasheed.jpeg"),
       publicImage("CFO Danial Saeed.jpeg"),
       publicImage("Chairman Karlugh Kamal Aman Khan.jpeg"),
+      CLO_IMAGE,
     ],
   },
   {
