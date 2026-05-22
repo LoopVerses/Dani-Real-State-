@@ -16,9 +16,10 @@ interface PageHeroProps {
 }
 
 const pathLabels: Record<string, string> = {
-  "/projects": "Projects",
-  "/about": "About",
-  "/contact": "Contact",
+  "/dani-real-estate-projects-haripur-kpk": "Projects",
+  "/what-we-offer-dani-real-estate-haripur": "What We Offer",
+  "/about-dani-real-estate-and-developers-llp": "About Us",
+  "/contact-dani-real-estate-haripur": "Contact",
 };
 
 export default function PageHero({
@@ -32,7 +33,7 @@ export default function PageHero({
   const currentLabel = pathLabels[pathname] || "Page";
 
   return (
-    <section className="relative h-[45vh] min-h-[360px] max-h-[520px] flex items-center justify-center pt-24">
+    <section className="relative h-[45vh] min-h-[360px] max-h-[520px] flex items-center justify-center pt-[4.5rem] sm:pt-20">
       <Image
         src={backgroundImage}
         alt=""

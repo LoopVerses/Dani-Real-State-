@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
-import { SITE_URL } from "@/lib/site";
+import { absoluteImageUrl, absoluteUrl, siteOrigin } from "@/lib/absolute-url";
+import { LOGO_SRC } from "@/lib/images";
 
 /** Production domain — matches how people search & type the brand */
 export const PRIMARY_DOMAIN = "danirealstateanddeveloper.com";
@@ -184,6 +185,9 @@ export const DEFAULT_SITE_DESCRIPTION =
 export const DEFAULT_OG_TITLE =
   "Dani Real Estate and Developers | Dani Real Estate | danirealstateanddeveloper";
 
+/** Default share image — local asset, reliable on Facebook/WhatsApp/LinkedIn */
+export const DEFAULT_OG_IMAGE = "/images/1.png";
+
 type PageMetaInput = {
   title: string;
   description: string;
@@ -191,12 +195,78 @@ type PageMetaInput = {
   /** Extra keywords for this page only */
   extraKeywords?: string[];
   ogImage?: string;
+  ogImageAlt?: string;
 };
 
 function canonicalUrl(path = ""): string {
-  const base = SITE_URL.replace(/\/$/, "");
-  const normalized = path.startsWith("/") ? path : path ? `/${path}` : "";
-  return `${base}${normalized}`;
+  return absoluteUrl(path);
+}
+
+function ogImageMime(url: string): string | undefined {
+  if (/\.png($|\?)/i.test(url)) return "image/png";
+  if (/\.webp($|\?)/i.test(url)) return "image/webp";
+  if (/\.jpe?g($|\?)/i.test(url)) return "image/jpeg";
+  return undefined;
+}
+
+/** Absolute Open Graph / Twitter image objects */
+export function buildOpenGraphImages(imagePath: string, alt: string) {
+  const url = absoluteImageUrl(imagePath);
+  const type = ogImageMime(url);
+
+  return [
+    {
+      url,
+      secureUrl: url,
+      width: 1200,
+      height: 630,
+      alt,
+      ...(type ? { type } : {}),
+    },
+  ];
+}
+
+function buildSocialMetadata({
+  title,
+  description,
+  canonical,
+  ogImage,
+  ogImageAlt,
+}: {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage: string;
+  ogImageAlt: string;
+}): Pick<Metadata, "openGraph" | "twitter"> {
+  const images = buildOpenGraphImages(ogImage, ogImageAlt);
+  const ogTitle = title.includes("Dani Real Estate") ? title : `${title} | Dani Real Estate`;
+
+  return {
+    openGraph: {
+      type: "website",
+      locale: "en_PK",
+      alternateLocale: ["en"],
+      url: canonical,
+      siteName: COMPANY_NAME,
+      title: ogTitle,
+      description,
+      countryName: "Pakistan",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description,
+      images: images.map((img) => ({
+        url: img.url,
+        secureUrl: img.secureUrl,
+        alt: img.alt,
+        width: img.width,
+        height: img.height,
+      })),
+    },
+  };
 }
 
 /** Shared root + per-page metadata with brand-rich keywords */
@@ -205,44 +275,47 @@ export function buildPageMetadata({
   description,
   path = "",
   extraKeywords = [],
-  ogImage = "/images/1.png",
+  ogImage = DEFAULT_OG_IMAGE,
+  ogImageAlt = COMPANY_NAME,
 }: PageMetaInput): Metadata {
   const canonical = canonicalUrl(path);
   const keywords = [...new Set([...SEO_KEYWORDS, ...extraKeywords])];
+  const social = buildSocialMetadata({
+    title,
+    description,
+    canonical,
+    ogImage,
+    ogImageAlt,
+  });
 
   return {
     title,
     description,
     keywords,
+    metadataBase: new URL(siteOrigin()),
     robots: {
       index: true,
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large" },
     },
-    alternates: { canonical },
-    openGraph: {
-      type: "website",
-      locale: "en_PK",
-      url: canonical,
-      siteName: "Dani Real Estate and Developers",
-      title: `${title} | Dani Real Estate`,
-      description,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: COMPANY_NAME }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | Dani Real Estate`,
-      description,
-      images: [ogImage],
-    },
+    alternates: { canonical, languages: { "en-PK": canonical, en: canonical } },
+    ...social,
   };
 }
 
 export function buildRootMetadata(): Metadata {
-  const base = SITE_URL.replace(/\/$/, "") || SITE_URL;
+  const base = siteOrigin();
+  const canonical = absoluteUrl("/");
+  const social = buildSocialMetadata({
+    title: DEFAULT_OG_TITLE,
+    description: `${SLOGAN} — Official site: ${PRIMARY_DOMAIN_WWW}`,
+    canonical,
+    ogImage: DEFAULT_OG_IMAGE,
+    ogImageAlt: `${COMPANY_NAME} — Haripur, KPK`,
+  });
 
   return {
-    metadataBase: new URL(SITE_URL),
+    metadataBase: new URL(base),
     title: {
       default: `${COMPANY_NAME} | Dani Real Estate | ${PRIMARY_DOMAIN}`,
       template: `%s | Dani Real Estate and Developers`,
@@ -250,40 +323,23 @@ export function buildRootMetadata(): Metadata {
     description: DEFAULT_SITE_DESCRIPTION,
     keywords: SEO_KEYWORDS,
     applicationName: "Dani Real Estate and Developers",
-    authors: [{ name: COMPANY_NAME, url: base }],
-    creator: "Dani Real Estate and Developers",
+    authors: [
+      { name: COMPANY_NAME, url: canonical },
+      { name: "LoopVerses", url: "https://loopverses.com/" },
+    ],
+    creator: "LoopVerses",
     publisher: COMPANY_NAME,
+    category: "Real Estate",
     formatDetection: { email: true, telephone: true },
-    openGraph: {
-      type: "website",
-      locale: "en_PK",
-      url: base,
-      siteName: "Dani Real Estate and Developers",
-      title: DEFAULT_OG_TITLE,
-      description: `${SLOGAN} — Official site: ${PRIMARY_DOMAIN}`,
-      images: [
-        {
-          url: "/images/1.png",
-          width: 1200,
-          height: 630,
-          alt: "Dani Real Estate and Developers LLP — Haripur",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: DEFAULT_OG_TITLE,
-      description: DEFAULT_SITE_DESCRIPTION,
-      images: ["/images/1.png"],
-    },
+    ...social,
     robots: {
       index: true,
       follow: true,
       googleBot: { index: true, follow: true, "max-image-preview": "large" },
     },
     alternates: {
-      canonical: base,
-      languages: { "en-PK": base, en: base },
+      canonical,
+      languages: { "en-PK": canonical, en: canonical },
     },
     verification: {
       google: "google47a7ea6d5ebad2ba",
@@ -299,6 +355,8 @@ export function buildRootMetadata(): Metadata {
     other: {
       "brand:name": COMPANY_NAME,
       "brand:domain": PRIMARY_DOMAIN,
+      "og:logo": absoluteImageUrl(LOGO_SRC),
+      "indexnow:key": process.env.INDEXNOW_API_KEY ?? "d4n1realestatedevindex01",
     },
   };
 }

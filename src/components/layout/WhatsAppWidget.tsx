@@ -15,7 +15,7 @@ export default function WhatsAppWidget() {
     >
       <div
         className={cn(
-          "w-[min(300px,calc(100vw-2rem))] origin-bottom-right rounded-2xl border border-primary/25 bg-dark/95 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.45)] overflow-hidden transition-all duration-300",
+          "w-[min(300px,calc(100vw-2rem))] origin-bottom-right rounded-2xl border border-primary/25 bg-dark-3/98 backdrop-blur-xl shadow-[0_20px_50px_var(--shadow-color)] overflow-hidden transition-all duration-300 theme-surface",
           open
             ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
             : "opacity-0 scale-95 translate-y-2 pointer-events-none h-0 w-0 border-0"
@@ -24,7 +24,7 @@ export default function WhatsAppWidget() {
         <div className="p-4 sm:p-5">
           <div className="flex items-start justify-between gap-3 mb-3">
             <div>
-              <p className="font-display text-lg text-white leading-tight">
+              <p className="font-display text-lg text-foreground leading-tight">
                 {SITE.shortName}
               </p>
               <p className="text-[#25D366] text-xs font-medium mt-0.5">Typically replies fast</p>
@@ -32,7 +32,7 @@ export default function WhatsAppWidget() {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="p-1.5 rounded-full text-text-muted hover:text-white hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-full text-text-muted hover:text-foreground hover:bg-foreground/10 transition-colors"
               aria-label="Close chat panel"
             >
               <X className="w-4 h-4" />

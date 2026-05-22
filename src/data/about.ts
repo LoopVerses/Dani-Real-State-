@@ -64,7 +64,7 @@ export const karlughTeam: TeamMember[] = [
   {
     id: "chairman",
     name: "Colonel Kamal Aman Khan (Rtd)",
-    role: "Chairman and Partner 1",
+    role: "Chairman",
     initials: "KK",
     image: publicImage("Chairman Karlugh Kamal Aman Khan.jpeg"),
     bio: "Colonel Kamal Aman Khan (Rtd) is a seasoned executive with 38 years of experience in leadership and administrative roles. His strategic vision has earmarked his ancestral family lands for the project \"Aman Enclave,\" demonstrating his commitment to sustainable development. Known for his strong ethical reputation, Col. Kamal leads the Board of Directors in achieving the company's objectives with integrity.",
@@ -72,7 +72,7 @@ export const karlughTeam: TeamMember[] = [
   {
     id: "karlugh-ceo",
     name: "Muhammad Saeed",
-    role: "Chief Executive Officer and Partner 2",
+    role: "Chief Executive Officer",
     initials: "MS",
     image: publicImage("CEO Muhammad Saeed.jpeg"),
     bio: "Muhammad Saeed, a retired Accounts Officer at PTCL, brings 18 years of experience in real estate, construction, and development. He has successfully managed high-profile projects, demonstrating a strong ability to navigate complex regulations and deliver exceptional results. His collaborative leadership style fosters innovation and drives the company's strategic vision.",
@@ -80,7 +80,7 @@ export const karlughTeam: TeamMember[] = [
   {
     id: "karlugh-coo",
     name: "Imran Rasheed",
-    role: "Chief Operating Officer and Partner 3",
+    role: "Chief Operating Officer",
     initials: "IR",
     image: publicImage("COO Imran Rasheed.jpeg"),
     bio: "Imran Rasheed, with a Master's in Business Administration, has over a decade of experience in real estate, construction, and development. He excels in operational efficiency and project management, implementing best practices to optimize workflows. Known for his analytical problem-solving and strong stakeholder relationships, Imran ensures projects are completed on time and within budget.",
@@ -96,10 +96,10 @@ export const karlughTeam: TeamMember[] = [
   {
     id: "karlugh-clo",
     name: "Muhammad Zarak Aman Khan",
-    role: "Chief Legal Officer & Board Member",
+    role: "Chief Legal Officer",
     initials: "MZ",
     image: CLO_IMAGE,
-    bio: "Muhammad Zarak Aman Khan serves as Chief Legal Officer and a valued Board Member of Karlugh Real Estate and Property Developers. He is a young and highly skilled legal professional with strong expertise in corporate and regulatory law. His strategic legal insight and sound judgment play a key role in guiding the company's governance, compliance, and long-term development framework, ensuring all projects are executed with legal integrity and professionalism.",
+    bio: "Muhammad Zarak Aman Khan serves as Chief Legal Officer of Karlugh Real Estate and Property Developers. He is a young and highly skilled legal professional with strong expertise in corporate and regulatory law. His strategic legal insight and sound judgment play a key role in guiding the company's governance and long-term development framework, ensuring all projects are executed with legal integrity and professionalism.",
   },
 ];
 

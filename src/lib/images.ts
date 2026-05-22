@@ -46,8 +46,14 @@ export const ABOUT_IMAGES = {
   homeSnippet: DANI_REAL_ESTATE_LOGO,
 } as const;
 
+/** Mobile: contain (full image). md+: cover with focal point. */
 export const IMAGE_FIT = {
-  landscapeHero: "object-cover object-center",
-  landscapeCard: "object-cover object-center",
-  portrait: "object-cover object-[50%_14%]",
+  heroBanner:
+    "object-contain object-center bg-[#071E2B] md:object-cover md:object-[50%_28%] lg:object-[50%_30%]",
+  landscapeHero:
+    "object-contain object-center bg-dark md:object-cover md:object-center",
+  landscapeCard:
+    "object-contain object-center bg-dark-3 md:object-cover md:object-center",
+  portrait:
+    "object-contain object-top bg-dark-2 md:object-cover md:object-[50%_18%]",
 } as const;

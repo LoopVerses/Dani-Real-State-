@@ -37,7 +37,7 @@ export default function ProjectsSection() {
                     key={item.title}
                     className="bg-dark-3 border border-primary/10 rounded-lg p-5 hover:border-primary/30 transition-colors"
                   >
-                    <p className="text-white font-semibold mb-1">{item.title}</p>
+                    <p className="text-foreground font-semibold mb-1">{item.title}</p>
                     <p className="text-text-muted text-sm leading-relaxed">
                       {item.detail}
                     </p>
@@ -61,7 +61,7 @@ export default function ProjectsSection() {
             >
               <Construction className="w-6 h-6 text-primary shrink-0 mt-0.5" />
               <div>
-                <p className="text-white font-semibold mb-1">{item.title}</p>
+                <p className="text-foreground font-semibold mb-1">{item.title}</p>
                 <p className="text-text-muted text-sm leading-relaxed">
                   {item.detail}
                 </p>

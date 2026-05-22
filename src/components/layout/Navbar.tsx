@@ -11,6 +11,8 @@ import { SLOGAN } from "@/data/about";
 import { NAV_LINKS, whatsappLink } from "@/lib/site";
 import { LOGO_SRC } from "@/lib/images";
 import { ROUTES } from "@/lib/routes";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import { useThemeOptional } from "@/components/providers/ThemeProvider";
 
 const navEase = [0.16, 1, 0.3, 1] as const;
 
@@ -44,6 +46,9 @@ export default function Navbar() {
   const isScrolled = mounted && scrolled;
   const isHome = pathname === "/";
   const isHeroNav = isHome && !isScrolled;
+  const themeCtx = useThemeOptional();
+  const isLightSite = themeCtx?.theme === "light";
+  const navOnImage = isHeroNav && !isLightSite;
 
   const navSurface = isHeroNav
     ? "nav-glass-hero"
@@ -62,7 +67,7 @@ export default function Navbar() {
         <span className="nav-glass-shine" aria-hidden />
 
         <div
-          className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 h-[72px] sm:h-[76px] flex items-center justify-between"
+          className="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 h-[58px] sm:h-[62px] flex items-center justify-between"
           suppressHydrationWarning
         >
           {/* Logo — left */}
@@ -72,7 +77,7 @@ export default function Navbar() {
               alt="Dani Real Estate and Developers"
               width={320}
               height={96}
-              className="h-11 sm:h-12 md:h-14 w-auto max-w-[min(260px,40vw)] object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
+              className="h-9 sm:h-10 md:h-11 w-auto max-w-[min(220px,38vw)] object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
               priority
               unoptimized
             />
@@ -95,7 +100,9 @@ export default function Navbar() {
                         isHeroNav && "nav-link-glass-hero",
                         active
                           ? "text-primary !bg-primary/25 border border-primary/30"
-                          : "text-white hover:text-white"
+                          : navOnImage
+                            ? "text-[#F3FCFE] hover:text-[#F3FCFE]"
+                            : "text-foreground hover:text-foreground"
                       )}
                     >
                       {link.label}
@@ -108,24 +115,29 @@ export default function Navbar() {
 
           {/* Right — CTA + mobile menu */}
           <div className="relative z-20 flex items-center gap-2 sm:gap-3 shrink-0">
+            <ThemeToggle className="hidden sm:flex" />
             <Link
               href={ROUTES.contact}
               className={cn(
-                "hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-all duration-500",
+                "hidden sm:inline-flex items-center justify-center gap-2.5 leading-none rounded-full px-4 py-2.5 text-sm transition-all duration-500 [&_svg]:block [&_svg]:shrink-0",
                 isScrolled
-                  ? "nav-cta-solid text-dark font-semibold"
-                  : "nav-cta-glass text-white font-medium nav-text-shadow"
+                  ? "nav-cta-solid font-semibold"
+                  : cn(
+                      "nav-cta-glass font-medium",
+                      navOnImage ? "nav-text-shadow" : ""
+                    )
               )}
             >
               Book a Viewing
-              <CalendarDays className="w-4 h-4" />
+              <CalendarDays className="h-4 w-4 shrink-0" strokeWidth={2} />
             </Link>
 
             <button
               type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
               className={cn(
-                "lg:hidden p-2.5 rounded-full nav-link-glass text-white nav-text-shadow",
+                "lg:hidden inline-flex items-center justify-center p-2.5 rounded-full nav-link-glass nav-text-shadow [&_svg]:block [&_svg]:shrink-0",
+                navOnImage && "text-[#F3FCFE]",
                 isHeroNav && "nav-link-glass-hero"
               )}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -155,7 +167,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.35, ease: navEase }}
-              className="absolute top-0 right-0 h-full w-full max-w-sm bg-dark/95 backdrop-blur-xl border-l border-white/10 flex flex-col pt-20 px-8 pb-8"
+              className="absolute top-0 right-0 h-full w-full max-w-sm bg-dark-3/98 backdrop-blur-xl border-l border-[var(--glass-border)] flex flex-col pt-[4.5rem] px-8 pb-8"
             >
               <Image
                 src={LOGO_SRC}
@@ -176,8 +188,8 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         className={cn(
-                          "block py-3 font-display text-2xl border-b border-white/5",
-                          active ? "text-primary" : "text-white"
+                          "block py-3 font-display text-2xl border-b border-foreground/10",
+                          active ? "text-primary" : "text-foreground"
                         )}
                       >
                         {link.label}
@@ -187,20 +199,23 @@ export default function Navbar() {
                 })}
               </ul>
               <div className="mt-auto flex flex-col gap-3">
+                <div className="flex sm:hidden justify-center pb-2">
+                  <ThemeToggle />
+                </div>
                 <Link
                   href={ROUTES.contact}
-                  className="flex items-center justify-center gap-2 nav-cta-solid rounded-full py-4 text-sm font-semibold"
+                  className="inline-flex items-center justify-center gap-2.5 leading-none nav-cta-solid rounded-full py-4 text-sm font-semibold [&_svg]:block [&_svg]:shrink-0"
                 >
                   Book a Viewing
-                  <CalendarDays className="w-4 h-4" />
+                  <CalendarDays className="h-4 w-4 shrink-0" strokeWidth={2} />
                 </Link>
                 <a
                   href={whatsappLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white"
+                  className="inline-flex items-center justify-center gap-2.5 leading-none rounded-full bg-[#25D366] py-3.5 text-sm font-semibold text-white [&_svg]:block [&_svg]:shrink-0"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="h-4 w-4 shrink-0" strokeWidth={2} />
                   WhatsApp
                 </a>
               </div>

@@ -34,7 +34,7 @@ export default function ServicesSection() {
                 <Icon className="w-6 h-6 text-primary" strokeWidth={1.5} />
               </div>
               <div>
-                <h3 className="text-white font-semibold mb-1">{title}</h3>
+                <h3 className="text-foreground font-semibold mb-1">{title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed">{description}</p>
               </div>
             </article>

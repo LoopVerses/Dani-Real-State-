@@ -50,6 +50,13 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     ],
   },
   {
+    path: ROUTES.whatWeOffer,
+    name: "What We Offer — Dani Real Estate Haripur",
+    priority: 0.92,
+    changeFrequency: "weekly",
+    images: [STOCK_IMAGES.projectCard4, LOGO_SRC],
+  },
+  {
     path: ROUTES.about,
     name: "About Dani Real Estate and Developers LLP",
     priority: 0.9,

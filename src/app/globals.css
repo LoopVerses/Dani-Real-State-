@@ -1,17 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+/* Brand palette: #08242F · #E2A805 · #0B1F2D · #071E2B · #F3FCFE */
 :root {
-  --primary: #C9A84C;
-  --primary-dark: #A8862E;
-  --primary-light: #E8C96A;
-  --dark: #0A0A0A;
-  --dark-2: #111111;
-  --dark-3: #1A1A1A;
-  --cream: #F5F5F0;
-  --text-muted: #9CA3AF;
-  --background: var(--dark);
-  --foreground: #ffffff;
+  --brand-navy: #08242f;
+  --brand-gold: #e2a805;
+  --brand-slate: #0b1f2d;
+  --brand-deep: #071e2b;
+  --brand-ice: #f3fcfe;
+}
+
+/* Dark theme (default) — variables on html so Tailwind utilities update at runtime */
+html {
+  color-scheme: dark;
+  --primary: #e2a805;
+  --primary-dark: #c89404;
+  --primary-light: #f0c035;
+  --dark: #071e2b;
+  --dark-2: #0b1f2d;
+  --dark-3: #08242f;
+  --cream: #0b1f2d;
+  --text-muted: #8fa3b0;
+  --background: #071e2b;
+  --foreground: #f3fcfe;
+  --on-primary: #071e2b;
+  --surface-elevated: #08242f;
+  --border-subtle: rgba(226, 168, 5, 0.18);
+  --glass-bg: rgba(7, 30, 43, 0.55);
+  --glass-border: rgba(243, 252, 254, 0.12);
+  --hero-panel-bg: rgba(255, 255, 255, 0.07);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+  --blueprint-stroke: #e8e4dc;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --primary: #e2a805;
+  --primary-dark: #c89404;
+  --primary-light: #f5d04a;
+  --dark: #f3fcfe;
+  --dark-2: #e8f4f8;
+  --dark-3: #ffffff;
+  --cream: #e8f4f8;
+  --text-muted: #4a6575;
+  --background: #f3fcfe;
+  --foreground: #08242f;
+  --on-primary: #071e2b;
+  --surface-elevated: #ffffff;
+  --border-subtle: rgba(8, 36, 47, 0.12);
+  --glass-bg: rgba(243, 252, 254, 0.92);
+  --glass-border: rgba(8, 36, 47, 0.12);
+  --hero-panel-bg: rgba(243, 252, 254, 0.72);
+  --shadow-color: rgba(8, 36, 47, 0.14);
+  --blueprint-stroke: rgba(8, 36, 47, 0.45);
 }
 
 @theme inline {
@@ -25,27 +66,35 @@
   --color-text-muted: var(--text-muted);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-on-primary: var(--on-primary);
+  --color-surface-elevated: var(--surface-elevated);
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 4rem;
   overflow-x: clip;
   width: 100%;
+}
+
+html {
+  background-color: var(--background);
 }
 
 body {
-  min-height: 100%;
+  min-h: 100%;
   width: 100%;
   overflow-x: clip;
-  background: var(--dark);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+  transition:
+    background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Single page scroll — avoid nested scroll containers */
 #__next,
 body > main {
   overflow: visible;
@@ -86,11 +135,39 @@ body > main {
 }
 
 .gold-pattern {
-  background-image: radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(201, 168, 76, 0.06) 0%, transparent 40%);
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(226, 168, 5, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(226, 168, 5, 0.07) 0%, transparent 40%);
 }
 
-/* Navbar — frosted glass / water-drop feel */
+[data-theme="light"] .gold-pattern {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(226, 168, 5, 0.14) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(8, 36, 47, 0.04) 0%, transparent 40%);
+}
+
+/* Theme toggle */
+.theme-toggle-track {
+  background: linear-gradient(135deg, var(--brand-slate) 0%, var(--brand-deep) 100%);
+  transition: background 0.45s ease;
+}
+
+[data-theme="light"] .theme-toggle-track {
+  background: linear-gradient(135deg, var(--brand-ice) 0%, #dceef3 100%);
+}
+
+.theme-toggle-glow {
+  background: radial-gradient(circle at 30% 50%, rgba(226, 168, 5, 0.45), transparent 65%);
+}
+
+.theme-toggle-thumb {
+  background: linear-gradient(145deg, var(--primary-light), var(--primary));
+  box-shadow:
+    0 2px 8px var(--shadow-color),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Navbar — frosted glass */
 .nav-glass {
   transition:
     background 0.5s cubic-bezier(0.16, 1, 0.3, 1),
@@ -99,27 +176,34 @@ body > main {
 }
 
 .nav-glass-hero {
-  background: rgba(10, 10, 10, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 24px var(--shadow-color);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   backdrop-filter: blur(20px) saturate(160%);
 }
 
 .nav-glass-scrolled {
-  background: rgba(8, 8, 8, 0.55);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px var(--shadow-color);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   backdrop-filter: blur(20px) saturate(160%);
 }
 
 .nav-glass-inner {
-  background: rgba(8, 8, 8, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px var(--shadow-color);
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   backdrop-filter: blur(20px) saturate(160%);
+}
+
+[data-theme="light"] .nav-glass-hero,
+[data-theme="light"] .nav-glass-scrolled,
+[data-theme="light"] .nav-glass-inner {
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
 }
 
 .content-auto {
@@ -148,6 +232,10 @@ body > main {
     0 2px 12px rgba(0, 0, 0, 0.55);
 }
 
+[data-theme="light"] .nav-text-shadow {
+  text-shadow: none;
+}
+
 .nav-glass-shine {
   pointer-events: none;
   position: absolute;
@@ -171,6 +259,15 @@ body > main {
   );
 }
 
+[data-theme="light"] .nav-glass-shine::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(8, 36, 47, 0.15) 50%,
+    transparent
+  );
+}
+
 .nav-glass-shine::after {
   content: "";
   position: absolute;
@@ -190,12 +287,21 @@ body > main {
   padding: 0.5rem 0.85rem;
   border-radius: 9999px;
   transition: all 0.35s ease;
+  color: var(--foreground);
 }
 
 .nav-link-glass-hero {
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  color: #f3fcfe;
+}
+
+[data-theme="light"] .nav-link-glass-hero {
+  background: rgba(8, 36, 47, 0.06);
+  border: 1px solid rgba(8, 36, 47, 0.1);
+  box-shadow: 0 2px 8px rgba(8, 36, 47, 0.06);
+  color: var(--brand-navy);
 }
 
 .nav-link-glass:hover,
@@ -207,6 +313,13 @@ body > main {
     0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+[data-theme="light"] .nav-link-glass:hover,
+[data-theme="light"] .nav-link-glass-hero:hover {
+  background: rgba(226, 168, 5, 0.12);
+  border-color: rgba(226, 168, 5, 0.35);
+  color: var(--brand-navy);
+}
+
 .nav-cta-glass {
   -webkit-backdrop-filter: blur(10px) saturate(150%);
   backdrop-filter: blur(10px) saturate(150%);
@@ -216,6 +329,14 @@ body > main {
     inset 0 1px 0 rgba(255, 255, 255, 0.25),
     0 4px 12px rgba(0, 0, 0, 0.2);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  color: #f3fcfe;
+}
+
+[data-theme="light"] .nav-cta-glass {
+  background: rgba(226, 168, 5, 0.15);
+  border: 1px solid rgba(226, 168, 5, 0.45);
+  color: var(--brand-navy);
+  text-shadow: none;
 }
 
 .nav-cta-glass:hover {
@@ -231,12 +352,73 @@ body > main {
 
 .nav-cta-solid {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--on-primary);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    0 4px 20px rgba(201, 168, 76, 0.25);
+    0 4px 20px rgba(226, 168, 5, 0.3);
 }
 
-/* Blueprint grid fade-in */
+/* Hero bottom glass — theme aware */
+.hero-glass-panel {
+  border-top: 1px solid var(--glass-border);
+  background: var(--hero-panel-bg);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+  box-shadow: 0 -8px 32px var(--shadow-color);
+}
+
+[data-theme="light"] .hero-glass-panel {
+  border-top-color: rgba(8, 36, 47, 0.1);
+}
+
+.hero-glass-shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent
+  );
+}
+
+[data-theme="light"] .hero-glass-shine::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(8, 36, 47, 0.12) 50%,
+    transparent
+  );
+}
+
+.hero-panel-text {
+  color: #f3fcfe;
+}
+
+[data-theme="light"] .hero-panel-text {
+  color: var(--brand-navy);
+}
+
+.hero-panel-muted {
+  color: rgba(243, 252, 254, 0.55);
+}
+
+[data-theme="light"] .hero-panel-muted {
+  color: rgba(8, 36, 47, 0.55);
+}
+
+/* Cards & sections — smooth theme transition */
+.theme-surface {
+  transition:
+    background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 @keyframes blueprint-grid-fade {
   from {
     opacity: 0;
@@ -251,25 +433,13 @@ body > main {
   animation: blueprint-grid-fade 1.2s ease-out forwards;
 }
 
+[data-theme="light"] .blueprint-grid {
+  opacity: 0.08;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .blueprint-grid {
     animation: none;
     opacity: 0.12;
   }
-}
-
-/* Hero bottom glass panel highlight */
-.hero-glass-shine::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent
-  );
 }

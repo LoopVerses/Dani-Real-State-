@@ -1,6 +1,5 @@
 import PageHero from "@/components/sections/properties/PageHero";
 import ProjectsSection from "@/components/sections/about/ProjectsSection";
-import Partners from "@/components/sections/about/Partners";
 import { SLOGAN } from "@/data/about";
 import { STOCK_IMAGES } from "@/lib/images";
 import { ROUTES } from "@/lib/routes";
@@ -16,7 +15,8 @@ export const metadata = buildPageMetadata({
     "danirealstateanddeveloper projects",
     "dani real state projects haripur pakistan",
   ],
-  ogImage: STOCK_IMAGES.projectsHero,
+  ogImage: "/images/2.png",
+  ogImageAlt: "Dani Real Estate projects — Haripur, KPK",
 });
 
 export default function DaniRealEstateProjectsPage() {
@@ -28,7 +28,6 @@ export default function DaniRealEstateProjectsPage() {
         backgroundImage={STOCK_IMAGES.projectsHero}
       />
       <ProjectsSection />
-      <Partners />
     </>
   );
 }

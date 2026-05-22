@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
-
-const SITEMAP_URL = "https://www.danirealstateanddeveloper.com/sitemap.xml";
+import { absoluteUrl, siteOrigin } from "@/lib/absolute-url";
 
 export default function robots(): MetadataRoute.Robots {
+  const host = siteOrigin();
+
   return {
     rules: [
       {
@@ -18,7 +19,12 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "Googlebot-Image",
         allow: "/",
       },
+      {
+        userAgent: "Bingbot",
+        allow: "/",
+      },
     ],
-    sitemap: SITEMAP_URL,
+    host,
+    sitemap: absoluteUrl("/sitemap.xml"),
   };
 }

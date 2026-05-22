@@ -23,16 +23,16 @@ export default function Testimonials() {
   const current = testimonials[active];
 
   return (
-    <section ref={ref} className="bg-cream py-12 md:py-24 px-4 content-auto">
+    <section ref={ref} className="bg-cream py-12 md:py-24 px-4 content-auto theme-surface">
       <div className="max-w-3xl mx-auto">
         <SectionHeader label="Testimonials" title="What Our Clients Say" dark />
         <div className="relative min-h-[260px]">
           <article
             key={current.id}
-            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg text-center"
+            className="bg-dark-3 border border-primary/15 rounded-2xl p-8 md:p-12 shadow-lg text-center theme-surface"
           >
             <Quote className="w-10 h-10 text-primary mx-auto mb-6 opacity-50" />
-            <p className="text-dark-2 font-body text-lg leading-relaxed mb-8">
+            <p className="text-foreground font-body text-lg leading-relaxed mb-8">
               &ldquo;{current.text}&rdquo;
             </p>
             <div className="flex justify-center gap-1 mb-4">
@@ -40,7 +40,7 @@ export default function Testimonials() {
                 <Star key={i} className="w-4 h-4 fill-primary text-primary" />
               ))}
             </div>
-            <p className="font-display text-xl text-dark-2">{current.name}</p>
+            <p className="font-display text-xl text-foreground">{current.name}</p>
             <p className="text-primary text-sm">{current.role}</p>
             <p className="text-text-muted text-sm">{current.location}</p>
           </article>

@@ -26,7 +26,7 @@ interface FormErrors {
 }
 
 const inputClass =
-  "w-full bg-dark-3 border border-primary/20 focus:border-primary rounded-lg px-4 py-3 text-white placeholder:text-text-muted transition outline-none text-base";
+  "w-full bg-dark-3 border border-primary/20 focus:border-primary rounded-lg px-4 py-3 text-foreground placeholder:text-text-muted transition outline-none text-base";
 
 export default function ContactForm() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -100,8 +100,8 @@ export default function ContactForm() {
           className={cn(
             "fixed top-24 right-4 left-4 sm:left-auto z-50 max-w-sm mx-auto sm:mx-0 px-6 py-4 rounded-lg shadow-lg text-sm font-medium",
             toast.type === "success"
-              ? "bg-green-600 text-white"
-              : "bg-red-600 text-white"
+              ? "bg-green-600 text-foreground"
+              : "bg-red-600 text-foreground"
           )}
         >
           {toast.message}
@@ -109,7 +109,7 @@ export default function ContactForm() {
       )}
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12">
         <form onSubmit={handleSubmit} className="space-y-5 order-2 lg:order-1">
-          <h2 className="font-display text-3xl md:text-4xl text-white mb-2">Send Us a Message</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-2">Send Us a Message</h2>
           <p className="text-text-muted text-sm mb-6">
             Fill in the form and we will open your email app addressed to{" "}
             <a href={`mailto:${CONTACT.email}`} className="text-primary hover:underline">
@@ -214,7 +214,7 @@ export default function ContactForm() {
         </form>
 
         <div className="bg-dark-3 border border-primary/10 rounded-xl p-6 sm:p-8 h-fit order-1 lg:order-2">
-          <h3 className="font-display text-2xl md:text-3xl text-white mb-2">Get In Touch</h3>
+          <h3 className="font-display text-2xl md:text-3xl text-foreground mb-2">Get In Touch</h3>
           <p className="text-text-muted text-sm mb-6">
             Call, email, or message us on WhatsApp — we typically respond within one business day.
           </p>

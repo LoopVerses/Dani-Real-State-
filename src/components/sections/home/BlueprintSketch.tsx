@@ -13,7 +13,7 @@ function DrawPath({
   d,
   delay,
   className,
-  stroke = "#E8E4DC",
+  stroke = "var(--blueprint-stroke)",
   strokeWidth = 0.75,
   strokeOpacity,
   strokeDasharray,

@@ -43,8 +43,8 @@ export default function FeaturedProperties() {
               className={cn(
                 "px-5 py-2 rounded-full text-sm font-body transition-all duration-300",
                 activeFilter === filter
-                  ? "bg-primary text-dark font-semibold"
-                  : "border border-primary/30 text-white hover:border-primary"
+                  ? "bg-primary text-on-primary font-semibold"
+                  : "border border-primary/30 text-foreground hover:border-primary"
               )}
             >
               {filter}

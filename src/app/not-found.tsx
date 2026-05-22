@@ -7,7 +7,7 @@ export default function NotFound() {
         404
       </span>
       <div className="relative z-10 text-center">
-        <h1 className="font-display text-4xl md:text-5xl text-white mb-4">
+        <h1 className="font-display text-4xl md:text-5xl text-foreground mb-4">
           Page Not Found
         </h1>
         <p className="text-text-muted mb-8 max-w-md mx-auto">

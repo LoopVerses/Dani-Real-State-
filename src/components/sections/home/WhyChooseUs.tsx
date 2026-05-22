@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
               className="bg-dark-3 border border-primary/15 rounded-xl p-6 hover:border-primary/40 transition-colors"
             >
               <CheckCircle2 className="w-8 h-8 text-primary mb-4" strokeWidth={1.5} />
-              <h3 className="text-white font-semibold mb-2">{item.title}</h3>
+              <h3 className="text-foreground font-semibold mb-2">{item.title}</h3>
               <p className="text-text-muted text-sm leading-relaxed">{item.description}</p>
             </article>
           ))}

@@ -1,0 +1,19 @@
+# Dani Real Estate and Developers LLP
+# Official site: https://www.danirealstateanddeveloper.com
+# Contact: danxsaeed@gmail.com | WhatsApp +92 332 5076025 | Haripur, KPK, Pakistan
+
+## About
+SECP-registered real estate developers in Haripur since 2008. Residential, commercial, plotting, and flagship projects including Haripur Hills, Aman Enclave, China Town, and Danial Gardens.
+
+## Canonical pages
+- https://www.danirealstateanddeveloper.com/
+- https://www.danirealstateanddeveloper.com/dani-real-estate-projects-haripur-kpk
+- https://www.danirealstateanddeveloper.com/what-we-offer-dani-real-estate-haripur
+- https://www.danirealstateanddeveloper.com/about-dani-real-estate-and-developers-llp
+- https://www.danirealstateanddeveloper.com/contact-dani-real-estate-haripur
+
+## Sitemap
+https://www.danirealstateanddeveloper.com/sitemap.xml
+
+## IndexNow key
+https://www.danirealstateanddeveloper.com/d4n1realestatedevindex01.txt

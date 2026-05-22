@@ -35,10 +35,9 @@ export default function TeamSection() {
                 src={member.image}
                 alt={member.name}
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="h-72"
               />
               <div className="p-6">
-                <h3 className="text-white font-semibold text-lg">{member.name}</h3>
+                <h3 className="text-foreground font-semibold text-lg">{member.name}</h3>
                 <p className="text-primary text-sm font-medium mb-3">{member.role}</p>
                 <p className="text-text-muted text-sm leading-relaxed">{member.bio}</p>
               </div>

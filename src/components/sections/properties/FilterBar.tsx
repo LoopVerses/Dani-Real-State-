@@ -30,7 +30,7 @@ export default function FilterBar({
   onStatusChange,
 }: FilterBarProps) {
   return (
-    <div className="sticky top-[72px] bg-dark-2/95 backdrop-blur z-40 py-4 border-b border-primary/10 px-4">
+    <div className="sticky top-[58px] sm:top-[62px] bg-dark-2/95 backdrop-blur z-40 py-4 border-b border-primary/10 px-4">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center gap-4 justify-between">
         <div className="flex flex-wrap gap-2">
           <span className="text-text-muted text-sm self-center mr-2">Type:</span>
@@ -41,8 +41,8 @@ export default function FilterBar({
               onClick={() => onTypeChange(t)}
               className={`px-4 py-1.5 rounded-full text-sm transition-all duration-300 ${
                 typeFilter === t
-                  ? "bg-primary text-dark font-semibold"
-                  : "border border-primary/30 text-white hover:border-primary"
+                  ? "bg-primary text-on-primary font-semibold"
+                  : "border border-primary/30 text-foreground hover:border-primary"
               }`}
             >
               {t}
@@ -53,7 +53,7 @@ export default function FilterBar({
           <select
             value={cityFilter}
             onChange={(e) => onCityChange(e.target.value as CityFilter)}
-            className="bg-dark-3 border border-primary/20 text-white rounded-lg px-4 py-2 text-sm focus:border-primary outline-none"
+            className="bg-dark-3 border border-primary/20 text-foreground rounded-lg px-4 py-2 text-sm focus:border-primary outline-none"
           >
             {cities.map((c) => (
               <option key={c} value={c}>
@@ -69,8 +69,8 @@ export default function FilterBar({
                 onClick={() => onStatusChange(s)}
                 className={`px-4 py-1.5 rounded-full text-sm transition-all duration-300 ${
                   statusFilter === s
-                    ? "bg-primary text-dark font-semibold"
-                    : "border border-primary/30 text-white hover:border-primary"
+                    ? "bg-primary text-on-primary font-semibold"
+                    : "border border-primary/30 text-foreground hover:border-primary"
                 }`}
               >
                 {s}

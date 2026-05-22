@@ -7,7 +7,7 @@ export default function MapSection() {
   return (
     <section className="bg-dark-2 px-4 sm:px-6 pb-12 md:pb-20">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-display text-2xl sm:text-3xl text-white text-center mb-2">
+        <h2 className="font-display text-2xl sm:text-3xl text-foreground text-center mb-2">
           Find Us Here
         </h2>
         <p className="text-text-muted text-sm text-center mb-8 max-w-lg mx-auto">

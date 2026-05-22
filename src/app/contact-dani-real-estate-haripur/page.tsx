@@ -16,7 +16,8 @@ export const metadata = buildPageMetadata({
     "danirealstateanddeveloper contact",
     "dani real estate whatsapp haripur",
   ],
-  ogImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200",
+  ogImage: "/images/logo.png",
+  ogImageAlt: "Contact Dani Real Estate — Haripur",
 });
 
 export default function ContactDaniRealEstatePage() {

@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/what-we-offer",
+        destination: "/what-we-offer-dani-real-estate-haripur",
+        permanent: true,
+      },
+      {
         source: "/about",
         destination: "/about-dani-real-estate-and-developers-llp",
         permanent: true,

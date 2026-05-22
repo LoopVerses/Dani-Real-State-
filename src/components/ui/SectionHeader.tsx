@@ -43,7 +43,7 @@ export default function SectionHeader({
       <h2
         className={cn(
           "font-display text-4xl md:text-5xl mb-4",
-          dark ? "text-dark-2" : "text-white"
+          "text-foreground"
         )}
       >
         {title}

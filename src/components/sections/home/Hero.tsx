@@ -1,220 +1,177 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import dynamic from "next/dynamic";
 import Image from "next/image";
-import { Key, MapPin, Home, ArrowLeft, ArrowRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { HERO_BANNERS, HERO_AUTO_SLIDE_MS } from "@/lib/images";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { HERO_SLIDES } from "@/data/hero";
+import { useIsMobile } from "@/hooks/useMediaQuery";
+import { HERO_AUTO_SLIDE_MS, IMAGE_FIT } from "@/lib/images";
 
-const BlueprintSketch = dynamic(
-  () => import("@/components/sections/home/BlueprintSketch"),
-  { ssr: false, loading: () => <div className="w-full h-full bg-transparent" aria-hidden /> }
-);
+const luxEase = [0.25, 1, 0.35, 1] as const;
+const AUTO_MS = HERO_AUTO_SLIDE_MS;
+const count = HERO_SLIDES.length;
 
-/** Shorter on mobile so more of the banner stays visible above the glass panel */
-const PANEL_H = "h-[clamp(7.25rem,20svh,11.5rem)] md:h-[clamp(10rem,28svh,18rem)]";
-const PANEL_BOTTOM_OFFSET =
-  "bottom-[calc(clamp(7.25rem,20svh,11.5rem)+0.75rem)] md:bottom-[calc(clamp(10rem,28svh,18rem)+1rem)]";
+const slideVariants = {
+  enter: (dir: number) => ({
+    clipPath: dir > 0 ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)",
+    zIndex: 2,
+  }),
+  center: {
+    clipPath: "inset(0 0 0 0%)",
+    zIndex: 2,
+    transition: { duration: 1.2, ease: luxEase },
+  },
+  exit: (dir: number) => ({
+    clipPath: dir > 0 ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)",
+    zIndex: 1,
+    transition: { duration: 1.2, ease: luxEase },
+  }),
+};
+
+const imageParallaxVariants = {
+  enter: (dir: number) => ({
+    scale: 1.2,
+    x: dir > 0 ? "12%" : "-12%",
+  }),
+  center: {
+    scale: 1,
+    x: "0%",
+    transition: { duration: 1.4, ease: luxEase },
+  },
+  exit: (dir: number) => ({
+    scale: 1.05,
+    x: dir > 0 ? "-8%" : "8%",
+    transition: { duration: 1.2, ease: luxEase },
+  }),
+};
+
+/** No zoom/pan on mobile — prevents banner faces/buildings being clipped */
+const imageStaticVariants = {
+  enter: { scale: 1, x: "0%" },
+  center: { scale: 1, x: "0%", transition: { duration: 1.4, ease: luxEase } },
+  exit: { scale: 1, x: "0%", transition: { duration: 1.2, ease: luxEase } },
+};
 
 export default function Hero() {
+  const isMobile = useIsMobile();
   const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
-  const count = HERO_BANNERS.length;
-  const fadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [direction, setDirection] = useState(1);
+  const [isAnimating, setIsAnimating] = useState(false);
   const indexRef = useRef(0);
   indexRef.current = index;
 
-  const transitionTo = useCallback((normalized: number) => {
-    if (fadeTimer.current) clearTimeout(fadeTimer.current);
-    setVisible(false);
-    fadeTimer.current = setTimeout(() => {
-      setIndex(normalized);
-      setVisible(true);
-      fadeTimer.current = null;
-    }, 350);
-  }, []);
-
   const goTo = useCallback(
-    (next: number) => {
+    (next: number, dir?: number) => {
+      if (isAnimating) return;
       const normalized = ((next % count) + count) % count;
-      if (normalized === index) return;
-      transitionTo(normalized);
+      if (normalized === indexRef.current) return;
+
+      setIsAnimating(true);
+      setDirection(dir ?? (normalized > indexRef.current ? 1 : -1));
+      setIndex(normalized);
+      setTimeout(() => setIsAnimating(false), 1200);
     },
-    [index, count, transitionTo]
+    [isAnimating]
   );
 
-  const goNext = useCallback(() => goTo(index + 1), [goTo, index]);
-  const goPrev = useCallback(() => goTo(index - 1), [goTo, index]);
+  const goNext = useCallback(() => goTo(indexRef.current + 1, 1), [goTo]);
+  const goPrev = useCallback(() => goTo(indexRef.current - 1, -1), [goTo]);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      if (document.hidden) return;
-      transitionTo((indexRef.current + 1) % count);
-    }, HERO_AUTO_SLIDE_MS);
+      if (!document.hidden) goNext();
+    }, AUTO_MS);
+    return () => window.clearInterval(timer);
+  }, [goNext]);
 
-    return () => {
-      window.clearInterval(timer);
-      if (fadeTimer.current) clearTimeout(fadeTimer.current);
-    };
-  }, [count, transitionTo]);
+  const active = HERO_SLIDES[index];
 
   return (
     <section
-      className="relative w-full h-[100svh] min-h-[100svh] max-h-[100svh] bg-black overflow-hidden isolate"
-      aria-label="Hero"
+      className="relative w-full h-[100dvh] min-h-[100dvh] bg-[#071E2B] overflow-hidden select-none"
+      aria-label="Hero banner slider"
+      aria-roledescription="carousel"
     >
-      {/* Full-viewport background — image fills entire screen */}
-      <div className="absolute inset-0 z-0">
-        {HERO_BANNERS.map((banner, i) => (
-          <div
-            key={banner.src}
-            className={cn(
-              "absolute inset-0 overflow-hidden transition-opacity duration-700 ease-in-out",
-              i === index && visible ? "opacity-100 z-10" : "opacity-0 z-0"
-            )}
-            aria-hidden={i !== index}
+      <div
+        className="absolute inset-0 z-0 touch-none"
+        onPointerDown={(e) => {
+          const startX = e.clientX;
+          const handlePointerUp = (upEvent: PointerEvent) => {
+            const diff = startX - upEvent.clientX;
+            if (diff > 50) goNext();
+            if (diff < -50) goPrev();
+            window.removeEventListener("pointerup", handlePointerUp);
+          };
+          window.addEventListener("pointerup", handlePointerUp);
+        }}
+      >
+        <AnimatePresence initial={false} custom={direction} mode="sync">
+          <motion.div
+            key={index}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="absolute inset-0 overflow-hidden will-change-transform"
           >
-            <Image
-              src={banner.src}
-              alt={i === index ? banner.alt : ""}
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className={cn(
-                "h-full w-full bg-black",
-                /* Mobile: full banner visible (no crop). Desktop: cinematic cover. */
-                "object-contain object-center",
-                "md:object-cover md:object-[50%_28%] lg:object-[50%_30%]"
-              )}
-            />
-          </div>
-        ))}
-
-        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/25 via-transparent to-black/40 pointer-events-none md:from-black/30 md:to-black/50" />
-        <div className="absolute inset-x-0 bottom-0 z-20 h-[38%] md:h-[45%] bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
+            <motion.div
+              variants={isMobile ? imageStaticVariants : imageParallaxVariants}
+              className="absolute inset-0 origin-center"
+            >
+              <Image
+                src={active.src}
+                alt={active.alt}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className={IMAGE_FIT.heroBanner}
+              />
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Quote — sits above glass panel */}
-      <div
-        className={cn(
-          "absolute left-4 sm:left-6 md:left-10 z-30 max-w-md pointer-events-none",
-          PANEL_BOTTOM_OFFSET
-        )}
-      >
-        <p className="text-white/95 text-sm md:text-base leading-relaxed font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]">
-          A vision that transcends property and space, where unmatched craftsmanship
-          inspires elegance and innovation to enrich lives.
-        </p>
+      <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-black/25 via-transparent to-black/55" />
+
+      <div className="absolute bottom-0 inset-x-0 z-30 flex items-end justify-between p-5 sm:p-8 md:p-10 pointer-events-none">
+        <div className="pointer-events-auto flex items-baseline gap-2 text-[#F3FCFE]/50 text-sm md:text-base font-mono tabular-nums">
+          <span className="text-primary text-xl md:text-3xl font-light">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <span className="opacity-50">/</span>
+          <span>{String(count).padStart(2, "0")}</span>
+        </div>
+
+        <div className="pointer-events-auto flex gap-3 sm:gap-4 items-center">
+          <button
+            type="button"
+            onClick={goPrev}
+            aria-label="Previous slide"
+            className="group inline-flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-full border border-white/25 bg-black/30 text-[#F3FCFE] backdrop-blur-md transition-all hover:border-primary/50 hover:bg-primary/20 [&_svg]:block [&_svg]:shrink-0"
+          >
+            <ArrowLeft className="h-5 w-5 transition-transform group-hover:-translate-x-0.5" strokeWidth={2} />
+          </button>
+          <button
+            type="button"
+            onClick={goNext}
+            aria-label="Next slide"
+            className="group inline-flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-full border border-white/25 bg-black/30 text-[#F3FCFE] backdrop-blur-md transition-all hover:border-primary/50 hover:bg-primary/20 [&_svg]:block [&_svg]:shrink-0"
+          >
+            <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5" strokeWidth={2} />
+          </button>
+        </div>
       </div>
 
-      {/* Premium frosted glass bottom bar */}
-      <div
-        className={cn(
-          "absolute bottom-0 inset-x-0 z-40 grid w-full overflow-hidden",
-          "border-t border-white/15",
-          "bg-white/[0.07] backdrop-blur-[28px] backdrop-saturate-150",
-          "shadow-[0_-8px_32px_rgba(0,0,0,0.35)]",
-          "grid-cols-[minmax(0,26%)_minmax(0,1fr)] sm:grid-cols-[minmax(0,32%)_minmax(0,1fr)]",
-          PANEL_H
-        )}
-      >
-        <div
-          className="hero-glass-shine pointer-events-none absolute inset-0 z-0"
-          aria-hidden
+      <div className="absolute bottom-0 left-0 right-0 z-30 h-1 bg-white/10 pointer-events-none">
+        <motion.div
+          key={`progress-${index}`}
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: AUTO_MS / 1000, ease: "linear" }}
+          className="h-full bg-primary shadow-[0_0_12px_rgba(226,168,5,0.6)]"
         />
-
-        <div className="relative z-10 min-w-0 h-full border-r border-white/10 bg-black/15 overflow-hidden">
-          <BlueprintSketch />
-        </div>
-
-        <div className="relative z-10 min-w-0 h-full flex flex-col justify-between px-4 sm:px-6 md:px-10 py-4 md:py-5 overflow-hidden">
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 items-end min-w-0 text-white">
-            <div className="min-w-0">
-              <div className="flex items-center gap-1 text-white/55 mb-0.5">
-                <Key className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
-                <span className="text-[10px] sm:text-xs truncate">Completion</span>
-              </div>
-              <p className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-none truncate">
-                Q4 2026
-              </p>
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1 text-white/55 mb-0.5">
-                <MapPin className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
-                <span className="text-[10px] sm:text-xs truncate">Plot Size</span>
-              </div>
-              <p className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-none truncate">
-                0.12 HA
-              </p>
-            </div>
-            <div className="min-w-0">
-              <div className="flex items-center gap-1 text-white/55 mb-0.5">
-                <Home className="w-3.5 h-3.5 shrink-0" strokeWidth={1.5} />
-                <span className="text-[10px] sm:text-xs truncate">House Area</span>
-              </div>
-              <p className="text-lg sm:text-2xl md:text-4xl font-bold tracking-tight leading-none">
-                450 M<sup className="text-sm md:text-base font-medium">2</sup>
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between gap-2 sm:gap-4 mt-auto pt-2 min-w-0">
-            <div className="flex items-center gap-3 min-w-0 flex-1">
-              <div className="flex items-center gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={goPrev}
-                  className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-white/25 bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                  aria-label="Previous slide"
-                >
-                  <ArrowLeft className="w-4 h-4" strokeWidth={2} />
-                </button>
-                <button
-                  type="button"
-                  onClick={goNext}
-                  className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-white/25 bg-white/10 backdrop-blur-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors"
-                  aria-label="Next slide"
-                >
-                  <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                </button>
-              </div>
-              <div className="min-w-0 hidden sm:block">
-                <p className="text-white/50 text-xs truncate">House Type C</p>
-                <p className="text-white font-medium text-sm truncate">Comfort Line</p>
-                <p className="text-white/40 text-[10px] tabular-nums mt-0.5">
-                  {index + 1} / {count}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex -space-x-2 sm:-space-x-3 shrink-0">
-              {HERO_BANNERS.map((banner, i) => (
-                <button
-                  key={banner.src}
-                  type="button"
-                  onClick={() => goTo(i)}
-                  className={cn(
-                    "relative w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full border-2 overflow-hidden shadow-lg transition-all duration-300",
-                    i === index
-                      ? "border-white/90 ring-2 ring-white/25 z-20 scale-105"
-                      : "border-white/30 opacity-70 hover:opacity-100 z-10"
-                  )}
-                  aria-label={`Go to slide ${i + 1}`}
-                  aria-current={i === index ? "true" : undefined}
-                >
-                  <Image
-                    src={banner.src}
-                    alt=""
-                    fill
-                    sizes="56px"
-                    className="object-cover object-center"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

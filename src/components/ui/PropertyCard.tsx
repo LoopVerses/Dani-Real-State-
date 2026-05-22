@@ -30,15 +30,15 @@ export default function PropertyCard({
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <span className="absolute top-3 left-3 bg-dark/80 text-white text-xs px-3 py-1 rounded-full">
+        <span className="absolute top-3 left-3 bg-dark/80 text-foreground text-xs px-3 py-1 rounded-full">
           {property.type}
         </span>
         <span
           className={cn(
             "absolute top-3 right-3 text-xs px-3 py-1 rounded-full font-medium",
             property.status === "For Sale"
-              ? "bg-green-600/90 text-white"
-              : "bg-blue-600/90 text-white"
+              ? "bg-green-600/90 text-foreground"
+              : "bg-blue-600/90 text-foreground"
           )}
         >
           {property.status}
@@ -46,7 +46,7 @@ export default function PropertyCard({
       </div>
       <div className="p-5">
         <p className="font-display text-2xl text-primary">{property.priceLabel}</p>
-        <h3 className="text-white font-body font-semibold mt-1 mb-2">
+        <h3 className="text-foreground font-body font-semibold mt-1 mb-2">
           {property.title}
         </h3>
         <p className="flex items-center gap-1 text-text-muted text-sm mb-4">

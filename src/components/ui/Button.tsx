@@ -14,9 +14,9 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    "bg-primary hover:bg-primary-dark text-dark font-semibold border border-transparent",
+    "bg-primary hover:bg-primary-dark text-on-primary font-semibold border border-transparent",
   outline:
-    "border border-primary text-primary hover:bg-primary hover:text-dark bg-transparent",
+    "border border-primary text-primary hover:bg-primary hover:text-on-primary bg-transparent",
   ghost: "text-primary hover:text-primary-dark underline bg-transparent border-0",
   whatsapp:
     "bg-[#25D366] hover:bg-[#1ebe57] text-white font-semibold border border-transparent",
@@ -27,6 +27,9 @@ const sizes = {
   md: "px-6 py-3 text-base",
   lg: "px-8 py-4 text-lg",
 };
+
+const iconAlign =
+  "inline-flex items-center justify-center gap-2.5 leading-none [&_svg]:block [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-[1.125em]";
 
 function isExternalHref(href: string) {
   return /^(https?:|mailto:|tel:)/i.test(href);
@@ -43,7 +46,8 @@ export default function Button({
   external,
 }: ButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-lg transition-all duration-200 active:scale-[0.98] text-center",
+    iconAlign,
+    "rounded-lg transition-all duration-200 active:scale-[0.98] text-center",
     variants[variant],
     sizes[size],
     className

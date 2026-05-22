@@ -34,7 +34,7 @@ export default function AboutSnippet() {
             inView ? "translate-x-0 opacity-100" : "-translate-x-16 opacity-0"
           )}
         >
-          <div className="relative aspect-square max-w-sm mx-auto ring-2 ring-primary ring-offset-4 ring-offset-dark rounded-xl overflow-hidden bg-dark-2 flex items-center justify-center p-8 md:p-10">
+          <div className="relative aspect-square max-w-sm mx-auto ring-2 ring-primary ring-offset-4 ring-offset-background rounded-xl overflow-hidden bg-dark-2 flex items-center justify-center p-8 md:p-10">
             <Image
               src={ABOUT_IMAGES.homeSnippet}
               alt="Dani Real Estate and Developers LLP logo"
@@ -55,7 +55,7 @@ export default function AboutSnippet() {
           <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3">
             About Us
           </p>
-          <h2 className="font-display text-4xl md:text-5xl text-white mb-2">
+          <h2 className="font-display text-4xl md:text-5xl text-foreground mb-2">
             Dani Real Estate and Developers LLP
           </h2>
           <p className="text-primary font-display text-lg italic mb-6">{SLOGAN}</p>
@@ -66,7 +66,7 @@ export default function AboutSnippet() {
           </p>
           <ul className="space-y-4 mb-8">
             {bullets.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-white/90">
+              <li key={item} className="flex items-start gap-3 text-foreground/90">
                 <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                 {item}
               </li>

@@ -57,7 +57,7 @@ export default function ProjectsShowcase() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="text-white font-semibold mb-2">{project.title}</h3>
+                <h3 className="text-foreground font-semibold mb-2">{project.title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed line-clamp-3">
                   {project.detail}
                 </p>

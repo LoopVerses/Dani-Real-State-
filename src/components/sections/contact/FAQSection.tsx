@@ -59,7 +59,7 @@ export default function FAQSection() {
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="w-full flex items-center justify-between p-5 text-left"
               >
-                <span className="text-white font-medium pr-4">{faq.q}</span>
+                <span className="text-foreground font-medium pr-4">{faq.q}</span>
                 {openIndex === i ? (
                   <Minus className="w-5 h-5 text-primary shrink-0" />
                 ) : (

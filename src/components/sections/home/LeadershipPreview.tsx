@@ -36,10 +36,9 @@ export default function LeadershipPreview() {
                 src={member.image}
                 alt={member.name}
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="h-64"
               />
               <div className="p-5">
-                <h3 className="text-white font-semibold">{member.name}</h3>
+                <h3 className="text-foreground font-semibold">{member.name}</h3>
                 <p className="text-primary text-sm mt-1">{member.role}</p>
                 <p className="text-text-muted text-sm mt-3 line-clamp-4 leading-relaxed">
                   {member.bio}

@@ -5,6 +5,7 @@
 export const ROUTES = {
   home: "/",
   projects: "/dani-real-estate-projects-haripur-kpk",
+  whatWeOffer: "/what-we-offer-dani-real-estate-haripur",
   about: "/about-dani-real-estate-and-developers-llp",
   contact: "/contact-dani-real-estate-haripur",
   leadership: "/about-dani-real-estate-and-developers-llp#leadership",
@@ -13,6 +14,7 @@ export const ROUTES = {
 /** Previous URLs — kept only for redirects */
 export const LEGACY_ROUTES = {
   projects: "/projects",
+  whatWeOffer: "/what-we-offer",
   about: "/about",
   contact: "/contact",
   properties: "/properties",

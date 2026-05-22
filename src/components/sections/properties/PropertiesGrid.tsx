@@ -23,7 +23,7 @@ export default function PropertiesGrid({ properties }: PropertiesGridProps) {
     return (
       <div className="py-24 bg-dark text-center px-4">
         <SearchX className="w-16 h-16 text-primary/50 mx-auto mb-4" />
-        <h3 className="font-display text-2xl text-white mb-2">No properties found</h3>
+        <h3 className="font-display text-2xl text-foreground mb-2">No properties found</h3>
         <p className="text-text-muted">Try adjusting your filters to see more results.</p>
       </div>
     );

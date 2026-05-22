@@ -13,7 +13,7 @@ export default function SubsidiarySection() {
   return (
     <section
       ref={ref}
-      className="py-12 md:py-24 px-4 bg-dark-2 border-t border-primary/10"
+      className="py-12 md:py-24 px-4 bg-dark border-t border-primary/10"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "none" : "translateY(40px)",
@@ -38,7 +38,7 @@ export default function SubsidiarySection() {
           ))}
         </div>
 
-        <div className="relative h-64 md:h-80 rounded-xl overflow-hidden mb-16 ring-1 ring-primary/30">
+        <div className="relative aspect-[16/10] min-h-[200px] max-h-[280px] sm:min-h-[240px] md:aspect-auto md:h-80 md:max-h-none rounded-xl overflow-hidden mb-16 ring-1 ring-primary/30">
           <Image
             src={ABOUT_IMAGES.subsidiaryBanner}
             alt="Aman Enclave development — Mankarai, Haripur"
@@ -52,7 +52,7 @@ export default function SubsidiarySection() {
             <p className="text-primary text-xs tracking-widest uppercase mb-1">
               Flagship Project
             </p>
-            <p className="font-display text-2xl md:text-3xl text-white">
+            <p className="font-display text-2xl md:text-3xl text-foreground">
               Aman Enclave — Mankarai, Haripur
             </p>
           </div>
@@ -69,10 +69,10 @@ export default function SubsidiarySection() {
                 src={member.image}
                 alt={member.name}
                 sizes="(max-width: 768px) 100vw, 25vw"
-                className="h-56"
+                variant="compact"
               />
               <div className="p-5">
-                <h3 className="text-white font-semibold text-sm">{member.name}</h3>
+                <h3 className="text-foreground font-semibold text-sm">{member.name}</h3>
                 <p className="text-primary text-xs font-medium mt-1 mb-3">
                   {member.role}
                 </p>

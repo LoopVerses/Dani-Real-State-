@@ -3,6 +3,9 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import Footer from "@/components/layout/Footer";
 import NavbarLoader from "@/components/layout/NavbarLoader";
 import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import ThemeScript from "@/components/providers/ThemeScript";
+import HeadLinks from "@/components/seo/HeadLinks";
 import JsonLd from "@/components/seo/JsonLd";
 import { buildRootMetadata } from "@/lib/seo";
 import "./globals.css";
@@ -32,14 +35,23 @@ export default function RootLayout({
       className={`${cormorant.variable} ${dmSans.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen bg-dark text-white font-body antialiased" suppressHydrationWarning>
-        <JsonLd />
-        <NavbarLoader />
-        <main className="w-full min-w-0" suppressHydrationWarning>
-          {children}
-        </main>
-        <Footer />
-        <WhatsAppWidget />
+      <head>
+        <HeadLinks />
+      </head>
+      <body
+        className="min-h-screen bg-background text-foreground font-body antialiased theme-surface"
+        suppressHydrationWarning
+      >
+        <ThemeScript />
+        <ThemeProvider>
+          <JsonLd />
+          <NavbarLoader />
+          <main className="w-full min-w-0" suppressHydrationWarning>
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppWidget />
+        </ThemeProvider>
       </body>
     </html>
   );

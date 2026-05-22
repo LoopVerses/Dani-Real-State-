@@ -43,7 +43,7 @@ export default function StatsSection() {
               className="bg-dark-3 border border-primary/10 hover:border-primary/40 rounded-xl p-8 text-center transition-all duration-300"
             >
               <Icon className="w-10 h-10 text-primary mx-auto mb-4" />
-              <h3 className="text-white font-semibold mb-2">{title}</h3>
+              <h3 className="text-foreground font-semibold mb-2">{title}</h3>
               <p className="text-text-muted text-sm">{desc}</p>
             </div>
           ))}

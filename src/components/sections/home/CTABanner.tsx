@@ -26,13 +26,13 @@ export default function CTABanner() {
       >
         <defs>
           <pattern id="lines" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M0 60 L60 0" stroke="#C9A84C" strokeWidth="0.5" fill="none" />
+            <path d="M0 60 L60 0" stroke="#E2A805" strokeWidth="0.5" fill="none" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#lines)" />
       </svg>
       <div className="relative max-w-3xl mx-auto text-center">
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-white mb-4">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-foreground mb-4">
           Ready to Explore Our Projects?
         </h2>
         <p className="text-text-muted font-body mb-8 max-w-xl mx-auto text-sm sm:text-base px-2">

@@ -34,7 +34,8 @@ export const SITE = {
 export const NAV_LINKS = [
   { href: ROUTES.home, label: "Home" },
   { href: ROUTES.projects, label: "Projects" },
-  { href: ROUTES.about, label: "Our Story" },
+  { href: ROUTES.whatWeOffer, label: "What We Offer" },
+  { href: ROUTES.about, label: "About Us" },
   { href: ROUTES.contact, label: "Contact" },
 ] as const;
 
