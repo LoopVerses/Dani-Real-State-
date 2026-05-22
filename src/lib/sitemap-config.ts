@@ -32,7 +32,10 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     name: "Dani Real Estate and Developers — Home",
     priority: 1,
     changeFrequency: "daily",
-    images: [...HERO_BANNERS.map((b) => b.src), LOGO_SRC],
+    images: [
+      ...HERO_BANNERS.flatMap((b) => [b.src, b.mobileSrc]),
+      LOGO_SRC,
+    ],
   },
   {
     path: ROUTES.projects,

@@ -2,6 +2,7 @@ import { HERO_BANNERS } from "@/lib/images";
 
 export type HeroSlide = {
   src: string;
+  mobileSrc: string;
   alt: string;
   eyebrow: string;
   title: string;

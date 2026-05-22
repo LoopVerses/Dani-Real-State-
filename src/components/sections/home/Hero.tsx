@@ -5,7 +5,6 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { HERO_SLIDES } from "@/data/hero";
-import { useIsMobile } from "@/hooks/useMediaQuery";
 import { HERO_AUTO_SLIDE_MS, IMAGE_FIT } from "@/lib/images";
 
 const luxEase = [0.25, 1, 0.35, 1] as const;
@@ -46,15 +45,7 @@ const imageParallaxVariants = {
   }),
 };
 
-/** No zoom/pan on mobile — prevents banner faces/buildings being clipped */
-const imageStaticVariants = {
-  enter: { scale: 1, x: "0%" },
-  center: { scale: 1, x: "0%", transition: { duration: 1.4, ease: luxEase } },
-  exit: { scale: 1, x: "0%", transition: { duration: 1.2, ease: luxEase } },
-};
-
 export default function Hero() {
-  const isMobile = useIsMobile();
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -117,16 +108,26 @@ export default function Hero() {
             className="absolute inset-0 overflow-hidden will-change-transform"
           >
             <motion.div
-              variants={isMobile ? imageStaticVariants : imageParallaxVariants}
-              className="absolute inset-0 origin-center"
+              variants={imageParallaxVariants}
+              className="absolute inset-0 origin-center max-md:[transform:none!important]"
             >
+              {/* Mobile — dedicated portrait banners (mobile_1–3) */}
+              <Image
+                src={active.mobileSrc}
+                alt={active.alt}
+                fill
+                priority={index === 0}
+                sizes="100vw"
+                className={`md:hidden ${IMAGE_FIT.heroBannerMobile}`}
+              />
+              {/* Desktop / tablet — full banners (1–3) */}
               <Image
                 src={active.src}
                 alt={active.alt}
                 fill
                 priority={index === 0}
                 sizes="100vw"
-                className={IMAGE_FIT.heroBanner}
+                className={`hidden md:block ${IMAGE_FIT.heroBanner}`}
               />
             </motion.div>
           </motion.div>
