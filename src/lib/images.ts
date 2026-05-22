@@ -62,7 +62,7 @@ export const ABOUT_IMAGES = {
 export const IMAGE_FIT = {
   heroBanner:
     "object-contain object-center bg-[#071E2B] md:object-cover md:object-[50%_28%] lg:object-[50%_30%]",
-  heroBannerMobile: "object-cover object-center bg-[#071E2B]",
+  heroBannerMobile: "object-contain object-center bg-[#071E2B]",
   landscapeHero:
     "object-contain object-center bg-dark md:object-cover md:object-center",
   landscapeCard:
