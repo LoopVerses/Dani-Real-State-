@@ -4,7 +4,10 @@ export function publicImage(filename: string): string {
 }
 
 /** Homepage only — client-provided banners & CEO */
+/** Navbar / brand — dark theme (default) */
 export const LOGO_SRC = publicImage("logo.png");
+/** Navbar / brand — light theme */
+export const LOGO_LIGHT_SRC = publicImage("light_theme.png");
 export const DANI_REAL_ESTATE_LOGO = publicImage("Dani Real Estate Logo.jpeg");
 export const CEO_IMAGE = publicImage("CEO Muhammad Saeed.jpeg");
 export const CLO_IMAGE = publicImage("Muhammad Zarak Aman Khan CLO.png");

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,8 +8,8 @@ import { Menu, X, CalendarDays, MessageCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SLOGAN } from "@/data/about";
 import { NAV_LINKS, whatsappLink } from "@/lib/site";
-import { LOGO_SRC } from "@/lib/images";
 import { ROUTES } from "@/lib/routes";
+import BrandLogo from "@/components/ui/BrandLogo";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useThemeOptional } from "@/components/providers/ThemeProvider";
 
@@ -72,14 +71,9 @@ export default function Navbar() {
         >
           {/* Logo — left */}
           <Link href="/" className="relative z-20 flex items-center shrink-0">
-            <Image
-              src={LOGO_SRC}
-              alt="Dani Real Estate and Developers"
-              width={320}
-              height={96}
-              className="h-9 sm:h-10 md:h-11 w-auto max-w-[min(220px,38vw)] object-contain object-left drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]"
+            <BrandLogo
               priority
-              unoptimized
+              className="h-9 sm:h-10 md:h-11 w-auto max-w-[min(220px,38vw)] object-contain object-left"
             />
           </Link>
 
@@ -169,13 +163,10 @@ export default function Navbar() {
               transition={{ duration: 0.35, ease: navEase }}
               className="absolute top-0 right-0 h-full w-full max-w-sm bg-dark-3/98 backdrop-blur-xl border-l border-[var(--glass-border)] flex flex-col pt-[4.5rem] px-8 pb-8"
             >
-              <Image
-                src={LOGO_SRC}
-                alt="Dani Real Estate"
+              <BrandLogo
                 width={240}
                 height={76}
                 className="h-14 w-auto max-w-[240px] object-contain mb-8"
-                unoptimized
               />
               <p className="text-primary text-xs tracking-[0.25em] uppercase mb-6 font-body">
                 {SLOGAN}
