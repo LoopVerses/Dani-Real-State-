@@ -2,11 +2,10 @@ import type { LucideIcon } from "lucide-react";
 import {
   Building2,
   ClipboardCheck,
-  FileCheck2,
+  HardHat,
   Home,
   Landmark,
-  LineChart,
-  Users,
+  PackageCheck,
 } from "lucide-react";
 
 export type WhatWeOfferItem = {
@@ -20,101 +19,88 @@ export type WhatWeOfferItem = {
 
 export const WHAT_WE_OFFER_INTRO = {
   eyebrow: "What We Offer",
-  title: "Complete Real Estate Solutions",
+  title: "Premium Real Estate Services",
   subtitle:
-    "From residential societies and commercial builds to plotting, advisory, and compliant delivery — Dani Real Estate and Developers LLP is your single partner across Haripur and KPK.",
+    "From developed lands and elegant homes to luxury farmhouses, consultancy, and premium construction materials — Dani Real Estate delivers trusted, complete property solutions.",
 };
 
 export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
-    id: "residential",
-    icon: Home,
-    title: "Residential Development",
-    summary: "Master-planned housing societies and premium homes.",
-    description:
-      "We design and deliver residential communities that balance livability, infrastructure, and long-term value — including delivered landmarks such as China Town, Danial Gardens, and ongoing phases of Dani Hills.",
-    highlights: [
-      "Housing societies & gated communities",
-      "4 Marla to kanal residential units",
-      "Infrastructure, utilities & access roads",
-    ],
-  },
-  {
-    id: "commercial",
-    icon: Building2,
-    title: "Commercial Development",
-    summary: "Retail, education, fuel, and mixed-use projects.",
-    description:
-      "Our commercial portfolio includes operational petrol facilities, retail markets, and institutional builds — executed with approvals, quality construction, and handover you can verify on the ground.",
-    highlights: [
-      "Retail markets & shop developments",
-      "Schools and institutional facilities",
-      "Petrol stations & mixed-use plots",
-    ],
-  },
-  {
-    id: "plotting",
+    id: "developed-lands",
     icon: Landmark,
-    title: "Plotting & Land Development",
-    summary: "Farmhouse estates and strategic plot offerings.",
+    title: "Developed Lands",
+    summary: "Exclusive, ready-to-build plots in prime communities.",
     description:
-      "Whether you are buying for lifestyle or investment, we structure plotting schemes with clear documentation, transparent pricing, and developments sized from boutique farmhouse land to large-scale society plots.",
+      "We offer carefully selected developed lands with proper planning, access, and utility alignment so you can start construction with confidence and long-term value.",
     highlights: [
-      "Farmhouse & boutique land schemes",
-      "Kanal plotting with clear titles",
-      "Phased releases for investors",
+      "Prime locations with development potential",
+      "Ready-to-build plots with clear planning",
+      "Community-focused land options",
     ],
   },
   {
-    id: "advisory",
-    icon: LineChart,
-    title: "Investment Advisory",
-    summary: "Guidance for buyers, partners, and landowners.",
+    id: "houses-construction",
+    icon: Building2,
+    title: "Houses & Construction",
+    summary: "Elegant homes crafted with precision and quality.",
     description:
-      "Our leadership team brings decades of on-ground experience in Haripur. We help clients evaluate projects, understand timelines, and align purchases with realistic returns — not overpromises.",
+      "Our construction team delivers modern homes with strong structural standards, refined finishes, and practical layouts tailored for comfort, durability, and lasting resale value.",
     highlights: [
-      "Site visits & project walkthroughs",
-      "Payment plans & documentation review",
-      "Portfolio strategy for long-term holders",
+      "End-to-end residential construction",
+      "Quality workmanship and supervision",
+      "Durable materials and finishing standards",
     ],
   },
   {
-    id: "delivery",
-    icon: Users,
-    title: "End-to-End Project Delivery",
-    summary: "One team from concept to handover.",
+    id: "farmhouses",
+    icon: Home,
+    title: "Farmhouses",
+    summary: "Luxury farmhouse living with comfort and privacy.",
     description:
-      "Planning, approvals, construction coordination, marketing support, and handover — managed under one senior team so you are not juggling multiple vendors who disappear mid-sprint.",
+      "We design and develop upscale farmhouse environments that balance serenity, lifestyle convenience, and premium outdoor space for family living and long-term investment appeal.",
     highlights: [
-      "Planning & feasibility",
-      "Construction oversight",
-      "Marketing and sales support",
+      "Luxury-oriented farmhouse planning",
+      "Privacy-focused layouts and access",
+      "Lifestyle and investment-ready options",
     ],
   },
   {
-    id: "legal",
-    icon: FileCheck2,
-    title: "Legal & Documentation Support",
-    summary: "Structured transfers and regulatory alignment.",
-    description:
-      "Through our group expertise and Karlugh subsidiary leadership, clients receive documentation pathways aligned with local practice — reducing surprises during transfer, society membership, or commercial leasing.",
-    highlights: [
-      "Sale agreements & transfer files",
-      "Society bylaws & membership",
-      "Coordination with counsel where required",
-    ],
-  },
-  {
-    id: "consultation",
+    id: "consultancy",
     icon: ClipboardCheck,
-    title: "Consultation & Site Planning",
-    summary: "Book a viewing and scope your requirements.",
+    title: "Consultancy",
+    summary: "Strategic expertise in planning and execution.",
     description:
-      "Start with a conversation — WhatsApp, call, or office visit in Haripur. We map your budget, timeline, and goals to the right project or custom development path before you commit capital.",
+      "Our consultancy services provide strategic support in architecture, planning, development, and construction decisions to help clients move from concept to delivery effectively.",
     highlights: [
-      "Free initial consultation",
-      "Haripur on-ground team",
-      "WhatsApp-first updates during builds",
+      "Architecture and planning guidance",
+      "Feasibility and execution strategy",
+      "Construction process advisory",
+    ],
+  },
+  {
+    id: "construction-materials",
+    icon: PackageCheck,
+    title: "Construction Materials",
+    summary: "Premium-grade materials for superior reliability.",
+    description:
+      "We source and supply dependable, premium-grade construction materials that support structural strength, long-term performance, and high-quality finish across project types.",
+    highlights: [
+      "Strength and durability focused supply",
+      "Reliable quality for all project scales",
+      "Superior finishing material standards",
+    ],
+  },
+  {
+    id: "project-delivery",
+    icon: HardHat,
+    title: "Project Delivery",
+    summary: "Integrated execution from planning to completion.",
+    description:
+      "We manage planning, coordination, site execution, and delivery oversight through one accountable team to keep timelines realistic and quality consistent from start to finish.",
+    highlights: [
+      "Unified planning and construction flow",
+      "Timeline and quality control",
+      "Professional handover standards",
     ],
   },
 ];

@@ -1,5 +1,6 @@
 import PageHero from "@/components/sections/properties/PageHero";
 import WhatWeOfferGrid from "@/components/sections/what-we-offer/WhatWeOfferGrid";
+import AdvisoryBoardHighlight from "@/components/sections/what-we-offer/AdvisoryBoardHighlight";
 import WhatWeOfferCTA from "@/components/sections/what-we-offer/WhatWeOfferCTA";
 import { WHAT_WE_OFFER_INTRO } from "@/data/what-we-offer";
 import { STOCK_IMAGES } from "@/lib/images";
@@ -30,6 +31,7 @@ export default function WhatWeOfferPage() {
         backgroundImage={STOCK_IMAGES.projectCard4}
       />
       <WhatWeOfferGrid />
+      <AdvisoryBoardHighlight />
       <WhatWeOfferCTA />
     </>
   );
