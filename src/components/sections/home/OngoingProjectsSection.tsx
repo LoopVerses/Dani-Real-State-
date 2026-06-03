@@ -6,17 +6,9 @@ import { useInView } from "react-intersection-observer";
 import { ArrowRight, Construction } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { ongoingProjects } from "@/data/about";
-import { IMAGE_FIT, STOCK_IMAGES } from "@/lib/images";
+import { IMAGE_FIT, ONGOING_PROJECT_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/routes";
-
-const cardImages = [
-  STOCK_IMAGES.projectCard4,
-  STOCK_IMAGES.projectCard5,
-  STOCK_IMAGES.projectCard6,
-  STOCK_IMAGES.projectCard1,
-  STOCK_IMAGES.projectCard2,
-];
 
 export default function OngoingProjectsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-60px" });
@@ -49,7 +41,7 @@ export default function OngoingProjectsSection() {
             >
               <div className="relative aspect-[16/10] min-h-[160px] max-h-[200px] sm:aspect-auto sm:h-48 overflow-hidden bg-dark-3">
                 <Image
-                  src={cardImages[i % cardImages.length]}
+                  src={ONGOING_PROJECT_IMAGES[i % ONGOING_PROJECT_IMAGES.length]}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"

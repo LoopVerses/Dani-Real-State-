@@ -3,7 +3,11 @@ export function publicImage(filename: string): string {
   return `/images/${encodeURIComponent(filename)}`;
 }
 
-/** Homepage only — client-provided banners & CEO */
+/** Client final assets — /public/final_images */
+export function finalImage(filename: string): string {
+  return `/final_images/${encodeURIComponent(filename)}`;
+}
+
 /** Navbar / brand — dark theme (default) */
 export const LOGO_SRC = publicImage("logo.png");
 /** Navbar / brand — light theme */
@@ -32,32 +36,41 @@ export const HERO_BANNERS = [
 
 export const HERO_AUTO_SLIDE_MS = 8000;
 
-/** Other pages — Unsplash (homepage banners stay local) */
-export const STOCK_IMAGES = {
-  aboutHero:
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80&auto=format&fit=crop",
-  projectsHero:
-    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1600&q=80&auto=format&fit=crop",
-  contactHero:
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80&auto=format&fit=crop",
-  projectCard1:
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop",
-  projectCard2:
-    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop",
-  projectCard3:
-    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80&auto=format&fit=crop",
-  projectCard4:
-    "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80&auto=format&fit=crop",
-  projectCard5:
-    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80&auto=format&fit=crop",
-  projectCard6:
-    "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80&auto=format&fit=crop",
+/** Final production images (10) — services, projects, heroes */
+export const FINAL_IMAGES = {
+  developedLands: finalImage("Developed Lands.jpeg"),
+  houses: finalImage("Houses.jpeg"),
+  farmhouses: finalImage("Farmhouses.png"),
+  farmhouseLand: finalImage("Farmhouse Land.png"),
+  architectural: finalImage("Architectural.png"),
+  material: finalImage("Material.jpg"),
+  amanEnclave: finalImage("Aman Enclvae.png"),
+  anishCottages: finalImage("Anish Cortages.jpeg"),
+  danialGardens: finalImage("Danial Gardens.JPG"),
+  amirGul: finalImage("Amir Gul.png"),
 } as const;
 
+/** Page heroes — local final images (no Unsplash) */
+export const PAGE_HERO_IMAGES = {
+  about: FINAL_IMAGES.developedLands,
+  projects: FINAL_IMAGES.amanEnclave,
+  contact: FINAL_IMAGES.houses,
+  whatWeOffer: FINAL_IMAGES.architectural,
+} as const;
+
+/** Ongoing project cards (homepage + order matches ongoingProjects in about.ts) */
+export const ONGOING_PROJECT_IMAGES = [
+  FINAL_IMAGES.farmhouseLand,
+  FINAL_IMAGES.developedLands,
+  FINAL_IMAGES.amanEnclave,
+  FINAL_IMAGES.anishCottages,
+  FINAL_IMAGES.farmhouses,
+] as const;
+
 export const ABOUT_IMAGES = {
-  pageHero: STOCK_IMAGES.aboutHero,
+  pageHero: PAGE_HERO_IMAGES.about,
   story: CEO_IMAGE,
-  subsidiaryBanner: STOCK_IMAGES.projectCard4,
+  subsidiaryBanner: FINAL_IMAGES.amanEnclave,
   homeSnippet: DANI_REAL_ESTATE_LOGO,
 } as const;
 
@@ -72,4 +85,5 @@ export const IMAGE_FIT = {
     "object-contain object-center bg-dark-3 md:object-cover md:object-center",
   portrait:
     "object-contain object-top bg-dark-2 md:object-cover md:object-[50%_18%]",
+  serviceCard: "object-cover object-center",
 } as const;

@@ -4,6 +4,7 @@ import MapSection from "@/components/sections/contact/MapSection";
 import FAQSection from "@/components/sections/contact/FAQSection";
 import { CONTACT } from "@/lib/site";
 import { ROUTES } from "@/lib/routes";
+import { PAGE_HERO_IMAGES } from "@/lib/images";
 import { buildPageMetadata, PRIMARY_DOMAIN } from "@/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -26,7 +27,7 @@ export default function ContactDaniRealEstatePage() {
       <PageHero
         title="Get In Touch"
         subtitle="We're here to help you find your perfect property in Haripur & KPK"
-        backgroundImage="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600"
+        backgroundImage={PAGE_HERO_IMAGES.contact}
       />
       <ContactForm />
       <MapSection />

@@ -6,18 +6,9 @@ import { useInView } from "react-intersection-observer";
 import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { deliveredProjects, ongoingProjects } from "@/data/about";
-import { STOCK_IMAGES } from "@/lib/images";
+import { ONGOING_PROJECT_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/routes";
-
-const cardImages = [
-  STOCK_IMAGES.projectCard1,
-  STOCK_IMAGES.projectCard2,
-  STOCK_IMAGES.projectCard3,
-  STOCK_IMAGES.projectCard4,
-  STOCK_IMAGES.projectCard5,
-  STOCK_IMAGES.projectCard6,
-];
 
 const featured = [
   ...deliveredProjects.flatMap((g) => g.items).slice(0, 3),
@@ -49,7 +40,7 @@ export default function ProjectsShowcase() {
             >
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={cardImages[i % cardImages.length]}
+                  src={ONGOING_PROJECT_IMAGES[i % ONGOING_PROJECT_IMAGES.length]}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"

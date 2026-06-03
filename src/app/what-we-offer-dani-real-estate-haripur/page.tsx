@@ -3,7 +3,7 @@ import WhatWeOfferGrid from "@/components/sections/what-we-offer/WhatWeOfferGrid
 import AdvisoryBoardHighlight from "@/components/sections/what-we-offer/AdvisoryBoardHighlight";
 import WhatWeOfferCTA from "@/components/sections/what-we-offer/WhatWeOfferCTA";
 import { WHAT_WE_OFFER_INTRO } from "@/data/what-we-offer";
-import { STOCK_IMAGES } from "@/lib/images";
+import { PAGE_HERO_IMAGES } from "@/lib/images";
 import { ROUTES } from "@/lib/routes";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -28,7 +28,7 @@ export default function WhatWeOfferPage() {
       <PageHero
         title={WHAT_WE_OFFER_INTRO.title}
         subtitle={WHAT_WE_OFFER_INTRO.subtitle}
-        backgroundImage={STOCK_IMAGES.projectCard4}
+        backgroundImage={PAGE_HERO_IMAGES.whatWeOffer}
       />
       <WhatWeOfferGrid />
       <AdvisoryBoardHighlight />

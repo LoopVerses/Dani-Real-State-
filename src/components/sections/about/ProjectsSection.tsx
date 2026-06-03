@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { CheckCircle2, Construction } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { deliveredProjects, ongoingProjects } from "@/data/about";
+import { FINAL_IMAGES, IMAGE_FIT, ONGOING_PROJECT_IMAGES } from "@/lib/images";
 
 export default function ProjectsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -19,11 +21,26 @@ export default function ProjectsSection() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <SectionHeader
-          label="Portfolio"
-          title="Delivered Projects"
-          align="left"
-        />
+        <div className="relative rounded-2xl overflow-hidden border border-primary/20 mb-14 min-h-[220px] md:min-h-[280px]">
+          <Image
+            src={FINAL_IMAGES.danialGardens}
+            alt="Danial Gardens — delivered housing development Haripur"
+            fill
+            sizes="100vw"
+            className={IMAGE_FIT.landscapeHero}
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark via-dark/70 to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-center p-6 md:p-10 max-w-xl">
+            <p className="text-primary text-xs tracking-[0.3em] uppercase mb-2">Delivered</p>
+            <h3 className="font-display text-2xl md:text-3xl text-foreground mb-2">Danial Gardens</h3>
+            <p className="text-text-muted text-sm md:text-base">
+              104 Kanal housing development, completed 2018–2021 at Nartopa Road, Haripur.
+            </p>
+          </div>
+        </div>
+
+        <SectionHeader label="Portfolio" title="Delivered Projects" align="left" />
         <div className="grid md:grid-cols-2 gap-10 mb-20">
           {deliveredProjects.map((group) => (
             <div key={group.category}>
@@ -38,9 +55,7 @@ export default function ProjectsSection() {
                     className="bg-dark-3 border border-primary/10 rounded-lg p-5 hover:border-primary/30 transition-colors"
                   >
                     <p className="text-foreground font-semibold mb-1">{item.title}</p>
-                    <p className="text-text-muted text-sm leading-relaxed">
-                      {item.detail}
-                    </p>
+                    <p className="text-text-muted text-sm leading-relaxed">{item.detail}</p>
                   </li>
                 ))}
               </ul>
@@ -48,23 +63,30 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        <SectionHeader
-          label="In Progress"
-          title="Ongoing Projects"
-          align="left"
-        />
-        <ul className="grid md:grid-cols-2 gap-4">
-          {ongoingProjects.map((item) => (
+        <SectionHeader label="In Progress" title="Ongoing Projects" align="left" />
+        <ul className="grid sm:grid-cols-2 gap-6">
+          {ongoingProjects.map((item, i) => (
             <li
               key={item.title}
-              className="flex gap-4 bg-dark-2 border border-primary/20 rounded-lg p-5"
+              className="bg-dark-3 border border-primary/15 rounded-xl overflow-hidden hover:border-primary/40 transition-colors"
             >
-              <Construction className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-              <div>
-                <p className="text-foreground font-semibold mb-1">{item.title}</p>
-                <p className="text-text-muted text-sm leading-relaxed">
-                  {item.detail}
-                </p>
+              <div className="relative h-44 overflow-hidden bg-dark-2">
+                <Image
+                  src={ONGOING_PROJECT_IMAGES[i]}
+                  alt={item.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className={IMAGE_FIT.landscapeCard}
+                  unoptimized
+                />
+                <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-on-primary">
+                  <Construction className="w-3 h-3" />
+                  Ongoing
+                </span>
+              </div>
+              <div className="p-5">
+                <p className="text-foreground font-semibold mb-2">{item.title}</p>
+                <p className="text-text-muted text-sm leading-relaxed">{item.detail}</p>
               </div>
             </li>
           ))}

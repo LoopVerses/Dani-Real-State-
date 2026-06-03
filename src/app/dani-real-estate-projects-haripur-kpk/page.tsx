@@ -1,7 +1,7 @@
 import PageHero from "@/components/sections/properties/PageHero";
 import ProjectsSection from "@/components/sections/about/ProjectsSection";
 import { SLOGAN } from "@/data/about";
-import { STOCK_IMAGES } from "@/lib/images";
+import { PAGE_HERO_IMAGES } from "@/lib/images";
 import { ROUTES } from "@/lib/routes";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -25,7 +25,7 @@ export default function DaniRealEstateProjectsPage() {
       <PageHero
         title="Our Projects"
         subtitle="Delivered excellence & flagship developments across Haripur"
-        backgroundImage={STOCK_IMAGES.projectsHero}
+        backgroundImage={PAGE_HERO_IMAGES.projects}
       />
       <ProjectsSection />
     </>

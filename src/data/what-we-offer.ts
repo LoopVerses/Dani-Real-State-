@@ -7,10 +7,12 @@ import {
   Landmark,
   PackageCheck,
 } from "lucide-react";
+import { FINAL_IMAGES } from "@/lib/images";
 
 export type WhatWeOfferItem = {
   id: string;
   icon: LucideIcon;
+  image: string;
   title: string;
   summary: string;
   description: string;
@@ -28,6 +30,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "developed-lands",
     icon: Landmark,
+    image: FINAL_IMAGES.developedLands,
     title: "Developed Lands",
     summary: "Exclusive, ready-to-build plots in prime communities.",
     description:
@@ -41,6 +44,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "houses-construction",
     icon: Building2,
+    image: FINAL_IMAGES.houses,
     title: "Houses & Construction",
     summary: "Elegant homes crafted with precision and quality.",
     description:
@@ -54,6 +58,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "farmhouses",
     icon: Home,
+    image: FINAL_IMAGES.farmhouses,
     title: "Farmhouses",
     summary: "Luxury farmhouse living with comfort and privacy.",
     description:
@@ -67,6 +72,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "consultancy",
     icon: ClipboardCheck,
+    image: FINAL_IMAGES.architectural,
     title: "Consultancy",
     summary: "Strategic expertise in planning and execution.",
     description:
@@ -80,6 +86,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "construction-materials",
     icon: PackageCheck,
+    image: FINAL_IMAGES.material,
     title: "Construction Materials",
     summary: "Premium-grade materials for superior reliability.",
     description:
@@ -93,6 +100,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "project-delivery",
     icon: HardHat,
+    image: FINAL_IMAGES.amanEnclave,
     title: "Project Delivery",
     summary: "Integrated execution from planning to completion.",
     description:

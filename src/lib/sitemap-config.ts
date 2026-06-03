@@ -2,10 +2,12 @@ import type { MetadataRoute } from "next";
 import { ROUTES } from "@/lib/routes";
 import {
   CLO_IMAGE,
+  FINAL_IMAGES,
   HERO_BANNERS,
   LOGO_SRC,
   ABOUT_IMAGES,
-  STOCK_IMAGES,
+  ONGOING_PROJECT_IMAGES,
+  PAGE_HERO_IMAGES,
   publicImage,
 } from "@/lib/images";
 import { absoluteImageUrl, absoluteUrl } from "@/lib/absolute-url";
@@ -13,29 +15,20 @@ import { absoluteImageUrl, absoluteUrl } from "@/lib/absolute-url";
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
 export type SitemapPageConfig = {
-  /** Canonical path (no hash) */
   path: string;
   name: string;
   priority: number;
   changeFrequency: ChangeFrequency;
-  /** Relative or absolute image URLs — expanded to absolute in sitemap */
   images: string[];
 };
 
-/**
- * Every indexable page — only canonical SEO slugs (no legacy redirects, no hash URLs).
- * Google: one URL per page; keywords live in meta + JSON-LD, not duplicate thin URLs.
- */
 export const INDEXABLE_PAGES: SitemapPageConfig[] = [
   {
     path: ROUTES.home,
     name: "Dani Real Estate and Developers — Home",
     priority: 1,
     changeFrequency: "daily",
-    images: [
-      ...HERO_BANNERS.flatMap((b) => [b.src, b.mobileSrc]),
-      LOGO_SRC,
-    ],
+    images: [...HERO_BANNERS.flatMap((b) => [b.src, b.mobileSrc]), LOGO_SRC],
   },
   {
     path: ROUTES.projects,
@@ -43,13 +36,9 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     priority: 0.95,
     changeFrequency: "weekly",
     images: [
-      STOCK_IMAGES.projectsHero,
-      STOCK_IMAGES.projectCard1,
-      STOCK_IMAGES.projectCard2,
-      STOCK_IMAGES.projectCard3,
-      STOCK_IMAGES.projectCard4,
-      STOCK_IMAGES.projectCard5,
-      STOCK_IMAGES.projectCard6,
+      PAGE_HERO_IMAGES.projects,
+      FINAL_IMAGES.danialGardens,
+      ...ONGOING_PROJECT_IMAGES,
     ],
   },
   {
@@ -57,7 +46,16 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     name: "What We Offer — Dani Real Estate Haripur",
     priority: 0.92,
     changeFrequency: "weekly",
-    images: [STOCK_IMAGES.projectCard4, LOGO_SRC],
+    images: [
+      PAGE_HERO_IMAGES.whatWeOffer,
+      FINAL_IMAGES.developedLands,
+      FINAL_IMAGES.houses,
+      FINAL_IMAGES.farmhouses,
+      FINAL_IMAGES.architectural,
+      FINAL_IMAGES.material,
+      FINAL_IMAGES.amirGul,
+      LOGO_SRC,
+    ],
   },
   {
     path: ROUTES.about,
@@ -81,14 +79,10 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     name: "Contact Dani Real Estate Haripur",
     priority: 0.9,
     changeFrequency: "weekly",
-    images: [STOCK_IMAGES.contactHero, LOGO_SRC],
+    images: [PAGE_HERO_IMAGES.contact, LOGO_SRC],
   },
 ];
 
-/**
- * Live sitemap: /public/sitemap.xml (static, valid XML — no Unsplash &amp; issues).
- * This config is used for JSON-LD navigation only.
- */
 export function buildSitemapEntries(): MetadataRoute.Sitemap {
   const builtAt = new Date();
 
@@ -101,7 +95,6 @@ export function buildSitemapEntries(): MetadataRoute.Sitemap {
   }));
 }
 
-/** For JSON-LD SiteNavigationElement / ItemList */
 export function sitemapNavigationItems() {
   return INDEXABLE_PAGES.map((page, index) => ({
     "@type": "ListItem" as const,
