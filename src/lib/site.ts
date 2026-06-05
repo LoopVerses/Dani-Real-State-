@@ -20,7 +20,7 @@ export const CONTACT = {
     "Hello Dani Real Estate, I would like to inquire about your projects."
   ),
   address: "Haripur, Khyber Pakhtunkhwa, Pakistan",
-  hours: "Monday – Saturday: 9 AM – 7 PM",
+  hours: "Monday – Thursday: 9 AM – 5:30 PM",
 } as const;
 
 export const SITE = {
