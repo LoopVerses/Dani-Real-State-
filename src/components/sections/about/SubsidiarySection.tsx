@@ -4,11 +4,9 @@ import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import LandscapeBanner from "@/components/ui/LandscapeBanner";
 import TeamMemberCard from "@/components/ui/TeamMemberCard";
+import { ABOUT_MEMBER_GRID } from "@/lib/about-layout";
 import { subsidiaryStory, karlughTeam } from "@/data/about";
 import { ABOUT_IMAGES } from "@/lib/images";
-
-const memberGrid =
-  "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-stretch";
 
 export default function SubsidiarySection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -58,7 +56,7 @@ export default function SubsidiarySection() {
         </LandscapeBanner>
 
         <SectionHeader label="Karlugh Team" title="Leadership" />
-        <div className={memberGrid}>
+        <div className={ABOUT_MEMBER_GRID}>
           {karlughTeam.map((member) => (
             <TeamMemberCard
               key={member.id}
@@ -66,8 +64,7 @@ export default function SubsidiarySection() {
               role={member.role}
               bio={member.bio}
               image={member.image}
-              imageSizes="(max-width: 1280px) 50vw, 20vw"
-              dense
+              imageSizes="(max-width: 1024px) 50vw, 380px"
             />
           ))}
         </div>

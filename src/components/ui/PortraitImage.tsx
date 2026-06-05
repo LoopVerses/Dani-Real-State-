@@ -1,10 +1,9 @@
 import Image from "next/image";
+import { TEAM_PHOTO_FRAME } from "@/lib/about-layout";
 import { IMAGE_FIT } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
-/** Uniform portrait frame — scales with card width, same ratio everywhere */
-export const TEAM_PHOTO_FRAME =
-  "relative aspect-[3/4] w-full shrink-0 overflow-hidden bg-dark-2";
+export { TEAM_PHOTO_FRAME };
 
 interface PortraitImageProps {
   src: string;

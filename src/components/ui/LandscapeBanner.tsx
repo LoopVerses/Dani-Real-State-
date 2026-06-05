@@ -1,10 +1,9 @@
 import Image from "next/image";
+import { ABOUT_PAGE_BANNER } from "@/lib/about-layout";
 import { IMAGE_FIT } from "@/lib/images";
 import { cn } from "@/lib/utils";
 
-/** Uniform landscape banner — same aspect on mobile and desktop */
-export const LANDSCAPE_BANNER_FRAME =
-  "relative aspect-[16/9] w-full overflow-hidden bg-dark-2";
+export { ABOUT_PAGE_BANNER as LANDSCAPE_BANNER_FRAME };
 
 type LandscapeBannerProps = {
   src: string;
@@ -20,7 +19,7 @@ export default function LandscapeBanner({
   children,
 }: LandscapeBannerProps) {
   return (
-    <div className={cn(LANDSCAPE_BANNER_FRAME, className)}>
+    <div className={cn(ABOUT_PAGE_BANNER, className)}>
       <Image
         src={src}
         alt={alt}

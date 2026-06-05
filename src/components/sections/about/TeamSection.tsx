@@ -3,10 +3,8 @@
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import TeamMemberCard from "@/components/ui/TeamMemberCard";
+import { ABOUT_MEMBER_GRID } from "@/lib/about-layout";
 import { advisoryBoardMember, boardOfDirectors } from "@/data/about";
-
-const memberGrid =
-  "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 items-stretch";
 
 export default function TeamSection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -28,7 +26,7 @@ export default function TeamSection() {
           title="Board of Directors"
           subtitle="Dani Real Estate and Developers LLP"
         />
-        <div className={`${memberGrid} mb-16 md:mb-20`}>
+        <div className={`${ABOUT_MEMBER_GRID} mb-16 md:mb-20`}>
           {boardOfDirectors.map((member) => (
             <TeamMemberCard
               key={member.id}
@@ -36,7 +34,7 @@ export default function TeamSection() {
               role={member.role}
               bio={member.bio}
               image={member.image}
-              imageSizes="(max-width: 768px) 100vw, 33vw"
+              imageSizes="(max-width: 1024px) 50vw, 380px"
               className="hover:border-primary hover:shadow-lg hover:shadow-primary/20"
             />
           ))}
@@ -47,14 +45,14 @@ export default function TeamSection() {
           title="Strategic Advisory"
           subtitle="Dani Real Estate and Developers LLP"
         />
-        <div className="mx-auto max-w-sm sm:max-w-md lg:max-w-none lg:grid lg:grid-cols-3 lg:gap-8">
+        <div className={ABOUT_MEMBER_GRID}>
           <TeamMemberCard
             name={advisoryBoardMember.name}
             role={`${advisoryBoardMember.role} — Dani Real Estate and Developers LLP`}
             bio={advisoryBoardMember.bio}
             image={advisoryBoardMember.image}
-            imageSizes="(max-width: 768px) 100vw, 280px"
-            className="lg:col-start-2 hover:border-primary/40"
+            imageSizes="(max-width: 1024px) 50vw, 380px"
+            className="sm:col-span-2 sm:max-w-md sm:mx-auto lg:col-span-1 lg:col-start-2 lg:max-w-none lg:mx-0 hover:border-primary/40"
           />
         </div>
       </div>

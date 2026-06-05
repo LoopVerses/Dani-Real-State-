@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useInView } from "react-intersection-observer";
-import { TEAM_PHOTO_FRAME } from "@/components/ui/PortraitImage";
-import { ABOUT_IMAGES, IMAGE_FIT } from "@/lib/images";
+import PortraitImage from "@/components/ui/PortraitImage";
+import { ABOUT_IMAGES } from "@/lib/images";
 import { storyParagraphs, SLOGAN } from "@/data/about";
 
 export default function OurStory() {
@@ -12,40 +11,33 @@ export default function OurStory() {
   return (
     <section
       ref={ref}
-      className="py-12 md:py-24 px-4 bg-dark"
+      className="bg-dark px-4 py-12 md:py-24"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "none" : "translateY(40px)",
         transition: "all 0.7s ease",
       }}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-[minmax(0,22rem)_1fr] gap-6 md:gap-8 items-start">
-          <div
-            className={`${TEAM_PHOTO_FRAME} mx-auto w-full max-w-[20rem] rounded-lg border border-primary/30 shadow-lg shadow-black/30 md:mx-0 md:max-w-[22rem]`}
-          >
-            <Image
-              src={ABOUT_IMAGES.story}
-              alt="Muhammad Saeed, Chief Executive Officer"
-              fill
-              sizes="(max-width: 768px) min(100vw, 24rem), 45vw"
-              className={IMAGE_FIT.portrait}
-            />
-          </div>
+      <div className="mx-auto max-w-7xl">
+        <div className="grid items-start gap-8 md:grid-cols-2 lg:grid-cols-[minmax(0,380px)_1fr] lg:gap-12">
+          <PortraitImage
+            src={ABOUT_IMAGES.story}
+            alt="Muhammad Saeed, Chief Executive Officer"
+            sizes="(max-width: 1024px) 100vw, 380px"
+            className="mx-auto w-full max-w-[380px] rounded-xl border border-primary/30 shadow-lg shadow-black/30 md:mx-0"
+          />
           <div>
-            <p className="text-primary text-xs tracking-[0.3em] uppercase mb-3">
+            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-primary">
               Our Story
             </p>
-            <h2 className="font-display text-4xl text-foreground mb-2">
+            <h2 className="mb-2 font-display text-4xl text-foreground">
               A Journey of Vision & Growth
             </h2>
-            <p className="text-primary font-display text-xl mb-6 italic">
-              {SLOGAN}
-            </p>
+            <p className="mb-6 font-display text-xl italic text-primary">{SLOGAN}</p>
             {storyParagraphs.map((paragraph) => (
               <p
                 key={paragraph.slice(0, 40)}
-                className="text-text-muted mb-4 leading-relaxed"
+                className="mb-4 leading-relaxed text-text-muted"
               >
                 {paragraph}
               </p>
