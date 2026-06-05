@@ -1,5 +1,5 @@
 import { Milestone, ProjectGroup, ProjectItem, TeamMember } from "@/types";
-import { CLO_IMAGE, publicImage } from "@/lib/images";
+import { CLO_IMAGE, FINAL_IMAGES, publicImage } from "@/lib/images";
 
 export const COMPANY_NAME = "Dani Real Estate and Developers LLP";
 export const SLOGAN = "Guiding You Home";
@@ -102,6 +102,18 @@ export const karlughTeam: TeamMember[] = [
     bio: "Muhammad Zarak Aman Khan serves as Chief Legal Officer of Karlugh Real Estate and Property Developers. He is a young and highly skilled legal professional with strong expertise in corporate and regulatory law. His strategic legal insight and sound judgment play a key role in guiding the company's governance and long-term development framework, ensuring all projects are executed with legal integrity and professionalism.",
   },
 ];
+
+export const advisoryBoardMember: TeamMember = {
+  id: "amir-gul",
+  name: "Mr. Amir Gul",
+  role: "Advisory Board Member",
+  initials: "AG",
+  image: FINAL_IMAGES.amirGul,
+  bio: "A seasoned professional with over three decades of leadership across military, hospitality, and oil & gas. Former Major in the Pakistan Army, with senior roles at Hashoo Group and BP/UEP in human resources, security, and risk management. His governance and operational expertise strengthens Dani Real Estate's strategic direction.",
+};
+
+/** Karlugh leadership + advisory board (6 members) */
+export const karlughLeadership: TeamMember[] = [...karlughTeam, advisoryBoardMember];
 
 export const subsidiaryStory = [
   "Karlugh Real Estate & Property Developers LLP is a subsidiary of Dani Real Estate Group, established to further expand the group's vision and development footprint.",

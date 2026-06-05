@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { subsidiaryStory, karlughTeam } from "@/data/about";
+import { subsidiaryStory, karlughLeadership } from "@/data/about";
 import { ABOUT_IMAGES, IMAGE_FIT } from "@/lib/images";
 import PortraitImage from "@/components/ui/PortraitImage";
 
@@ -58,9 +58,13 @@ export default function SubsidiarySection() {
           </div>
         </div>
 
-        <SectionHeader label="Karlugh Team" title="Leadership" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {karlughTeam.map((member) => (
+        <SectionHeader
+          label="Karlugh Team"
+          title="Leadership & Advisory Board"
+          subtitle="Executive leadership and strategic advisory guidance for Karlugh Real Estate"
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {karlughLeadership.map((member) => (
             <article
               key={member.id}
               className="bg-dark-3 rounded-xl overflow-hidden border border-primary/10 hover:border-primary/40 transition-all duration-300"

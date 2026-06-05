@@ -72,6 +72,7 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
       publicImage("CFO Danial Saeed.jpeg"),
       publicImage("Chairman Karlugh Kamal Aman Khan.jpeg"),
       CLO_IMAGE,
+      FINAL_IMAGES.amirGul,
     ],
   },
   {
