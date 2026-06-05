@@ -39,16 +39,13 @@ export default function OngoingProjectsSection() {
               )}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="relative aspect-[16/10] min-h-[160px] max-h-[200px] sm:aspect-auto sm:h-48 overflow-hidden bg-dark-3">
+              <div className="relative aspect-[16/10] min-h-[160px] sm:min-h-[180px] overflow-hidden bg-dark-3">
                 <Image
                   src={ONGOING_PROJECT_IMAGES[i % ONGOING_PROJECT_IMAGES.length]}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className={cn(
-                    IMAGE_FIT.landscapeCard,
-                    "transition-transform duration-500 group-hover:scale-105 max-md:group-hover:scale-100"
-                  )}
+                  className={IMAGE_FIT.landscapeCard}
                   unoptimized
                 />
                 <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-on-primary">

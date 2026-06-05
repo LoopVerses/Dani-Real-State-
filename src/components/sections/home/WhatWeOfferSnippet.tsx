@@ -40,16 +40,15 @@ export default function WhatWeOfferSnippet() {
               )}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="relative h-40 overflow-hidden bg-dark-2">
+              <div className="relative aspect-[4/3] min-h-[140px] overflow-hidden bg-dark-2">
                 <Image
                   src={image}
                   alt={title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className={cn(IMAGE_FIT.serviceCard, "transition-transform duration-500 group-hover:scale-105")}
+                  className={IMAGE_FIT.serviceCard}
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-3 via-dark/20 to-transparent" />
                 <div className="absolute bottom-3 left-3 w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center">
                   <Icon className="w-5 h-5 text-on-primary" strokeWidth={1.5} />
                 </div>

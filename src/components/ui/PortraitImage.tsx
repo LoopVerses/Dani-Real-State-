@@ -8,18 +8,16 @@ interface PortraitImageProps {
   sizes: string;
   priority?: boolean;
   className?: string;
-  /** Shorter frame on desktop (e.g. Karlugh 5-column grid) */
+  /** Shorter frame for dense grids (e.g. Karlugh 5-column) */
   variant?: "default" | "compact";
 }
 
 const frameByVariant = {
-  default:
-    "aspect-[3/4] w-full min-h-[300px] max-h-[420px] sm:min-h-[340px] md:aspect-auto md:min-h-0 md:max-h-none md:h-80",
-  compact:
-    "aspect-[3/4] w-full min-h-[280px] max-h-[380px] sm:min-h-[300px] md:aspect-auto md:min-h-0 md:max-h-none md:h-64 lg:h-56",
+  default: "aspect-[3/4] w-full min-h-[280px] sm:min-h-[320px]",
+  compact: "aspect-[3/4] w-full min-h-[260px] sm:min-h-[300px]",
 } as const;
 
-/** Headshot framing — full face on mobile, tighter crop from md up */
+/** Headshot — full photo visible on all screen sizes */
 export default function PortraitImage({
   src,
   alt,

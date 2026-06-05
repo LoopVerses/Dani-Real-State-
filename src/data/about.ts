@@ -103,17 +103,15 @@ export const karlughTeam: TeamMember[] = [
   },
 ];
 
+/** Dani Real Estate & Developers LLP — not Karlugh subsidiary */
 export const advisoryBoardMember: TeamMember = {
   id: "amir-gul",
   name: "Mr. Amir Gul",
   role: "Advisory Board Member",
   initials: "AG",
   image: FINAL_IMAGES.amirGul,
-  bio: "A seasoned professional with over three decades of leadership across military, hospitality, and oil & gas. Former Major in the Pakistan Army, with senior roles at Hashoo Group and BP/UEP in human resources, security, and risk management. His governance and operational expertise strengthens Dani Real Estate's strategic direction.",
+  bio: "A seasoned professional with over three decades of leadership across military, hospitality, and oil & gas. Former Major in the Pakistan Army, with senior roles at Hashoo Group and BP/UEP in human resources, security, and risk management. As Advisory Board Member of Dani Real Estate and Developers LLP, his governance and operational expertise strengthens the company's strategic direction.",
 };
-
-/** Karlugh leadership + advisory board (6 members) */
-export const karlughLeadership: TeamMember[] = [...karlughTeam, advisoryBoardMember];
 
 export const subsidiaryStory = [
   "Karlugh Real Estate & Property Developers LLP is a subsidiary of Dani Real Estate Group, established to further expand the group's vision and development footprint.",

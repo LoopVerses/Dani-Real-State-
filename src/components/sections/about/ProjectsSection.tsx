@@ -21,7 +21,7 @@ export default function ProjectsSection() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="relative rounded-2xl overflow-hidden border border-primary/20 mb-14 min-h-[220px] md:min-h-[280px]">
+        <div className="relative rounded-2xl overflow-hidden border border-primary/20 mb-14 aspect-[16/10] min-h-[200px] sm:min-h-[240px] md:min-h-[280px] bg-dark-2">
           <Image
             src={FINAL_IMAGES.danialGardens}
             alt="Danial Gardens — delivered housing development Haripur"
@@ -70,7 +70,7 @@ export default function ProjectsSection() {
               key={item.title}
               className="bg-dark-3 border border-primary/15 rounded-xl overflow-hidden hover:border-primary/40 transition-colors"
             >
-              <div className="relative h-44 overflow-hidden bg-dark-2">
+              <div className="relative aspect-[16/10] min-h-[160px] overflow-hidden bg-dark-2">
                 <Image
                   src={ONGOING_PROJECT_IMAGES[i]}
                   alt={item.title}

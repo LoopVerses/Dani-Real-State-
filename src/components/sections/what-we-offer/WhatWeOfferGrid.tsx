@@ -28,7 +28,7 @@ export default function WhatWeOfferGrid() {
             >
               <div
                 className={cn(
-                  "relative min-h-[220px] md:min-h-[320px] bg-dark-2",
+                  "relative aspect-[4/3] min-h-[200px] sm:min-h-[240px] md:min-h-[300px] bg-dark-2 flex items-center justify-center",
                   reversed ? "md:order-2" : "md:order-1"
                 )}
               >
@@ -40,7 +40,6 @@ export default function WhatWeOfferGrid() {
                   className={IMAGE_FIT.serviceCard}
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/20 to-transparent md:bg-gradient-to-r md:from-dark/60 md:via-transparent md:to-transparent" />
               </div>
 
               <div

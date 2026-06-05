@@ -3,7 +3,7 @@
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import PortraitImage from "@/components/ui/PortraitImage";
-import { boardOfDirectors } from "@/data/about";
+import { advisoryBoardMember, boardOfDirectors } from "@/data/about";
 
 export default function TeamSection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -25,7 +25,7 @@ export default function TeamSection() {
           title="Board of Directors"
           subtitle="Dani Real Estate and Developers LLP"
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 md:mb-20">
           {boardOfDirectors.map((member) => (
             <article
               key={member.id}
@@ -44,6 +44,27 @@ export default function TeamSection() {
             </article>
           ))}
         </div>
+
+        <SectionHeader
+          label="Advisory Board"
+          title="Strategic Advisory"
+          subtitle="Dani Real Estate and Developers LLP"
+        />
+        <article className="max-w-3xl mx-auto bg-dark-3 rounded-xl overflow-hidden border border-primary/15 hover:border-primary/40 transition-colors">
+          <PortraitImage
+            src={advisoryBoardMember.image}
+            alt={advisoryBoardMember.name}
+            sizes="(max-width: 768px) 100vw, 480px"
+            className="max-h-none md:aspect-[4/5] md:max-h-[520px]"
+          />
+          <div className="p-6 md:p-8 text-center md:text-left">
+            <h3 className="text-foreground font-semibold text-xl">{advisoryBoardMember.name}</h3>
+            <p className="text-primary text-sm font-medium mt-1 mb-4">
+              {advisoryBoardMember.role} — Dani Real Estate and Developers LLP
+            </p>
+            <p className="text-text-muted text-sm leading-relaxed">{advisoryBoardMember.bio}</p>
+          </div>
+        </article>
       </div>
     </section>
   );

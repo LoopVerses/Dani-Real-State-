@@ -18,7 +18,7 @@ export default function AdvisoryBoardHighlight() {
     >
       <div className="max-w-5xl mx-auto rounded-2xl border border-primary/20 bg-dark-3 overflow-hidden">
         <div className="grid md:grid-cols-[minmax(0,16rem)_1fr] gap-0">
-          <div className="relative aspect-[4/5] min-h-[280px] md:min-h-full bg-dark-2">
+          <div className="relative aspect-[3/4] min-h-[280px] sm:min-h-[320px] md:min-h-full bg-dark-2">
             <Image
               src={FINAL_IMAGES.amirGul}
               alt="Mr. Amir Gul — Advisory Board Member"
@@ -29,10 +29,12 @@ export default function AdvisoryBoardHighlight() {
             />
           </div>
           <div className="p-6 md:p-10 flex flex-col justify-center">
-            <p className="text-primary text-xs tracking-[0.28em] uppercase mb-3">Advisory Board</p>
+            <p className="text-primary text-xs tracking-[0.28em] uppercase mb-3">
+              Dani Real Estate Advisory Board
+            </p>
             <h2 className="font-display text-2xl md:text-3xl text-foreground mb-2">Mr. Amir Gul</h2>
             <p className="text-primary font-medium text-sm md:text-base mb-5">
-              Advisory Board Member
+              Advisory Board Member — Dani Real Estate and Developers LLP
             </p>
             <p className="text-text-muted leading-relaxed">
               A seasoned professional with more than three decades of leadership across military,
