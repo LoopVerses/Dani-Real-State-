@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
+import { TEAM_PHOTO_FRAME } from "@/components/ui/PortraitImage";
 import { ABOUT_IMAGES, IMAGE_FIT } from "@/lib/images";
 import { storyParagraphs, SLOGAN } from "@/data/about";
 
@@ -20,7 +21,9 @@ export default function OurStory() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-[minmax(0,22rem)_1fr] gap-6 md:gap-8 items-start">
-          <div className="relative aspect-[3/4] w-full min-h-[320px] max-h-[480px] sm:min-h-[360px] max-w-[min(100%,20rem)] mx-auto md:max-w-none md:min-h-0 md:max-h-none md:mx-0 rounded-lg overflow-hidden border border-primary/30 shadow-lg shadow-black/30">
+          <div
+            className={`${TEAM_PHOTO_FRAME} mx-auto w-full max-w-[20rem] rounded-lg border border-primary/30 shadow-lg shadow-black/30 md:mx-0 md:max-w-[22rem]`}
+          >
             <Image
               src={ABOUT_IMAGES.story}
               alt="Muhammad Saeed, Chief Executive Officer"

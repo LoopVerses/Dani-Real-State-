@@ -1,11 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
+import LandscapeBanner from "@/components/ui/LandscapeBanner";
+import TeamMemberCard from "@/components/ui/TeamMemberCard";
 import { subsidiaryStory, karlughTeam } from "@/data/about";
-import { ABOUT_IMAGES, IMAGE_FIT } from "@/lib/images";
-import PortraitImage from "@/components/ui/PortraitImage";
+import { ABOUT_IMAGES } from "@/lib/images";
+
+const memberGrid =
+  "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 items-stretch";
 
 export default function SubsidiarySection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -13,74 +16,59 @@ export default function SubsidiarySection() {
   return (
     <section
       ref={ref}
-      className="py-12 md:py-24 px-4 bg-dark border-t border-primary/10"
+      className="border-t border-primary/10 bg-dark px-4 py-12 md:py-24"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "none" : "translateY(40px)",
         transition: "all 0.7s ease",
       }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="mx-auto max-w-7xl">
         <SectionHeader
           label="Subsidiary"
           title="Karlugh Real Estate & Property Developers LLP"
           subtitle="A strategic extension of Dani Real Estate Group"
         />
 
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
           {subsidiaryStory.map((paragraph) => (
             <p
               key={paragraph.slice(0, 40)}
-              className="text-text-muted leading-relaxed mb-4"
+              className="mb-4 leading-relaxed text-text-muted"
             >
               {paragraph}
             </p>
           ))}
         </div>
 
-        <div className="relative aspect-[16/10] min-h-[200px] max-h-[280px] sm:min-h-[240px] md:aspect-auto md:h-80 md:max-h-none rounded-xl overflow-hidden mb-16 ring-1 ring-primary/30">
-          <Image
-            src={ABOUT_IMAGES.subsidiaryBanner}
-            alt="Aman Enclave development — Mankarai, Haripur"
-            fill
-            sizes="100vw"
-            className={IMAGE_FIT.landscapeHero}
-            unoptimized
-          />
+        <LandscapeBanner
+          src={ABOUT_IMAGES.subsidiaryBanner}
+          alt="Aman Enclave development — Mankarai, Haripur"
+          className="mb-12 rounded-xl ring-1 ring-primary/30 md:mb-16"
+        >
           <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6">
-            <p className="text-primary text-xs tracking-widest uppercase mb-1">
+          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6">
+            <p className="mb-1 text-xs uppercase tracking-widest text-primary">
               Flagship Project
             </p>
-            <p className="font-display text-2xl md:text-3xl text-foreground">
+            <p className="font-display text-xl text-foreground sm:text-2xl md:text-3xl">
               Aman Enclave — Mankarai, Haripur
             </p>
           </div>
-        </div>
+        </LandscapeBanner>
 
         <SectionHeader label="Karlugh Team" title="Leadership" />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className={memberGrid}>
           {karlughTeam.map((member) => (
-            <article
+            <TeamMemberCard
               key={member.id}
-              className="bg-dark-3 rounded-xl overflow-hidden border border-primary/10 hover:border-primary/40 transition-all duration-300"
-            >
-              <PortraitImage
-                src={member.image}
-                alt={member.name}
-                sizes="(max-width: 768px) 100vw, 25vw"
-                variant="compact"
-              />
-              <div className="p-5">
-                <h3 className="text-foreground font-semibold text-sm">{member.name}</h3>
-                <p className="text-primary text-xs font-medium mt-1 mb-3">
-                  {member.role}
-                </p>
-                <p className="text-text-muted text-xs leading-relaxed">
-                  {member.bio}
-                </p>
-              </div>
-            </article>
+              name={member.name}
+              role={member.role}
+              bio={member.bio}
+              image={member.image}
+              imageSizes="(max-width: 1280px) 50vw, 20vw"
+              dense
+            />
           ))}
         </div>
       </div>
