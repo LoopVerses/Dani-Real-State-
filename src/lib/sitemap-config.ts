@@ -1,14 +1,13 @@
 import type { MetadataRoute } from "next";
 import { ROUTES } from "@/lib/routes";
 import {
-  CLO_IMAGE,
+  BOARD_MEMBER_IMAGES,
   FINAL_IMAGES,
   HERO_BANNERS,
   LOGO_SRC,
   ABOUT_IMAGES,
   ONGOING_PROJECT_IMAGES,
   PAGE_HERO_IMAGES,
-  publicImage,
 } from "@/lib/images";
 import { absoluteImageUrl, absoluteUrl } from "@/lib/absolute-url";
 
@@ -53,7 +52,7 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
       FINAL_IMAGES.farmhouses,
       FINAL_IMAGES.architectural,
       FINAL_IMAGES.material,
-      FINAL_IMAGES.amirGul,
+      BOARD_MEMBER_IMAGES.amirGul,
       LOGO_SRC,
     ],
   },
@@ -67,12 +66,7 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
       ABOUT_IMAGES.story,
       ABOUT_IMAGES.subsidiaryBanner,
       ABOUT_IMAGES.homeSnippet,
-      publicImage("CEO Muhammad Saeed.jpeg"),
-      publicImage("COO Imran Rasheed.jpeg"),
-      publicImage("CFO Danial Saeed.jpeg"),
-      publicImage("Chairman Karlugh Kamal Aman Khan.jpeg"),
-      CLO_IMAGE,
-      FINAL_IMAGES.amirGul,
+      ...Object.values(BOARD_MEMBER_IMAGES),
     ],
   },
   {

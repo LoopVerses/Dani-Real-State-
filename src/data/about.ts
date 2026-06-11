@@ -1,5 +1,5 @@
 import { Milestone, ProjectGroup, ProjectItem, TeamMember } from "@/types";
-import { CLO_IMAGE, FINAL_IMAGES, publicImage } from "@/lib/images";
+import { BOARD_MEMBER_IMAGES } from "@/lib/images";
 
 export const COMPANY_NAME = "Dani Real Estate and Developers LLP";
 export const SLOGAN = "Guiding You Home";
@@ -39,7 +39,7 @@ export const boardOfDirectors: TeamMember[] = [
     name: "Muhammad Saeed",
     role: "Chief Executive Officer",
     initials: "MS",
-    image: publicImage("CEO Muhammad Saeed.jpeg"),
+    image: BOARD_MEMBER_IMAGES.muhammadSaeed,
     bio: "Muhammad Saeed, a retired Accounts Officer at PTCL, brings 18 years of experience in real estate, construction, and development. He has successfully managed high-profile projects, demonstrating a strong ability to navigate complex regulations and deliver exceptional results. His collaborative leadership style fosters innovation and drives the company's strategic vision.",
   },
   {
@@ -47,7 +47,7 @@ export const boardOfDirectors: TeamMember[] = [
     name: "Imran Rasheed",
     role: "Chief Operating Officer",
     initials: "IR",
-    image: publicImage("COO Imran Rasheed.jpeg"),
+    image: BOARD_MEMBER_IMAGES.imranRasheed,
     bio: "Imran Rasheed, with a Master's in Business Administration, has over a decade of experience in real estate, construction, and development. He excels in operational efficiency and project management, implementing best practices to optimize workflows. Known for his analytical problem-solving and strong stakeholder relationships, Imran ensures projects are completed on time and within budget.",
   },
   {
@@ -55,7 +55,7 @@ export const boardOfDirectors: TeamMember[] = [
     name: "Danial Saeed",
     role: "Chief Finance Officer",
     initials: "DS",
-    image: publicImage("CFO Danial Saeed.jpeg"),
+    image: BOARD_MEMBER_IMAGES.danialSaeed,
     bio: "Danial Saeed, a qualified Chartered Accountant, specializes in real estate financials and costing, with three years of experience ensuring financial integrity. His attention to detail and analytical skills enable him to develop financial models that support strategic decisions. Danial effectively manages budgets and identifies cost-saving opportunities, ensuring the company's financial stability.",
   },
 ];
@@ -66,7 +66,7 @@ export const karlughTeam: TeamMember[] = [
     name: "Colonel Kamal Aman Khan (Rtd)",
     role: "Chairman",
     initials: "KK",
-    image: publicImage("Chairman Karlugh Kamal Aman Khan.jpeg"),
+    image: BOARD_MEMBER_IMAGES.kamalAmanKhan,
     bio: "Colonel Kamal Aman Khan (Rtd) is a seasoned executive with 38 years of experience in leadership and administrative roles. His strategic vision has earmarked his ancestral family lands for the project \"Aman Enclave,\" demonstrating his commitment to sustainable development. Known for his strong ethical reputation, Col. Kamal leads the Board of Directors in achieving the company's objectives with integrity.",
   },
   {
@@ -74,7 +74,7 @@ export const karlughTeam: TeamMember[] = [
     name: "Muhammad Saeed",
     role: "Chief Executive Officer",
     initials: "MS",
-    image: publicImage("CEO Muhammad Saeed.jpeg"),
+    image: BOARD_MEMBER_IMAGES.muhammadSaeed,
     bio: "Muhammad Saeed, a retired Accounts Officer at PTCL, brings 18 years of experience in real estate, construction, and development. He has successfully managed high-profile projects, demonstrating a strong ability to navigate complex regulations and deliver exceptional results. His collaborative leadership style fosters innovation and drives the company's strategic vision.",
   },
   {
@@ -82,7 +82,7 @@ export const karlughTeam: TeamMember[] = [
     name: "Imran Rasheed",
     role: "Chief Operating Officer",
     initials: "IR",
-    image: publicImage("COO Imran Rasheed.jpeg"),
+    image: BOARD_MEMBER_IMAGES.imranRasheed,
     bio: "Imran Rasheed, with a Master's in Business Administration, has over a decade of experience in real estate, construction, and development. He excels in operational efficiency and project management, implementing best practices to optimize workflows. Known for his analytical problem-solving and strong stakeholder relationships, Imran ensures projects are completed on time and within budget.",
   },
   {
@@ -90,7 +90,7 @@ export const karlughTeam: TeamMember[] = [
     name: "Danial Saeed",
     role: "Chief Finance Officer",
     initials: "DS",
-    image: publicImage("CFO Danial Saeed.jpeg"),
+    image: BOARD_MEMBER_IMAGES.danialSaeed,
     bio: "Danial Saeed, a qualified Chartered Accountant, specializes in real estate financials and costing, with three years of experience ensuring financial integrity. His attention to detail and analytical skills enable him to develop financial models that support strategic decisions. Danial effectively manages budgets and identifies cost-saving opportunities, ensuring the company's financial stability.",
   },
   {
@@ -98,7 +98,7 @@ export const karlughTeam: TeamMember[] = [
     name: "Muhammad Zarak Aman Khan",
     role: "Chief Legal Officer",
     initials: "MZ",
-    image: CLO_IMAGE,
+    image: BOARD_MEMBER_IMAGES.zarakAmanKhan,
     bio: "Muhammad Zarak Aman Khan serves as Chief Legal Officer of Karlugh Real Estate and Property Developers. He is a young and highly skilled legal professional with strong expertise in corporate and regulatory law. His strategic legal insight and sound judgment play a key role in guiding the company's governance and long-term development framework, ensuring all projects are executed with legal integrity and professionalism.",
   },
 ];
@@ -109,7 +109,7 @@ export const advisoryBoardMember: TeamMember = {
   name: "Mr. Amir Gul",
   role: "Advisory Board Member",
   initials: "AG",
-  image: FINAL_IMAGES.amirGul,
+  image: BOARD_MEMBER_IMAGES.amirGul,
   bio: "A seasoned professional with over three decades of leadership across military, hospitality, and oil & gas. Former Major in the Pakistan Army, with senior roles at Hashoo Group and BP/UEP in human resources, security, and risk management. As Advisory Board Member of Dani Real Estate and Developers LLP, his governance and operational expertise strengthens the company's strategic direction.",
 };
 

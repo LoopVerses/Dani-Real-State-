@@ -11,7 +11,7 @@ export const SITE_URL = (() => {
 })();
 
 export const CONTACT = {
-  email: "danxsaeed@gmail.com",
+  email: "contact@danirealstateanddevlopers.com",
   phoneDisplay: "0332 5076025",
   phoneTel: "+923325076025",
   whatsappNumber: "923325076025",

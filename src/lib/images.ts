@@ -13,8 +13,20 @@ export const LOGO_SRC = publicImage("logo.png");
 /** Navbar / brand — light theme */
 export const LOGO_LIGHT_SRC = publicImage("light_theme.png");
 export const DANI_REAL_ESTATE_LOGO = publicImage("Dani Real Estate Logo.jpeg");
-export const CEO_IMAGE = publicImage("CEO Muhammad Saeed.jpeg");
-export const CLO_IMAGE = publicImage("Muhammad Zarak Aman Khan CLO.png");
+
+/** Leadership portraits — /public/Board_members_image (uniform 1–6) */
+export function boardMemberImage(n: 1 | 2 | 3 | 4 | 5 | 6): string {
+  return `/Board_members_image/${n}.png`;
+}
+
+export const BOARD_MEMBER_IMAGES = {
+  muhammadSaeed: boardMemberImage(1),
+  imranRasheed: boardMemberImage(2),
+  danialSaeed: boardMemberImage(3),
+  kamalAmanKhan: boardMemberImage(4),
+  zarakAmanKhan: boardMemberImage(5),
+  amirGul: boardMemberImage(6),
+} as const;
 
 export const HERO_BANNERS = [
   {
@@ -47,7 +59,7 @@ export const FINAL_IMAGES = {
   amanEnclave: finalImage("Aman Enclvae.png"),
   anishCottages: finalImage("Anish Cortages.jpeg"),
   danialGardens: finalImage("Danial Gardens.JPG"),
-  amirGul: finalImage("Amir Gul.png"),
+  amirGul: BOARD_MEMBER_IMAGES.amirGul,
 } as const;
 
 /** Page heroes — local final images (no Unsplash) */
@@ -69,7 +81,7 @@ export const ONGOING_PROJECT_IMAGES = [
 
 export const ABOUT_IMAGES = {
   pageHero: PAGE_HERO_IMAGES.about,
-  story: CEO_IMAGE,
+  story: BOARD_MEMBER_IMAGES.muhammadSaeed,
   subsidiaryBanner: FINAL_IMAGES.amanEnclave,
   homeSnippet: DANI_REAL_ESTATE_LOGO,
 } as const;
