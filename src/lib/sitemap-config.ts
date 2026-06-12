@@ -3,6 +3,7 @@ import { ROUTES } from "@/lib/routes";
 import {
   BOARD_MEMBER_IMAGES,
   FINAL_IMAGES,
+  WHAT_WE_OFFER_IMAGES,
   HERO_BANNERS,
   LOGO_SRC,
   ABOUT_IMAGES,
@@ -47,11 +48,8 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     changeFrequency: "weekly",
     images: [
       PAGE_HERO_IMAGES.whatWeOffer,
-      FINAL_IMAGES.developedLands,
-      FINAL_IMAGES.houses,
-      FINAL_IMAGES.farmhouses,
-      FINAL_IMAGES.architectural,
-      FINAL_IMAGES.material,
+      ...Object.values(WHAT_WE_OFFER_IMAGES),
+      FINAL_IMAGES.amirGul,
       BOARD_MEMBER_IMAGES.amirGul,
       LOGO_SRC,
     ],
@@ -63,7 +61,6 @@ export const INDEXABLE_PAGES: SitemapPageConfig[] = [
     changeFrequency: "weekly",
     images: [
       ABOUT_IMAGES.pageHero,
-      ABOUT_IMAGES.story,
       ABOUT_IMAGES.subsidiaryBanner,
       ABOUT_IMAGES.homeSnippet,
       ...Object.values(BOARD_MEMBER_IMAGES),

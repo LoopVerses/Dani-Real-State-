@@ -8,8 +8,9 @@ export function finalImage(filename: string): string {
   return `/final_images/${encodeURIComponent(filename)}`;
 }
 
-export function finalImageNumbered(n: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8): string {
-  return finalImage(`${n}.png`);
+/** Leadership portraits — /public/Board_members_image */
+export function boardMemberImage(filename: string): string {
+  return `/Board_members_image/${encodeURIComponent(filename)}`;
 }
 
 /** Navbar / brand — dark theme (default) */
@@ -18,18 +19,13 @@ export const LOGO_SRC = publicImage("logo.png");
 export const LOGO_LIGHT_SRC = publicImage("light_theme.png");
 export const DANI_REAL_ESTATE_LOGO = publicImage("Dani Real Estate Logo.jpeg");
 
-/** Leadership portraits — /public/Board_members_image (uniform 1–6) */
-export function boardMemberImage(n: 1 | 2 | 3 | 4 | 5 | 6): string {
-  return `/Board_members_image/${n}.png`;
-}
-
 export const BOARD_MEMBER_IMAGES = {
-  muhammadSaeed: boardMemberImage(1),
-  imranRasheed: boardMemberImage(2),
-  danialSaeed: boardMemberImage(3),
-  kamalAmanKhan: boardMemberImage(4),
-  zarakAmanKhan: boardMemberImage(5),
-  amirGul: boardMemberImage(6),
+  muhammadSaeed: boardMemberImage("Muhammad Saeed.png"),
+  imranRasheed: boardMemberImage("COO Imran Rasheed.png"),
+  danialSaeed: boardMemberImage("CFO Danial Saeed.png"),
+  kamalAmanKhan: boardMemberImage("Chairman Karlugh Kamal Aman Khan.png"),
+  zarakAmanKhan: boardMemberImage("Muhammad Zarak Aman Khan CLO.png"),
+  amirGul: boardMemberImage("Amir Gull advisory_board_member.png"),
 } as const;
 
 export const HERO_BANNERS = [
@@ -52,25 +48,25 @@ export const HERO_BANNERS = [
 
 export const HERO_AUTO_SLIDE_MS = 8000;
 
-/** Final production images — /public/final_images/1.png–8.png */
+/** Final production images — filenames match project/service titles */
 export const FINAL_IMAGES = {
-  developedLands: finalImageNumbered(1),
-  houses: finalImageNumbered(2),
-  farmhouses: finalImageNumbered(3),
-  farmhouseLand: finalImageNumbered(4),
-  architectural: finalImageNumbered(5),
-  material: finalImageNumbered(6),
-  amanEnclave: finalImageNumbered(7),
-  anishCottages: finalImageNumbered(8),
-  danialGardens: finalImageNumbered(8),
-  amirGul: BOARD_MEMBER_IMAGES.amirGul,
+  developedLands: finalImage("Developed Lands.png"),
+  houses: finalImage("Houses.png"),
+  farmhouses: finalImage("Farmhouse Land.png"),
+  farmhouseLand: finalImage("Farmhouse Land.png"),
+  architectural: finalImage("Architectural.png"),
+  material: finalImage("Material.png"),
+  amanEnclave: finalImage("Aman Enclvae.png"),
+  anishCottages: finalImage("Anish Cortages.png"),
+  danialGardens: finalImage("Danial Gardens.png"),
+  amirGul: finalImage("Amir Gul.png"),
 } as const;
 
 /** All final_images assets are 409×320 — shared card/banner frame */
 export const FINAL_IMAGE_FRAME =
   "relative w-full aspect-[409/320] shrink-0 overflow-hidden bg-dark-2";
 
-/** Page heroes — local final images (no Unsplash) */
+/** Page heroes — matched to page content */
 export const PAGE_HERO_IMAGES = {
   about: FINAL_IMAGES.developedLands,
   projects: FINAL_IMAGES.amanEnclave,
@@ -78,20 +74,32 @@ export const PAGE_HERO_IMAGES = {
   whatWeOffer: FINAL_IMAGES.architectural,
 } as const;
 
-/** Ongoing project cards (homepage + order matches ongoingProjects in about.ts) */
+/**
+ * Ongoing project cards — order matches ongoingProjects in about.ts:
+ * Dani Hills Phase 2, Haripur Hills, Aman Enclave, Anish Cottages, Premium Farmhouse Estate
+ */
 export const ONGOING_PROJECT_IMAGES = [
   FINAL_IMAGES.farmhouseLand,
   FINAL_IMAGES.developedLands,
   FINAL_IMAGES.amanEnclave,
   FINAL_IMAGES.anishCottages,
-  FINAL_IMAGES.farmhouses,
+  FINAL_IMAGES.farmhouseLand,
 ] as const;
 
 export const ABOUT_IMAGES = {
   pageHero: PAGE_HERO_IMAGES.about,
-  story: BOARD_MEMBER_IMAGES.muhammadSaeed,
   subsidiaryBanner: FINAL_IMAGES.amanEnclave,
   homeSnippet: DANI_REAL_ESTATE_LOGO,
+} as const;
+
+/** Premium Real Estate Services — image filename matched to card title */
+export const WHAT_WE_OFFER_IMAGES = {
+  "Developed Lands": finalImage("Developed Lands.png"),
+  "Houses & Construction": finalImage("Houses.png"),
+  Farmhouses: finalImage("Farmhouse Land.png"),
+  Consultancy: finalImage("Architectural.png"),
+  "Construction Materials": finalImage("Material.png"),
+  "Project Delivery": finalImage("Danial Gardens.png"),
 } as const;
 
 /** Card grids — full image visible without cropping */

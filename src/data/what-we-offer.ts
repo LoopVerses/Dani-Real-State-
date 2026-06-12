@@ -7,7 +7,7 @@ import {
   Landmark,
   PackageCheck,
 } from "lucide-react";
-import { FINAL_IMAGES } from "@/lib/images";
+import { WHAT_WE_OFFER_IMAGES } from "@/lib/images";
 
 export type WhatWeOfferItem = {
   id: string;
@@ -30,7 +30,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "developed-lands",
     icon: Landmark,
-    image: FINAL_IMAGES.developedLands,
+    image: WHAT_WE_OFFER_IMAGES["Developed Lands"],
     title: "Developed Lands",
     summary: "Exclusive, ready-to-build plots in prime communities.",
     description:
@@ -44,7 +44,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "houses-construction",
     icon: Building2,
-    image: FINAL_IMAGES.houses,
+    image: WHAT_WE_OFFER_IMAGES["Houses & Construction"],
     title: "Houses & Construction",
     summary: "Elegant homes crafted with precision and quality.",
     description:
@@ -58,7 +58,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "farmhouses",
     icon: Home,
-    image: FINAL_IMAGES.farmhouses,
+    image: WHAT_WE_OFFER_IMAGES.Farmhouses,
     title: "Farmhouses",
     summary: "Luxury farmhouse living with comfort and privacy.",
     description:
@@ -72,7 +72,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "consultancy",
     icon: ClipboardCheck,
-    image: FINAL_IMAGES.architectural,
+    image: WHAT_WE_OFFER_IMAGES.Consultancy,
     title: "Consultancy",
     summary: "Strategic expertise in planning and execution.",
     description:
@@ -86,7 +86,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "construction-materials",
     icon: PackageCheck,
-    image: FINAL_IMAGES.material,
+    image: WHAT_WE_OFFER_IMAGES["Construction Materials"],
     title: "Construction Materials",
     summary: "Premium-grade materials for superior reliability.",
     description:
@@ -100,7 +100,7 @@ export const whatWeOfferItems: WhatWeOfferItem[] = [
   {
     id: "project-delivery",
     icon: HardHat,
-    image: FINAL_IMAGES.amanEnclave,
+    image: WHAT_WE_OFFER_IMAGES["Project Delivery"],
     title: "Project Delivery",
     summary: "Integrated execution from planning to completion.",
     description:

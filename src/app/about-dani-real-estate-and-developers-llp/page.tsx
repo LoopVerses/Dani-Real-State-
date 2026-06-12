@@ -3,7 +3,7 @@ import OurStory from "@/components/sections/about/OurStory";
 import TeamSection from "@/components/sections/about/TeamSection";
 import SubsidiarySection from "@/components/sections/about/SubsidiarySection";
 import { COMPANY_NAME, SLOGAN } from "@/data/about";
-import { ABOUT_IMAGES } from "@/lib/images";
+import { ABOUT_IMAGES, BOARD_MEMBER_IMAGES } from "@/lib/images";
 import { ROUTES } from "@/lib/routes";
 import { buildPageMetadata } from "@/lib/seo";
 
@@ -17,7 +17,7 @@ export const metadata = buildPageMetadata({
     "danirealstateanddeveloper about",
     "dani real state and developers llp",
   ],
-  ogImage: ABOUT_IMAGES.story,
+  ogImage: BOARD_MEMBER_IMAGES.muhammadSaeed,
   ogImageAlt: "Muhammad Saeed — CEO, Dani Real Estate and Developers LLP",
 });
 
