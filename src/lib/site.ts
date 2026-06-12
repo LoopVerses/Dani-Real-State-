@@ -11,7 +11,7 @@ export const SITE_URL = (() => {
 })();
 
 export const CONTACT = {
-  email: "contact@danirealstateanddevloper.com",
+  email: "contact@danirealstateanddeveloper.com",
   phoneDisplay: "0332 5076025",
   phoneTel: "+923325076025",
   whatsappNumber: "923325076025",
