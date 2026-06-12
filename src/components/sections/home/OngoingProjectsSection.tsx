@@ -6,6 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { ArrowRight, Construction } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { ongoingProjects } from "@/data/about";
+import { HOME_CARD_IMAGE_FRAME } from "@/lib/home-layout";
 import { IMAGE_FIT, ONGOING_PROJECT_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/routes";
@@ -29,23 +30,23 @@ export default function OngoingProjectsSection() {
           subtitle="Flagship developments currently underway across Haripur and KPK — including Haripur Hills, Aman Enclave, and Dani Hills Phase 2."
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div className="mb-10 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ongoingProjects.map((project, i) => (
             <article
               key={project.title}
               className={cn(
-                "group bg-dark-3 rounded-xl overflow-hidden border border-primary/15 hover:border-primary/40 transition-all duration-500",
+                "group flex h-full flex-col bg-dark-3 rounded-xl overflow-hidden border border-primary/15 hover:border-primary/40 transition-all duration-500",
                 inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               )}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="relative aspect-[16/10] min-h-[160px] sm:min-h-[180px] overflow-hidden bg-dark-3">
+              <div className={HOME_CARD_IMAGE_FRAME}>
                 <Image
                   src={ONGOING_PROJECT_IMAGES[i % ONGOING_PROJECT_IMAGES.length]}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className={IMAGE_FIT.landscapeCard}
+                  className={IMAGE_FIT.finalImageCard}
                   unoptimized
                 />
                 <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-on-primary">
@@ -53,7 +54,7 @@ export default function OngoingProjectsSection() {
                   Ongoing
                 </span>
               </div>
-              <div className="p-5">
+              <div className="flex flex-1 flex-col p-5">
                 <h3 className="text-foreground font-semibold text-lg mb-2">{project.title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed">{project.detail}</p>
               </div>

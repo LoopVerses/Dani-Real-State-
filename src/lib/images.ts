@@ -8,6 +8,10 @@ export function finalImage(filename: string): string {
   return `/final_images/${encodeURIComponent(filename)}`;
 }
 
+export function finalImageNumbered(n: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8): string {
+  return finalImage(`${n}.png`);
+}
+
 /** Navbar / brand — dark theme (default) */
 export const LOGO_SRC = publicImage("logo.png");
 /** Navbar / brand — light theme */
@@ -48,19 +52,23 @@ export const HERO_BANNERS = [
 
 export const HERO_AUTO_SLIDE_MS = 8000;
 
-/** Final production images (10) — services, projects, heroes */
+/** Final production images — /public/final_images/1.png–8.png */
 export const FINAL_IMAGES = {
-  developedLands: finalImage("Developed Lands.jpeg"),
-  houses: finalImage("Houses.jpeg"),
-  farmhouses: finalImage("Farmhouses.png"),
-  farmhouseLand: finalImage("Farmhouse Land.png"),
-  architectural: finalImage("Architectural.png"),
-  material: finalImage("Material.jpg"),
-  amanEnclave: finalImage("Aman Enclvae.png"),
-  anishCottages: finalImage("Anish Cortages.jpeg"),
-  danialGardens: finalImage("Danial Gardens.JPG"),
+  developedLands: finalImageNumbered(1),
+  houses: finalImageNumbered(2),
+  farmhouses: finalImageNumbered(3),
+  farmhouseLand: finalImageNumbered(4),
+  architectural: finalImageNumbered(5),
+  material: finalImageNumbered(6),
+  amanEnclave: finalImageNumbered(7),
+  anishCottages: finalImageNumbered(8),
+  danialGardens: finalImageNumbered(8),
   amirGul: BOARD_MEMBER_IMAGES.amirGul,
 } as const;
+
+/** All final_images assets are 409×320 — shared card/banner frame */
+export const FINAL_IMAGE_FRAME =
+  "relative w-full aspect-[409/320] shrink-0 overflow-hidden bg-dark-2";
 
 /** Page heroes — local final images (no Unsplash) */
 export const PAGE_HERO_IMAGES = {
@@ -86,13 +94,15 @@ export const ABOUT_IMAGES = {
   homeSnippet: DANI_REAL_ESTATE_LOGO,
 } as const;
 
-/** Full image visible on mobile and desktop — no cropping */
+/** Card grids — full image visible without cropping */
 export const IMAGE_FIT = {
-  heroBanner:
-    "object-contain object-center bg-[#071E2B] md:object-cover md:object-[50%_28%] lg:object-[50%_30%]",
-  heroBannerMobile: "object-contain object-center bg-[#071E2B]",
-  landscapeHero: "object-contain object-center bg-dark",
-  landscapeCard: "object-contain object-center bg-dark-3",
+  /** Homepage hero — cover frame, focal point upper area (banner text) */
+  heroBanner: "object-cover object-[50%_22%] lg:object-[50%_26%]",
+  heroBannerMobile: "object-cover object-[50%_14%] sm:object-[50%_18%]",
+  landscapeHero: "object-cover object-center",
+  bannerCover: "object-cover object-center",
+  landscapeCard: "object-cover object-center",
   portrait: "object-contain object-center bg-dark-2",
-  serviceCard: "object-contain object-center bg-dark-2",
+  serviceCard: "object-cover object-center",
+  finalImageCard: "object-cover object-center",
 } as const;

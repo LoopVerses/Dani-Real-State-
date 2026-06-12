@@ -34,7 +34,7 @@ export default function PageHero({
   const currentLabel = pathLabels[pathname] || "Page";
 
   return (
-    <section className="relative bg-dark-2 pt-[4.5rem] sm:pt-20">
+    <section className="relative bg-dark-2">
       <div className={cn(ABOUT_PAGE_BANNER, "w-full")}>
         <Image
           src={backgroundImage}
@@ -46,7 +46,7 @@ export default function PageHero({
           unoptimized
         />
         <div className={cn("absolute inset-0", overlayClassName)} aria-hidden />
-        <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-4 pt-[4.5rem] sm:pt-20">
           <div className="mx-auto max-w-4xl text-center">
             <nav className="mb-5 flex items-center justify-center gap-2 text-sm text-white/80">
               <Link href="/" className="hover:text-primary transition-colors">

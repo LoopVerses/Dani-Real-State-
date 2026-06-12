@@ -8,6 +8,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/routes";
+import { HOME_CARD_IMAGE_FRAME } from "@/lib/home-layout";
 import { IMAGE_FIT } from "@/lib/images";
 import { WHAT_WE_OFFER_INTRO, whatWeOfferHomePreview } from "@/data/what-we-offer";
 
@@ -30,30 +31,30 @@ export default function WhatWeOfferSnippet() {
           subtitle={WHAT_WE_OFFER_INTRO.subtitle}
         />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div className="mb-10 grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {whatWeOfferHomePreview.map(({ icon: Icon, title, summary, image }, i) => (
             <article
               key={title}
               className={cn(
-                "group bg-dark-3 border border-primary/10 rounded-xl overflow-hidden hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500",
+                "group flex h-full flex-col bg-dark-3 border border-primary/10 rounded-xl overflow-hidden hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-500",
                 inView ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
               )}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="relative aspect-[4/3] min-h-[140px] overflow-hidden bg-dark-2">
+              <div className={HOME_CARD_IMAGE_FRAME}>
                 <Image
                   src={image}
                   alt={title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className={IMAGE_FIT.serviceCard}
+                  className={IMAGE_FIT.finalImageCard}
                   unoptimized
                 />
                 <div className="absolute bottom-3 left-3 w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center">
                   <Icon className="w-5 h-5 text-on-primary" strokeWidth={1.5} />
                 </div>
               </div>
-              <div className="p-6">
+              <div className="flex flex-1 flex-col p-6">
                 <h3 className="text-foreground font-semibold text-lg mb-2">{title}</h3>
                 <p className="text-text-muted text-sm leading-relaxed mb-4">{summary}</p>
                 <Link

@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import { ArrowRight } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { deliveredProjects, ongoingProjects } from "@/data/about";
-import { ONGOING_PROJECT_IMAGES } from "@/lib/images";
+import { FINAL_IMAGE_FRAME, ONGOING_PROJECT_IMAGES } from "@/lib/images";
 import { cn } from "@/lib/utils";
 import { ROUTES } from "@/lib/routes";
 
@@ -38,13 +38,13 @@ export default function ProjectsShowcase() {
               key={project.title}
               className="group bg-dark-3 rounded-xl overflow-hidden border border-primary/10 hover:border-primary/40 transition-colors"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className={FINAL_IMAGE_FRAME}>
                 <Image
                   src={ONGOING_PROJECT_IMAGES[i % ONGOING_PROJECT_IMAGES.length]}
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-5">

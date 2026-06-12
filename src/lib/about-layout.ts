@@ -1,7 +1,7 @@
 /** Shared About Us page — banners & member photos same size everywhere */
 
 export const ABOUT_PAGE_BANNER =
-  "relative w-full aspect-[16/9] min-h-[240px] sm:min-h-[300px] md:min-h-[340px] max-h-[400px] overflow-hidden bg-dark-2";
+  "relative w-full aspect-[409/320] max-h-[420px] overflow-hidden bg-dark-2";
 
 /** Matches Board_members_image assets (409×320) */
 export const TEAM_PHOTO_FRAME =

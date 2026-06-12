@@ -5,7 +5,8 @@ import { useInView } from "react-intersection-observer";
 import { CheckCircle2, Construction } from "lucide-react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { deliveredProjects, ongoingProjects } from "@/data/about";
-import { FINAL_IMAGES, IMAGE_FIT, ONGOING_PROJECT_IMAGES } from "@/lib/images";
+import { FINAL_IMAGE_FRAME, FINAL_IMAGES, IMAGE_FIT, ONGOING_PROJECT_IMAGES } from "@/lib/images";
+import { cn } from "@/lib/utils";
 
 export default function ProjectsSection() {
   const { ref, inView } = useInView({ triggerOnce: true, rootMargin: "-100px" });
@@ -21,7 +22,7 @@ export default function ProjectsSection() {
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="relative rounded-2xl overflow-hidden border border-primary/20 mb-14 aspect-[16/10] min-h-[200px] sm:min-h-[240px] md:min-h-[280px] bg-dark-2">
+        <div className={cn(FINAL_IMAGE_FRAME, "mb-14 rounded-2xl border border-primary/20")}>
           <Image
             src={FINAL_IMAGES.danialGardens}
             alt="Danial Gardens — delivered housing development Haripur"
@@ -70,13 +71,13 @@ export default function ProjectsSection() {
               key={item.title}
               className="bg-dark-3 border border-primary/15 rounded-xl overflow-hidden hover:border-primary/40 transition-colors"
             >
-              <div className="relative aspect-[16/10] min-h-[160px] overflow-hidden bg-dark-2">
+              <div className={FINAL_IMAGE_FRAME}>
                 <Image
                   src={ONGOING_PROJECT_IMAGES[i]}
                   alt={item.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className={IMAGE_FIT.landscapeCard}
+                  className={IMAGE_FIT.finalImageCard}
                   unoptimized
                 />
                 <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-primary/90 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-on-primary">

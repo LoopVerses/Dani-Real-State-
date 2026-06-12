@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { IMAGE_FIT } from "@/lib/images";
+import { FINAL_IMAGE_FRAME, IMAGE_FIT } from "@/lib/images";
 import { whatWeOfferItems } from "@/data/what-we-offer";
 
 export default function WhatWeOfferGrid() {
@@ -28,7 +28,7 @@ export default function WhatWeOfferGrid() {
             >
               <div
                 className={cn(
-                  "relative aspect-[4/3] min-h-[200px] sm:min-h-[240px] md:min-h-[300px] bg-dark-2 flex items-center justify-center",
+                  FINAL_IMAGE_FRAME,
                   reversed ? "md:order-2" : "md:order-1"
                 )}
               >
@@ -37,7 +37,7 @@ export default function WhatWeOfferGrid() {
                   alt={item.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className={IMAGE_FIT.serviceCard}
+                  className={IMAGE_FIT.finalImageCard}
                   unoptimized
                 />
               </div>
